@@ -1,0 +1,21 @@
+﻿<Page x:Class="LibrarySystem.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="538" d:DesignWidth="908"
+      Title="Login">
+
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="538" Margin="250,0,0,0" VerticalAlignment="Center" Width="733" Source="/library.png"/>
+        <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="54,29,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Century Gothic"/>
+        <Label Content="Library Card Number" HorizontalAlignment="Left" Margin="54,156,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtCardNo" HorizontalAlignment="Left" Margin="59,192,0,0" VerticalAlignment="Top" Width="249" Height="28" FontSize="16" TextChanged="TextChanged"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="54,235,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="59,271,0,0" VerticalAlignment="Top" Width="249" Height="28" FontSize="16" PasswordChanged="TextChanged"/>
+        <Button x:Name="btnLogin" Content="Log In" HorizontalAlignment="Left" Margin="59,363,0,0" VerticalAlignment="Top" Width="64" Height="34" FontSize="16" IsEnabled="False"/>
+
+    </Grid>
+</Page>
