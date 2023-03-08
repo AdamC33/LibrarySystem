@@ -15,7 +15,7 @@
         <TextBox x:Name="txtCardNo" HorizontalAlignment="Left" Margin="59,192,0,0" VerticalAlignment="Top" Width="249" Height="28" FontSize="16" TextChanged="TextChanged"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="54,235,0,0" VerticalAlignment="Top" FontSize="16"/>
         <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="59,271,0,0" VerticalAlignment="Top" Width="249" Height="28" FontSize="16" PasswordChanged="TextChanged"/>
-        <Button x:Name="btnLogin" Content="Log In" HorizontalAlignment="Left" Margin="59,363,0,0" VerticalAlignment="Top" Width="64" Height="34" FontSize="16" IsEnabled="False"/>
+        <Button x:Name="btnLogin" Content="Log In" HorizontalAlignment="Left" Margin="59,363,0,0" VerticalAlignment="Top" Width="64" Height="34" FontSize="16" IsEnabled="False" Click="btnLogin_Click"/>
 
     </Grid>
 </Page>
