@@ -10,6 +10,18 @@
 
     <Grid>
         <Label Content="New Books" HorizontalAlignment="Left" Margin="385,3,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold" FontSize="24"/>
-
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="165" Margin="19,88,0,0" VerticalAlignment="Top" Width="342" Background="White">
+            <Grid>
+                <Label x:Name="lblBook1Title" Content="Book not found" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+                <Label x:Name="lblBook1Author" Content="Book not found" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,31,0,0"/>
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="165" Margin="543,88,0,0" VerticalAlignment="Top" Width="342" Background="White">
+            <Grid>
+                <Label x:Name="lblBook2Title" Content="Book not found" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+                <Label x:Name="lblBook2Author" Content="Book not found" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,31,0,0"/>
+            </Grid>
+        </Border>
+        
     </Grid>
 </Page>

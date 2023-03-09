@@ -67,6 +67,29 @@ namespace LibrarySystem
             oldBook.ChildNodes.Item(5).InnerText = newBook._category;
             xmlDoc.Save(bookPath);
         }
+
+        public List<Book> GetLibrary()
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(bookPath);
+
+            List<Book> library = new List<Book>();
+
+            foreach (XmlNode node in xmlDoc.SelectSingleNode("//library"))
+            {
+                Book book = new Book(
+                    node.SelectSingleNode("isbn").InnerText,
+                    node.SelectSingleNode("title").InnerText,
+                    node.SelectSingleNode("author").InnerText,
+                    node.SelectSingleNode("year").InnerText,
+                    node.SelectSingleNode("publisher").InnerText,
+                    node.SelectSingleNode("category").InnerText
+                );
+                library.Add(book);
+            }
+
+            return library;
+        }
         public Member GetMember(string cardNum, string password)
         {
             XmlDocument xmlDoc = new XmlDocument();

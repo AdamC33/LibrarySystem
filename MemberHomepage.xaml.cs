@@ -15,14 +15,18 @@ using System.Windows.Shapes;
 
 namespace LibrarySystem
 {
-    /// <summary>
-    /// Interaction logic for MemberHomepage.xaml
-    /// </summary>
     public partial class MemberHomepage : Page
     {
         public MemberHomepage()
         {
             InitializeComponent();
+            XmlController controller = new XmlController();
+            List<Book> library = controller.GetLibrary();
+
+            //Sets up the new books on the homepage
+            lblBook1Title.Content = library[library.Count() - 1]._title;
+            lblBook1Author.Content = library[library.Count() - 1]._author;
+            lblBook2Title.Content = library[library.Count() - 2]._title;
         }
     }
 }
