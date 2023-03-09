@@ -25,10 +25,5 @@ namespace LibrarySystem
             InitializeComponent();
             frameMember.Content = new MemberHomepage();
         }
-
-        private void pageLoaded(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

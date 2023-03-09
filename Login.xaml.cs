@@ -54,22 +54,22 @@ namespace LibrarySystem
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             XmlController controller = new XmlController();
-            if (controller.GetMember(txtCardNo.Text, password.Password) != null)
-            {                
+            Member attemptMember = controller.GetMember(txtCardNo.Text, password.Password);
+            if (attemptMember != null)
+            {
                 if (txtCardNo.Text == "000000000")
                 {
                     //Librarian interface
                 }
                 else
                 {
-                    NavigationService.Navigate(new MemberMainpage(controller.GetMember(txtCardNo.Text, password.Password)));
+                    NavigationService.Navigate(new MemberMainpage(attemptMember));
                 }
             }
             else
             {
                 lblWrongDetails.Content = "Incorrect card number or password!";
             }
-            //https://learn.microsoft.com/en-us/dotnet/desktop/wpf/app-development/how-to-navigate-to-a-page?view=netframeworkdesktop-4.8
         }
     }
 }

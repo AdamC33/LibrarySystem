@@ -81,15 +81,22 @@ namespace LibrarySystem
                 {
                     XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
                     Member thisMember = new Member(
-                        xmlMember.ChildNodes.Item(0).InnerText,
-                        xmlMember.ChildNodes.Item(2).InnerText,
-                        xmlMember.ChildNodes.Item(3).InnerText,
-                        xmlMember.ChildNodes.Item(4).InnerText
+                        xmlMember.ChildNodes.Item(0).InnerText, //Card number
+                        xmlMember.ChildNodes.Item(2).InnerText, //Name
+                        xmlMember.ChildNodes.Item(3).InnerText, //Phone number
+                        xmlMember.ChildNodes.Item(4).InnerText  //Email
                     );
+                    foreach (XmlNode checkedOutBook in xmlMember.ChildNodes.Item(5)) //For each book in the list of books that are checked out
+                    {
+                        int dueDateLong = Convert.ToInt32(checkedOutBook.ChildNodes.Item(1).InnerText); //Converts string to long/int32 (needs to be long for the parameter)
+                        thisMember.CheckOutBook(
+                            checkedOutBook.ChildNodes.Item(0).InnerText,
+                            DateTimeOffset.FromUnixTimeSeconds(dueDateLong)
+                        );
+                    }
                     return thisMember;
                 }
             }
-
             return null;
         }
     }

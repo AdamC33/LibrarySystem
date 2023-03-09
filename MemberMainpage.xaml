@@ -12,7 +12,7 @@
         <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="80" VerticalAlignment="Top" Width="908" Background="WhiteSmoke"/>
         <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Width="364" Height="60" FontSize="36" FontWeight="Bold" FontFamily="Century Gothic"/>
         <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" Height="60">
-            <Image Source="defaultuser.jpg"/>
+            <Image Source="defaultuser.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
         </Button>
 
         <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="58" VerticalAlignment="Top" Width="908" Background="WhiteSmoke" Margin="0,79,0,0"/>
@@ -24,9 +24,9 @@
         <RadioButton x:Name="radCategory" Content="Category" HorizontalAlignment="Left" Margin="831,112,0,0" VerticalAlignment="Top"/>
         <Label Content="Search by:" HorizontalAlignment="Left" Margin="510,81,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
         <Label Content="Search:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="449"/>
+        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="449"/>
         <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,104,0,0" VerticalAlignment="Top" Width="30" Height="30">
-            <Image Source="magnifyingglass.png"/>
+            <Image Source="magnifyingglass.png" RenderOptions.BitmapScalingMode="HighQuality"/>
         </Button>
 
         <Frame x:Name="frameMember" HorizontalAlignment="Left" Height="401" Margin="0,137,0,0" VerticalAlignment="Top" Width="908"/>

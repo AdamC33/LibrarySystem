@@ -10,17 +10,16 @@ namespace LibrarySystem
     {
         public string _cardNumber { get; set; }
         private string _password;
-        private string _name;
-        private string _phoneNumber;
-        private string _email;
-        private List<DueBook> _booksCheckedOut;
-
+        public string _name { get; set; }
+        public string _phoneNumber { get; set; }
+        public string _email { get; set; }
+        private List<DueBook> _booksCheckedOut = new List<DueBook>();
         private struct DueBook
         {
-            public string _ISBN;
-            public DateTime _dueDate;
+            public string _ISBN { get; set; }
+            public DateTimeOffset _dueDate { get; set; } //The DateTime struct cannot easily convert between datetime and Unix datetime (which is what gets stored in the XML files).
+            //However, the DateTimeOffset struct can do this. It is implemented as one of its methods.
         }
-
         public Member(string cardNumber, string name, string phoneNumber, string email)
         {
             _cardNumber = cardNumber;
@@ -29,7 +28,20 @@ namespace LibrarySystem
             _email = email;
         }
 
-        public void CheckOutBook(string ISBN, DateTime dueDate)
+        public int numberOfBooksCheckedOut
+        {
+            get { return _booksCheckedOut.Count(); }
+        }
+        public string GetDueBookISBN(int index)
+        {
+            return _booksCheckedOut[index]._ISBN;
+        }
+        public DateTimeOffset GetDueBookDate(int index)
+        {
+            return _booksCheckedOut[index]._dueDate;
+        }
+
+        public void CheckOutBook(string ISBN, DateTimeOffset dueDate)
         {
             _booksCheckedOut.Add(new DueBook
             {
