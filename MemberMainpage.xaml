@@ -9,26 +9,36 @@
       Title="MemberMainpage">
 
     <Grid>
-        <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="80" VerticalAlignment="Top" Width="908" Background="WhiteSmoke"/>
-        <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="534,10,0,0" VerticalAlignment="Top" Width="364" Height="60" FontSize="36" FontWeight="Bold" FontFamily="Century Gothic"/>
-        <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="60" Height="60">
-            <Image Source="defaultuser.jpg" RenderOptions.BitmapScalingMode="HighQuality"/>
-        </Button>
+        <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="908" Background="WhiteSmoke">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="817*"/>
+                    <ColumnDefinition Width="91*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="534,4,0,0" VerticalAlignment="Top" Width="364" Height="54" FontSize="36" FontWeight="Bold" FontFamily="Century Gothic" Grid.ColumnSpan="2"/>
+                <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="48" Height="48">
+                    <Image Source="defaultuser.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44"/>
+                </Button>
+            </Grid>
+        </Border>
 
-        <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="58" VerticalAlignment="Top" Width="908" Background="WhiteSmoke" Margin="0,79,0,0"/>
-        <RadioButton x:Name="radTitle" Content="Title" HorizontalAlignment="Left" Margin="513,112,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <RadioButton x:Name="radISBN" Content="ISBN" HorizontalAlignment="Left" Margin="568,112,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radAuthor" Content="Author" HorizontalAlignment="Left" Margin="627,112,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radYear" Content="Year" HorizontalAlignment="Left" Margin="697,112,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="radPublisher" Content="Publisher" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="753,112,0,0"/>
-        <RadioButton x:Name="radCategory" Content="Category" HorizontalAlignment="Left" Margin="831,112,0,0" VerticalAlignment="Top"/>
-        <Label Content="Search by:" HorizontalAlignment="Left" Margin="510,81,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label Content="Search:" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,109,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="449"/>
-        <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,104,0,0" VerticalAlignment="Top" Width="30" Height="30">
-            <Image Source="magnifyingglass.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-        </Button>
+        <Border BorderBrush="Black" BorderThickness="0,1,0,1" HorizontalAlignment="Center" Height="58" VerticalAlignment="Top" Width="908" Background="WhiteSmoke" Margin="0,63,0,0">
+            <Grid>
+                <RadioButton x:Name="radTitle" Content="Title" HorizontalAlignment="Left" Margin="513,33,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                <RadioButton x:Name="radISBN" Content="ISBN" HorizontalAlignment="Left" Margin="568,33,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radAuthor" Content="Author" HorizontalAlignment="Left" Margin="627,33,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radYear" Content="Year" HorizontalAlignment="Left" Margin="697,33,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="radPublisher" Content="Publisher" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="753,33,0,0"/>
+                <RadioButton x:Name="radCategory" Content="Category" HorizontalAlignment="Left" Margin="831,33,0,0" VerticalAlignment="Top"/>
+                <Label Content="Search by:" HorizontalAlignment="Left" Margin="510,2,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                <Label Content="Search:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+                <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="449"/>
+                <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,25,0,0" VerticalAlignment="Top" Width="30" Height="30">
+                    <Image Source="magnifyingglass.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                </Button>
+            </Grid>
+        </Border>
 
-        <Frame x:Name="frameMember" HorizontalAlignment="Left" Height="401" Margin="0,137,0,0" VerticalAlignment="Top" Width="908"/>
+        <Frame x:Name="frameMember" HorizontalAlignment="Left" Height="417" Margin="0,121,0,0" VerticalAlignment="Top" Width="908"/>
     </Grid>
 </Page>
