@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace LibrarySystem
 {
-    internal class Member
+    public class Member
     {
-        private string _cardNumber;
+        public string _cardNumber { get; set; }
+        private string _password;
         private string _name;
         private string _phoneNumber;
         private string _email;

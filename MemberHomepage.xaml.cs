@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace LibrarySystem
 {
     /// <summary>
-    /// Interaction logic for MemberMainpage.xaml
+    /// Interaction logic for MemberHomepage.xaml
     /// </summary>
-    public partial class MemberMainpage : Page
+    public partial class MemberHomepage : Page
     {
-        public MemberMainpage(Member currentUser)
+        public MemberHomepage()
         {
             InitializeComponent();
-            frameMember.Content = new MemberHomepage();
-        }
-
-        private void pageLoaded(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

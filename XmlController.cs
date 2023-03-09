@@ -11,6 +11,7 @@ namespace LibrarySystem
     internal class XmlController
     {
         private string bookPath = "Library.xml";
+        private string memberPath = "Members.xml";
 
         public void AddBook(Book newBook)
         {
@@ -65,6 +66,31 @@ namespace LibrarySystem
             oldBook.ChildNodes.Item(4).InnerText = newBook._ISBN;
             oldBook.ChildNodes.Item(5).InnerText = newBook._category;
             xmlDoc.Save(bookPath);
+        }
+        public Member GetMember(string cardNum, string password)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            foreach (XmlNode node in xmlDoc.SelectSingleNode("//members"))
+            {
+                string xmlCardNum = node.SelectSingleNode("cardnumber").InnerText;
+                string xmlPassword = node.SelectSingleNode("password").InnerText;
+
+                if (cardNum == xmlCardNum && password == xmlPassword)
+                {
+                    XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
+                    Member thisMember = new Member(
+                        xmlMember.ChildNodes.Item(0).InnerText,
+                        xmlMember.ChildNodes.Item(2).InnerText,
+                        xmlMember.ChildNodes.Item(3).InnerText,
+                        xmlMember.ChildNodes.Item(4).InnerText
+                    );
+                    return thisMember;
+                }
+            }
+
+            return null;
         }
     }
 }
