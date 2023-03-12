@@ -70,10 +70,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BookFrameHomepage.xaml.cs">
+      <DependentUpon>BookFrameHomepage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MemberBooksearch.xaml.cs">
+      <DependentUpon>MemberBooksearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberHomepage.xaml.cs">
       <DependentUpon>MemberHomepage.xaml</DependentUpon>
     </Compile>
     <Compile Include="XmlController.cs" />
+    <Page Include="BookFrameHomepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -94,6 +104,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MemberBooksearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MemberHomepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

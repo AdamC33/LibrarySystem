@@ -24,9 +24,33 @@ namespace LibrarySystem
             List<Book> library = controller.GetLibrary();
 
             //Sets up the new books on the homepage
-            lblBook1Title.Content = library[library.Count() - 1]._title;
-            lblBook1Author.Content = library[library.Count() - 1]._author;
-            lblBook2Title.Content = library[library.Count() - 2]._title;
+            frameBook1.Content = new BookFrameHomepage(
+                library[library.Count() - 1]._title,
+                library[library.Count() - 1]._author,
+                library[library.Count() - 1]._year,
+                library[library.Count() - 1]._publisher,
+                library[library.Count() - 1]._category );
+
+            frameBook2.Content = new BookFrameHomepage(
+                library[library.Count() - 2]._title,
+                library[library.Count() - 2]._author,
+                library[library.Count() - 2]._year,
+                library[library.Count() - 2]._publisher,
+                library[library.Count() - 2]._category );
+
+            frameBook3.Content = new BookFrameHomepage(
+                library[library.Count() - 3]._title,
+                library[library.Count() - 3]._author,
+                library[library.Count() - 3]._year,
+                library[library.Count() - 3]._publisher,
+                library[library.Count() - 3]._category );
+
+            frameBook4.Content = new BookFrameHomepage(
+                library[library.Count() - 4]._title,
+                library[library.Count() - 4]._author,
+                library[library.Count() - 4]._year,
+                library[library.Count() - 4]._publisher,
+                library[library.Count() - 4]._category );
         }
     }
 }
