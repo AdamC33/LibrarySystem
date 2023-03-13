@@ -9,6 +9,8 @@
       Title="MemberBooksearch">
 
     <Grid>
-        
+        <ListBox x:Name="listSearchResults" d:ItemsSource="{d:SampleData ItemCount=30}" Margin="379,-1,0,0"/>
+        <Button x:Name="btnHome" Content="Button" HorizontalAlignment="Left" Margin="22,21,0,0" VerticalAlignment="Top" Width="54" Height="47" Click="btnHome_Click"/>
+
     </Grid>
 </Page>

@@ -33,7 +33,7 @@
                 <Label Content="Search by:" HorizontalAlignment="Left" Margin="510,2,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
                 <Label Content="Search:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
                 <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="NoWrap"  VerticalAlignment="Top" Width="449"/>
-                <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,25,0,0" VerticalAlignment="Top" Width="30" Height="30">
+                <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,25,0,0" VerticalAlignment="Top" Width="30" Height="30" Click="btnSearch_Click">
                     <Image Source="magnifyingglass.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                 </Button>
             </Grid>
