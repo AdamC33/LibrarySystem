@@ -10,9 +10,17 @@
 
     <Grid>
         <Label Content="New Books" HorizontalAlignment="Left" Margin="385,3,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold" FontSize="24"/>
-        <Frame x:Name="frameBook1" Width="402" Height="165" Margin="19,55,487,197"/>
-        <Frame x:Name="frameBook2" Width="402" Height="165" Margin="487,55,19,197"/>
-        <Frame x:Name="frameBook3" Width="402" Height="165" Margin="19,235,487,17"/>
-        <Frame x:Name="frameBook4" Width="402" Height="165" Margin="487,235,19,17"/>
+        <Button x:Name="btnBook1" HorizontalAlignment="Left" Margin="17,53,0,0" VerticalAlignment="Top" Width="407" Height="170">
+            <Frame x:Name="frameBook1" Width="402" Height="165"/>
+        </Button>
+        <Button x:Name="btnBook2" HorizontalAlignment="Left" Margin="484,53,0,0" VerticalAlignment="Top" Width="407" Height="170">
+            <Frame x:Name="frameBook2" Width="402" Height="165"/>
+        </Button>
+        <Button x:Name="btnBook3" HorizontalAlignment="Left" Margin="17,235,0,0" VerticalAlignment="Top" Width="407" Height="170">
+            <Frame x:Name="frameBook3" Width="402" Height="165"/>
+        </Button>
+        <Button x:Name="btnBook4" HorizontalAlignment="Left" Margin="484,235,0,0" VerticalAlignment="Top" Width="407" Height="170">
+            <Frame x:Name="frameBook4" Width="402" Height="165"/>
+        </Button>
     </Grid>
 </Page>

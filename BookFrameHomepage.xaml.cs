@@ -20,7 +20,7 @@ namespace LibrarySystem
     /// </summary>
     public partial class BookFrameHomepage : Page
     {
-        public BookFrameHomepage(string title, string author, string year, string publisher, string category)
+        public BookFrameHomepage(string title = "TBA", string author = "TBA", string year = "TBA", string publisher = "TBA", string category = "TBA")
         {
             InitializeComponent();
             txtBookTitle.Text = title;
