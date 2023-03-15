@@ -68,7 +68,7 @@ namespace LibrarySystem
             xmlDoc.Save(bookPath);
         }
 
-        public List<Book> GetLibrary()
+        public List<Book> GetLibrary(string searchQuery = "", string searchBy = "title")
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(bookPath);
@@ -77,15 +77,19 @@ namespace LibrarySystem
 
             foreach (XmlNode node in xmlDoc.SelectSingleNode("//library"))
             {
-                Book book = new Book(
-                    node.SelectSingleNode("isbn").InnerText,
-                    node.SelectSingleNode("title").InnerText,
-                    node.SelectSingleNode("author").InnerText,
-                    node.SelectSingleNode("year").InnerText,
-                    node.SelectSingleNode("publisher").InnerText,
-                    node.SelectSingleNode("category").InnerText
-                );
-                library.Add(book);
+                //This if statement is for a search query. "ToUpper" makes the Contains method non case sensitive.
+                if (node.SelectSingleNode(searchBy).InnerText.ToUpper().Contains(searchQuery.ToUpper()))
+                {
+                    Book book = new Book(
+                        node.SelectSingleNode("isbn").InnerText,
+                        node.SelectSingleNode("title").InnerText,
+                        node.SelectSingleNode("author").InnerText,
+                        node.SelectSingleNode("year").InnerText,
+                        node.SelectSingleNode("publisher").InnerText,
+                        node.SelectSingleNode("category").InnerText
+                    );
+                    library.Add(book);
+                }
             }
 
             return library;

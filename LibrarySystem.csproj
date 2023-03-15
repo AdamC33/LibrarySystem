@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="defaultuser.jpg" />
+    <Resource Include="home.png" />
     <Resource Include="library.png" />
     <Resource Include="magnifyingglass.png" />
   </ItemGroup>

@@ -31,30 +31,30 @@ namespace LibrarySystem
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            byte searchBy;
+            string searchBy;
             if (radISBN.IsChecked == true)
             {
-                searchBy = 0b00000001;
+                searchBy = "isbn";
             }
             else if (radAuthor.IsChecked == true)
             {
-                searchBy = 0b00000010;
+                searchBy = "author";
             }
             else if (radYear.IsChecked == true)
             {
-                searchBy = 0b00000011;
+                searchBy = "year";
             }
             else if (radPublisher.IsChecked == true)
             {
-                searchBy = 0b00000100;
+                searchBy = "publisher";
             }
             else if (radCategory.IsChecked == true)
             {
-                searchBy = 0b00000101;
+                searchBy = "category";
             }
             else
             {
-                searchBy = 0b00000000;
+                searchBy = "title";
             }
             NavigationService.RemoveBackEntry();
             frameMember.Content = new MemberBooksearch(txtSearch.Text, searchBy, _currentUser);
