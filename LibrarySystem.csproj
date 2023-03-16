@@ -73,6 +73,9 @@
     <Compile Include="BookFrameHomepage.xaml.cs">
       <DependentUpon>BookFrameHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MemberBookDetails.xaml.cs">
+      <DependentUpon>MemberBookDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberBooksearch.xaml.cs">
       <DependentUpon>MemberBooksearch.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MemberBookDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MemberBooksearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

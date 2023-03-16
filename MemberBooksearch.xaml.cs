@@ -36,5 +36,11 @@ namespace LibrarySystem
             NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new MemberHomepage());
         }
+
+        private void listSearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+            NavigationService.Navigate(new MemberBookDetails((Book)listSearchResults.SelectedItem, _currentUser));
+        }
     }
 }
