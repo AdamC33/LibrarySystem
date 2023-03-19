@@ -19,6 +19,6 @@
         <TextBlock x:Name="txtBookCategory" HorizontalAlignment="Left" Margin="176,250,0,0" Text="[category]" VerticalAlignment="Top" Width="278" FontSize="18" TextTrimming="CharacterEllipsis"/>
         <Label Content="ISBN:" HorizontalAlignment="Left" Margin="22,310,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Bahnschrift"/>
         <TextBlock x:Name="txtBookISBN" HorizontalAlignment="Left" Margin="76,315,0,0" Text="[ISBN]" VerticalAlignment="Top" Width="150" FontSize="14" TextTrimming="CharacterEllipsis" FontFamily="Bahnschrift"/>
-        <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="490,164,0,0" VerticalAlignment="Top" Height="53" Width="139"/>
+        <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="490,164,0,0" VerticalAlignment="Top" Height="53" Width="139" Click="btnBookCheck_Click"/>
     </Grid>
 </Page>

@@ -35,5 +35,23 @@ namespace LibrarySystem
             txtBookCategory.Text = selectedBook._category;
             txtBookISBN.Text = selectedBook._ISBN;
         }
+
+        private void btnBookCheck_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.MinValue) //This is run if the book cannot be found.
+            //The getDueDate function returns with the minimum datetimeoffset value if it cannot find anything in the book's checkout list.
+            {
+                //Code for checking out book goes here...
+                MessageBox.Show("Successfully checked out book!");
+            }
+            else if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.FromUnixTimeSeconds(0))
+            {
+                MessageBox.Show("You are already queued for this book!");
+            }
+            else
+            {
+                MessageBox.Show("Book is already checked out!");
+            }
+        }
     }
 }
