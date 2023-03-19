@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace LibrarySystem
 {
@@ -86,7 +87,8 @@ namespace LibrarySystem
                         node.SelectSingleNode("author").InnerText,
                         node.SelectSingleNode("year").InnerText,
                         node.SelectSingleNode("publisher").InnerText,
-                        node.SelectSingleNode("category").InnerText
+                        node.SelectSingleNode("category").InnerText,
+                        Convert.ToUInt32(node.SelectSingleNode("instock").InnerText)
                     );
                     library.Add(book);
                 }
@@ -94,6 +96,7 @@ namespace LibrarySystem
 
             return library;
         }
+
         public Member GetMember(string cardNum, string password)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -113,18 +116,26 @@ namespace LibrarySystem
                         xmlMember.ChildNodes.Item(3).InnerText, //Phone number
                         xmlMember.ChildNodes.Item(4).InnerText  //Email
                     );
-                    foreach (XmlNode checkedOutBook in xmlMember.ChildNodes.Item(5)) //For each book in the list of books that are checked out
-                    {
-                        int dueDateLong = Convert.ToInt32(checkedOutBook.ChildNodes.Item(1).InnerText); //Converts string to long/int32 (needs to be long for the parameter)
-                        thisMember.CheckOutBook(
-                            checkedOutBook.ChildNodes.Item(0).InnerText,
-                            DateTimeOffset.FromUnixTimeSeconds(dueDateLong)
-                        );
-                    }
                     return thisMember;
                 }
             }
             return null;
+        }
+
+        public int NumberOfMembersQueuedForBook(string ISBN)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(bookPath);
+            int counter = -1;
+
+            XmlNode xmlBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", ISBN));
+
+            foreach (XmlNode member in xmlBook.ChildNodes)
+            {
+                counter++;
+            }
+
+            return counter;
         }
     }
 }
