@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,6 +82,13 @@ namespace LibrarySystem
                 //This if statement is for a search query. "ToUpper" makes the Contains method non case sensitive.
                 if (node.SelectSingleNode(searchBy).InnerText.ToUpper().Contains(searchQuery.ToUpper()))
                 {
+                    List<String> checkoutCardNumbers = new List<String>();
+                    List<UInt32> checkoutDueDates = new List<UInt32>();
+                    foreach (XmlNode cardNumber in node.SelectSingleNode("checkout"))
+                    {
+                        checkoutCardNumbers.Add(cardNumber.SelectSingleNode("cardnumber").InnerText);
+                        checkoutDueDates.Add(Convert.ToUInt32(cardNumber.SelectSingleNode("duedate").InnerText));
+                    }
                     Book book = new Book(
                         node.SelectSingleNode("isbn").InnerText,
                         node.SelectSingleNode("title").InnerText,
@@ -88,7 +96,9 @@ namespace LibrarySystem
                         node.SelectSingleNode("year").InnerText,
                         node.SelectSingleNode("publisher").InnerText,
                         node.SelectSingleNode("category").InnerText,
-                        Convert.ToUInt32(node.SelectSingleNode("instock").InnerText)
+                        Convert.ToUInt32(node.SelectSingleNode("instock").InnerText),
+                        checkoutCardNumbers,
+                        checkoutDueDates
                     );
                     library.Add(book);
                 }
@@ -110,11 +120,17 @@ namespace LibrarySystem
                 if (cardNum == xmlCardNum && password == xmlPassword)
                 {
                     XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
+                    List<UInt32> fees = new List<UInt32>();
+                    foreach (XmlNode xmlFee in xmlMember.ChildNodes.Item(5))
+                    {
+                        fees.Add(Convert.ToUInt32(xmlFee.InnerText)); //Fees are in UInt32 to avoid inaccuracy issues with floating point numbers
+                    }
                     Member thisMember = new Member(
-                        xmlMember.ChildNodes.Item(0).InnerText, //Card number
-                        xmlMember.ChildNodes.Item(2).InnerText, //Name
-                        xmlMember.ChildNodes.Item(3).InnerText, //Phone number
-                        xmlMember.ChildNodes.Item(4).InnerText  //Email
+                        xmlMember.SelectSingleNode("cardnumber").InnerText, //Card number
+                        xmlMember.SelectSingleNode("name").InnerText, //Name
+                        xmlMember.SelectSingleNode("phonenumber").InnerText, //Phone number
+                        xmlMember.SelectSingleNode("email").InnerText,  //Email
+                        fees
                     );
                     return thisMember;
                 }

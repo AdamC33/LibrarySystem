@@ -25,7 +25,7 @@ namespace LibrarySystem
             //However, the DateTimeOffset struct can do this. It is implemented as one of its methods.
         }
 
-        public Book(string ISBN, string title, string author, string year, string publisher, string category, UInt32 stock)
+        public Book(string ISBN, string title, string author, string year, string publisher, string category, UInt32 stock, List<string> checkoutCardNumbers, List<UInt32> checkoutDueDates)
         {
             _ISBN = ISBN;
             _title = title;
@@ -34,6 +34,17 @@ namespace LibrarySystem
             _publisher = publisher;
             _category = category;
             _stock = stock;
+            _checkoutList = new List<Checkout>();
+            int i = -1;
+            foreach (string s in checkoutCardNumbers)
+            {
+                i++;
+                _checkoutList.Add(new Checkout
+                {
+                    _cardNumber = s,
+                    _dueDate = DateTimeOffset.FromUnixTimeSeconds(checkoutDueDates[i])
+                });
+            }
         }
 
         public int queueForBook
@@ -41,9 +52,18 @@ namespace LibrarySystem
             get { return _checkoutList.Count; }
         }
 
-        public DateTimeOffset getDueDate(int index)
+        public DateTimeOffset getDueDate(string cardNumber)
         {
-            return _checkoutList[index]._dueDate;
+            int i = -1;
+            foreach (Checkout c in _checkoutList)
+            {
+                i++;
+                if (c._cardNumber == cardNumber)
+                {
+                    return c._dueDate;
+                }
+            }
+            return DateTimeOffset.MinValue;
         }
     }
 }
