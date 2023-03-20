@@ -17,10 +17,10 @@
                 </Grid.ColumnDefinitions>
                 <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="469,4,0,0" VerticalAlignment="Top" Width="364" Height="54" FontSize="36" FontWeight="Bold" FontFamily="Century Gothic" Grid.ColumnSpan="2"/>
                 <Button x:Name="btnHome" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Center" Width="52" Height="52" Grid.Column="1" Click="btnHome_Click">
-                    <Image Source="home.png" RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44" Source="/img/home.png"/>
                 </Button>
                 <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="48" Height="48">
-                    <Image Source="defaultuser.jpg" RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44" Source="/img/defaultuser.jpg"/>
                 </Button>
                 <TextBlock x:Name="txtWelcome" Text="Welcome, [name]!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,9,0,0" FontWeight="Bold" FontStyle="Italic" FontSize="14" Width="388" TextTrimming="CharacterEllipsis"/>
             </Grid>
@@ -38,7 +38,7 @@
                 <Label Content="Search:" HorizontalAlignment="Left" Margin="6,2,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
                 <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="449"/>
                 <Button x:Name="btnSearch" HorizontalAlignment="Left" Margin="467,25,0,0" VerticalAlignment="Top" Width="30" Height="30" Click="btnSearch_Click">
-                    <Image Source="magnifyingglass.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Height="25" Width="25" Source="/img/magnifyingglass.png"/>
                 </Button>
             </Grid>
         </Border>

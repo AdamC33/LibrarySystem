@@ -1,0 +1,22 @@
+﻿<Page x:Class="LibrarySystem.LibrarianMainpage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="538" d:DesignWidth="908"
+      Title="LibrarianMainpage">
+
+    <Grid>
+        <Button x:Name="btnManageBooks" HorizontalAlignment="Left" Margin="170,177,0,0" VerticalAlignment="Top" Width="175" Height="175" Click="btnManageBooks_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/bookicon.png"/>
+        </Button>
+        <Button x:Name="btnManageMembers" HorizontalAlignment="Center" Margin="0,177,0,0" VerticalAlignment="Top" Width="175" Height="175">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/membericon.png"/>
+        </Button>
+        <Button x:Name="btnGenerateReports" HorizontalAlignment="Right" Margin="0,177,170,0" VerticalAlignment="Top" Width="175" Height="175">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/reporticon.png"/>
+        </Button>
+    </Grid>
+</Page>

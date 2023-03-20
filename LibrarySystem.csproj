@@ -73,6 +73,12 @@
     <Compile Include="BookFrameHomepage.xaml.cs">
       <DependentUpon>BookFrameHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LibrarianMainpage.xaml.cs">
+      <DependentUpon>LibrarianMainpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageBooks.xaml.cs">
+      <DependentUpon>ManageBooks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberBookDetails.xaml.cs">
       <DependentUpon>MemberBookDetails.xaml</DependentUpon>
     </Compile>
@@ -84,6 +90,10 @@
     </Compile>
     <Compile Include="XmlController.cs" />
     <Page Include="BookFrameHomepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibrarianMainpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,6 +117,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManageBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MemberBookDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,12 +169,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="defaultuser.jpg" />
-    <Resource Include="home.png" />
-    <Resource Include="library.png" />
-    <Resource Include="magnifyingglass.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -171,6 +179,30 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\defaultuser.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\magnifyingglass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\library.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\membericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bookicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\reporticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\goback.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

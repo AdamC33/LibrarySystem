@@ -59,7 +59,7 @@ namespace LibrarySystem
             {
                 if (txtCardNo.Text == "000000000")
                 {
-                    //Librarian interface
+                    NavigationService.Navigate(new LibrarianMainpage());
                 }
                 else
                 {
