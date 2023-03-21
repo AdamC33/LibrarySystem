@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,15 @@ namespace LibrarySystem
                 txtISBN.IsEnabled = true;
                 _modifying = false;
             }
+            else
+            {
+                txtISBN.Text = isbn;
+                txtTitle.Text = title;
+                txtAuthor.Text = author;
+                txtYear.Text = year;
+                txtPublisher.Text = publisher;
+                txtCategory.Text = category;
+            }
         }
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
@@ -40,7 +50,7 @@ namespace LibrarySystem
             {
                 //Cannot create book - conflicting ISBN
             }
-            else if (!_modifying)
+            else
             {
                 Book newBook = new Book(
                 txtISBN.Text,
@@ -50,7 +60,9 @@ namespace LibrarySystem
                 txtPublisher.Text,
                 txtCategory.Text,
                 1 );
-                controller.AddBook(newBook);
+
+                if (_modifying) { controller.UpdateBook(txtISBN.Text, newBook); }
+                else { controller.AddBook(newBook); }
             }
             btnConfirm.IsEnabled = true;
         }

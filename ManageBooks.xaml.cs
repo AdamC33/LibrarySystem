@@ -22,12 +22,19 @@ namespace LibrarySystem
     public partial class ManageBooks : Page
     {
         private string libraryPath = "Library.xml";
+        private DataSet dataSet = new DataSet();
+
         public ManageBooks()
         {
             InitializeComponent();
-            DataSet dataSet = new DataSet();
             dataSet.ReadXml(@libraryPath);
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
+        }
+
+        private void dgLibrary_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnMod.IsEnabled = true;
+            btnRem.IsEnabled = true;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -43,12 +50,24 @@ namespace LibrarySystem
 
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
-
+            DataRowView row = dgLibrary.SelectedItem as DataRowView;
+            AddBook addBook = new AddBook(
+            row.Row.ItemArray[4].ToString(),
+            row.Row.ItemArray[0].ToString(),
+            row.Row.ItemArray[1].ToString(),
+            row.Row.ItemArray[2].ToString(),
+            row.Row.ItemArray[3].ToString(),
+            row.Row.ItemArray[5].ToString() );
+            addBook.Show();
         }
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
         {
-
+            XmlController controller = new XmlController();
+            DataRowView row = dgLibrary.SelectedItem as DataRowView;
+            controller.DeleteBook(row.Row.ItemArray[4].ToString());
+            dataSet.ReadXml(@libraryPath);
+            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
     }
 }

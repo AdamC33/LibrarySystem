@@ -188,6 +188,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="img\bookiconmodify.png" />
     <Resource Include="img\defaultuser.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\goback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bookiconadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bookiconremove.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
