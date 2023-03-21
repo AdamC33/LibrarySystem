@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -28,13 +29,16 @@ namespace LibrarySystem
             XmlNode Publisher = xmlDoc.CreateElement("publisher");
             XmlNode ISBN = xmlDoc.CreateElement("isbn");
             XmlNode Category = xmlDoc.CreateElement("category");
+            XmlNode Stock = xmlDoc.CreateElement("instock");
+            XmlNode Checkout = xmlDoc.CreateElement("checkout");
 
             Title.InnerText = newBook._title;
             Author.InnerText = newBook._author;
             Year.InnerText = newBook._year;
             Publisher.InnerText = newBook._publisher;
-            ISBN.InnerText = newBook._publisher;
+            ISBN.InnerText = newBook._ISBN;
             Category.InnerText = newBook._category;
+            Stock.InnerText = Convert.ToString(newBook._stock);
 
             Book.AppendChild(Title);
             Book.AppendChild(Author);
@@ -42,6 +46,8 @@ namespace LibrarySystem
             Book.AppendChild(Publisher);
             Book.AppendChild(ISBN);
             Book.AppendChild(Category);
+            Book.AppendChild(Stock);
+            Book.AppendChild(Checkout);
             ROOT.AppendChild(Book);
 
             xmlDoc.Save(bookPath);

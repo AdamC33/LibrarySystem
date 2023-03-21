@@ -26,7 +26,7 @@ namespace LibrarySystem
 
         private void TextChanged(object sender, RoutedEventArgs e)
         {
-            //This code only allows numbers to be entered into the username textbox
+            //This code only allows numbers to be entered into the library card number textbox
             int initialSelectionStart = txtCardNo.SelectionStart;
             string txtCardNoString = txtCardNo.Text;
             foreach (char c in txtCardNo.Text)

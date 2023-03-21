@@ -34,5 +34,21 @@ namespace LibrarySystem
         {
             NavigationService.GoBack();
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddBook addBook = new AddBook();
+            addBook.Show();
+        }
+
+        private void btnMod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

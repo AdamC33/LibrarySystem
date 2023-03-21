@@ -13,6 +13,14 @@
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
         </Button>
-
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnAdd_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+        <Button x:Name="btnMod" HorizontalAlignment="Left" Margin="750,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnMod_Click" IsEnabled="False">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+        <Button x:Name="btnRem" HorizontalAlignment="Left" Margin="830,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnRem_Click" IsEnabled="False">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
     </Grid>
 </Page>
