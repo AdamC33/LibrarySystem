@@ -9,9 +9,22 @@
       Title="ManageBooks">
 
     <Grid>
-        <DataGrid x:Name="dgLibrary" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,85" SelectionChanged="dgLibrary_SelectionChanged"/>
+        <DataGrid x:Name="dgLibrary" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,85" AutoGenerateColumns="false" CanUserAddRows="false" SelectionChanged="dgLibrary_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding book_Id}"/>
+                <DataGridTextColumn Header="ISBN" Binding="{Binding isbn}"/>
+                <DataGridTextColumn Header="Title" Binding="{Binding title}"/>
+                <DataGridTextColumn Header="Author" Binding="{Binding author}"/>
+                <DataGridTextColumn Header="Year" Binding="{Binding year}"/>
+                <DataGridTextColumn Header="Publisher" Binding="{Binding publisher}"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding category}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+        <Button x:Name="btnStock" HorizontalAlignment="Left" Margin="560,458,0,0" VerticalAlignment="Top" Width="70" Height="70">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="65" Width="65" Source="/img/stockicon.png"/>
         </Button>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnAdd_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/bookiconadd.png"/>

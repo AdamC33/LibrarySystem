@@ -218,5 +218,8 @@
   <ItemGroup>
     <Resource Include="img\bookiconremove.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\stockicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

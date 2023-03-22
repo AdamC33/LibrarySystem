@@ -65,6 +65,7 @@ namespace LibrarySystem
                 else { controller.AddBook(newBook); }
             }
             btnConfirm.IsEnabled = true;
+            this.Close();
         }
 
         private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,8 +34,16 @@ namespace LibrarySystem
 
         private void dgLibrary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnMod.IsEnabled = true;
-            btnRem.IsEnabled = true;
+            if (dgLibrary.SelectedItem != null)
+            {
+                btnMod.IsEnabled = true;
+                btnRem.IsEnabled = true;
+            }
+            else
+            {
+                btnMod.IsEnabled = false;
+                btnRem.IsEnabled = false;
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -42,10 +51,19 @@ namespace LibrarySystem
             NavigationService.GoBack();
         }
 
+        private void btnStock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddBook addBook = new AddBook();
-            addBook.Show();
+            addBook.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
+            //Any code after this is will be run after the addBook window has closed (either because the user has clicked "Confirm" or the close button in the top right)
+            dataSet.Reset();
+            dataSet.ReadXml(@libraryPath);
+            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnMod_Click(object sender, RoutedEventArgs e)
@@ -58,7 +76,11 @@ namespace LibrarySystem
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[5].ToString() );
-            addBook.Show();
+            addBook.ShowDialog();
+
+            dataSet.Reset();
+            dataSet.ReadXml(@libraryPath);
+            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
@@ -66,6 +88,8 @@ namespace LibrarySystem
             XmlController controller = new XmlController();
             DataRowView row = dgLibrary.SelectedItem as DataRowView;
             controller.DeleteBook(row.Row.ItemArray[4].ToString());
+
+            dataSet.Reset();
             dataSet.ReadXml(@libraryPath);
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
