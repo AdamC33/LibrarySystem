@@ -38,11 +38,13 @@ namespace LibrarySystem
             {
                 btnMod.IsEnabled = true;
                 btnRem.IsEnabled = true;
+                btnStock.IsEnabled = true;
             }
             else
             {
                 btnMod.IsEnabled = false;
                 btnRem.IsEnabled = false;
+                btnStock.IsEnabled = false;
             }
         }
 
@@ -53,7 +55,14 @@ namespace LibrarySystem
 
         private void btnStock_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView row = dgLibrary.SelectedItem as DataRowView;
+            XmlController controller = new XmlController();
+            Book thisBook = controller.GetLibrary(row.Row.ItemArray[4].ToString(), "isbn")[0];
+            NavigationService.Navigate(new ManageBookStock(thisBook));
 
+            dataSet.Reset();
+            dataSet.ReadXml(@libraryPath);
+            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

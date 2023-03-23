@@ -15,7 +15,7 @@ namespace LibrarySystem
         public string _year { get; set; }
         public string _publisher { get; set; }
         public string _category { get; set; }
-        public UInt32 _stock { get; set; }
+        public UInt32 _totalStock { get; set; }
         private List<Checkout> _checkoutList = new List<Checkout>();
 
         private struct Checkout
@@ -33,7 +33,7 @@ namespace LibrarySystem
             _year = year;
             _publisher = publisher;
             _category = category;
-            _stock = stock;
+            _totalStock = stock;
             _checkoutList = new List<Checkout>();
             int i = -1;
             if (checkoutCardNumbers != null)
@@ -50,7 +50,55 @@ namespace LibrarySystem
             }
         }
 
+        public int currentStock
+        {
+            get
+            {
+                int stock = Convert.ToInt32(_totalStock);
+                foreach (Checkout checkout in _checkoutList)
+                {
+                    if (checkout._dueDate.ToUnixTimeSeconds() > 0)
+                    {
+                        stock--;
+                    }
+                }
+                return stock;
+            }
+        }
+
         public int queueForBook
+        {
+            get
+            {
+                int queue = 0;
+                foreach (Checkout checkout in _checkoutList)
+                {
+                    if (checkout._dueDate.ToUnixTimeSeconds() == 0)
+                    {
+                        queue++;
+                    }
+                }
+                return queue;
+            }
+        }
+
+        public int checkoutListMinusQueueLength
+        {
+            get
+            {
+                int list = 0;
+                foreach (Checkout checkout in _checkoutList)
+                {
+                    if (checkout._dueDate.ToUnixTimeSeconds() > 0)
+                    {
+                        list++;
+                    }
+                }
+                return list;
+            }
+        }
+
+        public int checkoutListLength
         {
             get { return _checkoutList.Count; }
         }

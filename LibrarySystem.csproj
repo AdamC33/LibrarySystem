@@ -82,6 +82,9 @@
     <Compile Include="ManageBooks.xaml.cs">
       <DependentUpon>ManageBooks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageBookStock.xaml.cs">
+      <DependentUpon>ManageBookStock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberBookDetails.xaml.cs">
       <DependentUpon>MemberBookDetails.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManageBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageBookStock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

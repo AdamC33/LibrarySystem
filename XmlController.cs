@@ -38,7 +38,7 @@ namespace LibrarySystem
             Publisher.InnerText = newBook._publisher;
             ISBN.InnerText = newBook._ISBN;
             Category.InnerText = newBook._category;
-            Stock.InnerText = Convert.ToString(newBook._stock);
+            Stock.InnerText = Convert.ToString(newBook._totalStock);
 
             Book.AppendChild(Title);
             Book.AppendChild(Author);
@@ -144,6 +144,23 @@ namespace LibrarySystem
             return null;
         }
 
+        public string GetMemberName(string cardNum)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            foreach (XmlNode node in xmlDoc.SelectSingleNode("//members"))
+            {
+                string xmlCardNum = node.SelectSingleNode("cardnumber").InnerText;
+
+                if (cardNum == xmlCardNum)
+                {
+                    XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
+                    return xmlMember.SelectSingleNode("name").InnerText;
+                }
+            }
+            return null;
+        }
         public int NumberOfMembersQueuedForBook(string ISBN)
         {
             XmlDocument xmlDoc = new XmlDocument();
