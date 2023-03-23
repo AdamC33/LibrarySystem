@@ -11,7 +11,8 @@
     <Grid>
         <Label Content="Current Stock Level:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="281" FontSize="30"/>
         <TextBlock x:Name="txtStock" HorizontalAlignment="Left" Margin="15,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="878" FontSize="30" FontWeight="Bold"/>
-        <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="154" Margin="10,130,0,0" VerticalAlignment="Top" Width="888">
+        <Label Content="Checkouts:" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
+        <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="134" Margin="10,140,0,0" VerticalAlignment="Top" Width="888">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -24,6 +25,22 @@
                         <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding name}" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
                         <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding dueDate}" Margin="0,0,70,0" HorizontalAlignment="Right"/>
                         <Button Content="Notify" IsEnabled="{Binding notifyIsEnabled}" Width="50" HorizontalAlignment="Right" Click="btnNotify_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Label Content="Queue:" HorizontalAlignment="Left" Margin="10,279,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
+        <ListBox x:Name="listQueued" HorizontalAlignment="Left" Height="134" Margin="10,310,0,0" VerticalAlignment="Top" Width="888">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding cardNumber}" Width="80" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding name}" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

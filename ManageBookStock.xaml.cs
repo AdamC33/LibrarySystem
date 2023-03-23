@@ -58,6 +58,16 @@ namespace LibrarySystem
                 }) ;
             }
             listChecked.ItemsSource = checkBookList;
+            List<checkBookDisplay> queueBookList = new List<checkBookDisplay>();
+            for (int i = _thisBook.checkoutListMinusQueueLength; i < _thisBook.checkoutListLength; i++)
+            {
+                queueBookList.Add(new checkBookDisplay
+                {
+                    cardNumber = _thisBook.getCardNumber(i),
+                    name = controller.GetMemberName(_thisBook.getCardNumber(i))
+                });
+            }
+            listQueued.ItemsSource = queueBookList;
         }
 
         private void btnNotify_Click(object sender, RoutedEventArgs e)
