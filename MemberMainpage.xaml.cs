@@ -27,7 +27,7 @@ namespace LibrarySystem
             InitializeComponent();
             _currentUser = currentUser;
             txtWelcome.Text = String.Format("Welcome, {0}!", currentUser._name);
-            frameMember.Content = new MemberHomepage();
+            frameMember.Content = new MemberHomepage(_currentUser);
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -64,7 +64,7 @@ namespace LibrarySystem
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.RemoveBackEntry();
-            frameMember.Content = new MemberHomepage();
+            frameMember.Content = new MemberHomepage(_currentUser);
         }
     }
 }

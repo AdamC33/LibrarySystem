@@ -161,6 +161,7 @@ namespace LibrarySystem
             }
             return null;
         }
+
         public int NumberOfMembersQueuedForBook(string ISBN)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -175,6 +176,28 @@ namespace LibrarySystem
             }
 
             return counter;
+        }
+
+        public bool NotifyMember(string cardNum, string message)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            foreach (XmlNode node in xmlDoc.SelectSingleNode("//members"))
+            {
+                string xmlCardNum = node.SelectSingleNode("cardnumber").InnerText;
+
+                if (cardNum == xmlCardNum)
+                {
+                    XmlNode Requests = node.SelectSingleNode("requests");
+                    XmlNode Request = xmlDoc.CreateElement("request");
+                    Request.InnerText = message;
+                    Requests.AppendChild(Request);
+                    xmlDoc.Save(memberPath);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -21,17 +21,18 @@ namespace LibrarySystem
     public partial class AddBook : Window
     {
         private bool _modifying = true; //Flag for if a book is being modified. If the flag is false, a book is being created.
+        private string _oldISBN;
 
         public AddBook(string isbn = null, string title = null, string author = null, string year = null, string publisher = null, string category = null)
         {
             InitializeComponent();
             if (isbn == null)
             {
-                txtISBN.IsEnabled = true;
                 _modifying = false;
             }
             else
             {
+                _oldISBN = isbn;
                 txtISBN.Text = isbn;
                 txtTitle.Text = title;
                 txtAuthor.Text = author;
@@ -46,9 +47,9 @@ namespace LibrarySystem
             btnConfirm.IsEnabled = false;
             XmlController controller = new XmlController();
             List<Book> matchingISBN = controller.GetLibrary(txtISBN.Text, "isbn");
-            if (matchingISBN.Count > 0 && !_modifying)
+            if (matchingISBN.Count > 0 && (txtISBN.Text != _oldISBN)) //If the ISBN doesn't get changed, it should save it anyway, even though a matching ISBN does exist (itself)
             {
-                //Cannot create book - conflicting ISBN
+                MessageBox.Show("Cannot save book - conflicting ISBN!", "Save Book");
             }
             else
             {
@@ -61,11 +62,11 @@ namespace LibrarySystem
                 txtCategory.Text,
                 1 );
 
-                if (_modifying) { controller.UpdateBook(txtISBN.Text, newBook); }
+                if (_modifying) { controller.UpdateBook(_oldISBN, newBook); }
                 else { controller.AddBook(newBook); }
+                this.Close();
             }
             btnConfirm.IsEnabled = true;
-            this.Close();
         }
 
         private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)

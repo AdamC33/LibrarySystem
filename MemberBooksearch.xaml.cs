@@ -34,7 +34,7 @@ namespace LibrarySystem
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.RemoveBackEntry();
-            NavigationService.Navigate(new MemberHomepage());
+            NavigationService.Navigate(new MemberHomepage(_currentUser));
         }
 
         private void listSearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)

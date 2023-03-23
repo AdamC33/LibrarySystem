@@ -21,14 +21,16 @@ namespace LibrarySystem
     /// </summary>
     public partial class BookFrameHomepage : Page
     {
-        public BookFrameHomepage(string title = "TBA", string author = "TBA", string year = "TBA", string publisher = "TBA", string category = "TBA")
+        private Book _thisBook;
+        public BookFrameHomepage(Book thisBook)
         {
             InitializeComponent();
-            txtBookTitle.Text = title;
-            txtBookAuthor.Text = author;
-            txtBookYear.Text = year;
-            txtBookPublisher.Text = publisher;
-            txtBookCategory.Text = category;
+            _thisBook = thisBook;
+            txtBookTitle.Text = _thisBook._title;
+            txtBookAuthor.Text = _thisBook._author;
+            txtBookYear.Text = _thisBook._year;
+            txtBookPublisher.Text = _thisBook._publisher;
+            txtBookCategory.Text = _thisBook._category;
         }
 
         public BookFrameHomepage()

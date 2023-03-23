@@ -42,15 +42,15 @@ namespace LibrarySystem
             //The getDueDate function returns with the minimum datetimeoffset value if it cannot find anything in the book's checkout list.
             {
                 //Code for checking out book goes here...
-                MessageBox.Show("Successfully checked out book!");
+                MessageBox.Show("Successfully checked out book!", "Check Book");
             }
             else if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.FromUnixTimeSeconds(0))
             {
-                MessageBox.Show("You are already queued for this book!");
+                MessageBox.Show("You are already queued for this book!", "Check Book");
             }
             else
             {
-                MessageBox.Show("Book is already checked out!");
+                MessageBox.Show("Book is already checked out!", "Check Book");
             }
         }
     }

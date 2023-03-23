@@ -94,9 +94,13 @@ namespace LibrarySystem
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
         {
-            XmlController controller = new XmlController();
-            DataRowView row = dgLibrary.SelectedItem as DataRowView;
-            controller.DeleteBook(row.Row.ItemArray[4].ToString());
+            MessageBoxResult yesOrNo = MessageBox.Show("Are you sure you want to delete this book?", "Delete Book", MessageBoxButton.YesNo);
+            if (yesOrNo == MessageBoxResult.Yes)
+            {
+                XmlController controller = new XmlController();
+                DataRowView row = dgLibrary.SelectedItem as DataRowView;
+                controller.DeleteBook(row.Row.ItemArray[4].ToString());
+            }
 
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);

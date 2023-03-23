@@ -8,7 +8,7 @@
         Title="Book Details" Height="350" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label Content="ISBN:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="90,14,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" IsEnabled="False" TextChanged="txtISBN_TextChanged"/>
+        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="90,14,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtISBN_TextChanged"/>
         <Label Content="Title:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="90,54,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Label Content="Author:" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontSize="14"/>
