@@ -57,14 +57,17 @@ namespace LibrarySystem
             {
                 searchBy = "title";
             }
-            NavigationService.RemoveBackEntry();
             frameMember.Content = new MemberBooksearch(txtSearch.Text, searchBy, _currentUser);
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.RemoveBackEntry();
             frameMember.Content = new MemberHomepage(_currentUser);
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

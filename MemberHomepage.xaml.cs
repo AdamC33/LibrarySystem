@@ -58,25 +58,21 @@ namespace LibrarySystem
 
         private void btnBook1_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new MemberBookDetails(_book1, _currentUser));
         }
 
         private void btnBook2_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new MemberBookDetails(_book2, _currentUser));
         }
 
         private void btnBook3_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new MemberBookDetails(_book3, _currentUser));
         }
 
         private void btnBook4_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.RemoveBackEntry();
             NavigationService.Navigate(new MemberBookDetails(_book4, _currentUser));
         }
     }
