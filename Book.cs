@@ -121,5 +121,45 @@ namespace LibrarySystem
             }
             return DateTimeOffset.MinValue;
         }
+
+        public int checkoutBook(string cardNumber)
+        {
+            //0 = already checked out
+            //1 = already queued
+            //2 = out of stock, added to queue
+            //3 = successfully checked out book
+            foreach (Checkout c in _checkoutList)
+            {
+                if (c._cardNumber == cardNumber)
+                {
+                    if (c._dueDate > DateTimeOffset.FromUnixTimeSeconds(0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+            if (currentStock == 0)
+            {
+                _checkoutList.Add(new Checkout
+                {
+                    _cardNumber = cardNumber,
+                    _dueDate = DateTimeOffset.FromUnixTimeSeconds(0)
+                });
+                return 2;
+            }
+            else
+            {
+                _checkoutList.Add(new Checkout
+                {
+                    _cardNumber = cardNumber,
+                    _dueDate = DateTimeOffset.Now.AddDays(21)
+                });
+                return 3;
+            }
+        }
     }
 }

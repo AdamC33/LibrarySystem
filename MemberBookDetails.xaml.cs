@@ -43,19 +43,34 @@ namespace LibrarySystem
 
         private void btnBookCheck_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.MinValue) //This is run if the book cannot be found.
-            //The getDueDate function returns with the minimum datetimeoffset value if it cannot find anything in the book's checkout list.
+            int bookCheckoutValue = _selectedBook.checkoutBook(_currentUser._cardNumber);
+            XmlController controller = new XmlController();
+            List<string> cardNumbers = new List<string>();
+            List<DateTimeOffset> dueDates = new List<DateTimeOffset>();
+            for (int i = 0; i < _selectedBook.checkoutListLength; i++)
             {
-                //Code for checking out book goes here...
-                MessageBox.Show("Successfully checked out book!", "Check Book");
+                cardNumbers.Add(_selectedBook.getCardNumber(i));
+                dueDates.Add(_selectedBook.getDueDate(_selectedBook.getCardNumber(i)));
             }
-            else if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.FromUnixTimeSeconds(0))
+            controller.UpdateBookCheckout(_selectedBook._ISBN, cardNumbers, dueDates);
+            switch (bookCheckoutValue)
             {
-                MessageBox.Show("You are already queued for this book!", "Check Book");
-            }
-            else
-            {
-                MessageBox.Show("Book is already checked out!", "Check Book");
+                case 0:
+                    MessageBox.Show("You already have the book checked out!", "Check Book");
+                    break;
+                case 1:
+                    MessageBox.Show("You are already queued for this book!", "Check Book");
+                    break;
+                case 2:
+                    MessageBox.Show("Successfully added to queue! You will automatically check the book out once enough stock is available.", "Check Book");
+                    break;
+                case 3:
+                    MessageBox.Show("Successfully checked out book!", "Check Book");
+                    break;
+                default:
+                    MessageBox.Show("You should not be seeing this message box! If you do, please contact your system administrator!", "Check Book");
+                    break;
+            
             }
         }
     }

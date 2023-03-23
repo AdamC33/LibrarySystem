@@ -58,6 +58,7 @@ namespace LibrarySystem
             Member attemptMember = controller.GetMember(txtCardNo.Text, password.Password);
             if (attemptMember != null)
             {
+                password.Password = null;
                 if (txtCardNo.Text == "000000000")
                 {
                     NavigationService.Navigate(new LibrarianMainpage());
@@ -67,7 +68,6 @@ namespace LibrarySystem
                     NavigationService.Navigate(new MemberMainpage(attemptMember));
                 }
                 txtCardNo.Text = null;
-                password.Password = null;
             }
             else
             {
