@@ -8,7 +8,7 @@
       d:DesignHeight="417" d:DesignWidth="908"
       Title="MemberHomepage">
 
-    <Grid>
+    <Grid Loaded="pageLoaded">
         <Label Content="New Books" HorizontalAlignment="Left" Margin="385,3,0,0" VerticalAlignment="Top" Width="137" FontWeight="Bold" FontSize="24"/>
         <Button x:Name="btnBook1" HorizontalAlignment="Left" Margin="17,53,0,0" VerticalAlignment="Top" Width="407" Height="170" Click="btnBook1_Click" IsEnabled="False">
             <Frame x:Name="frameBook1" Width="402" Height="165"/>

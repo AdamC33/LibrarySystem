@@ -56,6 +56,18 @@ namespace LibrarySystem
             }
         }
 
+        private void pageLoaded(object sender, RoutedEventArgs e)
+        {
+            if (MemberMainpage.homepageFirstLoaded)
+            {
+                NavigationService.RemoveBackEntry();
+            }
+            else
+            {
+                MemberMainpage.homepageFirstLoaded = true;
+            }
+        }
+
         private void btnBook1_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MemberBookDetails(_book1, _currentUser));

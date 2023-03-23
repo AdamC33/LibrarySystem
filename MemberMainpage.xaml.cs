@@ -20,11 +20,14 @@ namespace LibrarySystem
     /// </summary>
     public partial class MemberMainpage : Page
     {
+        public static bool homepageFirstLoaded; //Used so when the homepage is loaded in for the first time, it doesn't try to remove the back entry (the login screen).
+
         private Member _currentUser;
 
         public MemberMainpage(Member currentUser)
         {
             InitializeComponent();
+            homepageFirstLoaded = false;
             _currentUser = currentUser;
             txtWelcome.Text = String.Format("Welcome, {0}!", currentUser._name);
             frameMember.Content = new MemberHomepage(_currentUser);

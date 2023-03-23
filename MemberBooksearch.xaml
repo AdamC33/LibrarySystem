@@ -8,7 +8,7 @@
       d:DesignHeight="417" d:DesignWidth="908"
       Title="MemberBooksearch">
 
-    <Grid>
+    <Grid Loaded="pageLoaded">
         <ListBox x:Name="listSearchResults" Margin="0,-1,0,0" SelectionChanged="listSearchResults_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>

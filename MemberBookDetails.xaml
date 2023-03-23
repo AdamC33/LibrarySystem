@@ -8,7 +8,7 @@
       d:DesignHeight="417" d:DesignWidth="908"
       Title="MemberBookDetails">
 
-    <Grid>
+    <Grid Loaded="pageLoaded">
         <TextBlock x:Name="txtBookTitle" HorizontalAlignment="Left" Margin="26,23,0,0" Text="[title]" VerticalAlignment="Top" Width="856" FontSize="36" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
         <TextBlock x:Name="txtBookAuthor" HorizontalAlignment="Left" Margin="26,80,0,0" Text="[author]" VerticalAlignment="Top" Width="856" FontSize="18" TextTrimming="CharacterEllipsis" FontStyle="Italic"/>
         <Label Content="Year:" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" FontSize="18"/>

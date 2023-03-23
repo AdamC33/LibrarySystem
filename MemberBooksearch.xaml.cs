@@ -31,6 +31,11 @@ namespace LibrarySystem
             listSearchResults.ItemsSource = controller.GetLibrary(searchQuery, searchBy);
         }
 
+        private void pageLoaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+        }
+
         private void listSearchResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             NavigationService.Navigate(new MemberBookDetails((Book)listSearchResults.SelectedItem, _currentUser));

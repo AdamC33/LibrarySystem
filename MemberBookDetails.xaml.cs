@@ -36,6 +36,11 @@ namespace LibrarySystem
             txtBookISBN.Text = selectedBook._ISBN;
         }
 
+        private void pageLoaded(object sender, RoutedEventArgs e)
+        {
+            NavigationService.RemoveBackEntry();
+        }
+
         private void btnBookCheck_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedBook.getDueDate(_currentUser._cardNumber) == DateTimeOffset.MinValue) //This is run if the book cannot be found.
