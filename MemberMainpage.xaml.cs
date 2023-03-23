@@ -70,7 +70,7 @@ namespace LibrarySystem
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.GoBack();
+            NavigationService.Navigate(new Login());
         }
     }
 }

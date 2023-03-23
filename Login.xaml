@@ -8,7 +8,7 @@
       d:DesignHeight="538" d:DesignWidth="908"
       Title="Login">
 
-    <Grid>
+    <Grid Loaded="pageLoaded">
         <Image HorizontalAlignment="Left" Height="538" Margin="250,0,0,0" VerticalAlignment="Center" Width="733" Source="/img/library.png"/>
         <Label Content="Library Bookings Co." HorizontalAlignment="Left" Margin="54,29,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Century Gothic"/>
         <Label Content="Library Card Number" HorizontalAlignment="Left" Margin="54,156,0,0" VerticalAlignment="Top" FontSize="16"/>

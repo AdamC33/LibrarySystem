@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -65,11 +66,24 @@ namespace LibrarySystem
                 {
                     NavigationService.Navigate(new MemberMainpage(attemptMember));
                 }
+                txtCardNo.Text = null;
+                password.Password = null;
             }
             else
             {
                 lblWrongDetails.Content = "Incorrect card number or password!";
             }
+        }
+
+        private void pageLoaded(object sender, RoutedEventArgs e)
+        {
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.RemoveBackEntry();
+                NavigationService.GoBack();
+            }
+            //This is done to remove the forward entry in the navigation service, which would give access to the account
+            //The forward entry here is now simply another logout screen
         }
     }
 }
