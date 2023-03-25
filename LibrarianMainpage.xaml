@@ -12,7 +12,7 @@
         <Button x:Name="btnManageBooks" HorizontalAlignment="Left" Margin="170,157,0,0" VerticalAlignment="Top" Width="175" Height="175" Click="btnManageBooks_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/bookicon.png"/>
         </Button>
-        <Button x:Name="btnManageMembers" HorizontalAlignment="Center" Margin="0,157,0,0" VerticalAlignment="Top" Width="175" Height="175">
+        <Button x:Name="btnManageMembers" HorizontalAlignment="Center" Margin="0,157,0,0" VerticalAlignment="Top" Width="175" Height="175" Click="btnManageMembers_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/membericon.png"/>
         </Button>
         <Button x:Name="btnGenerateReports" HorizontalAlignment="Right" Margin="0,157,170,0" VerticalAlignment="Top" Width="175" Height="175">

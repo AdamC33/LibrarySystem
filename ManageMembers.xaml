@@ -9,6 +9,17 @@
       Title="ManageMembers">
 
     <Grid>
-        
+        <DataGrid x:Name="dgMembers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,85" AutoGenerateColumns="false" CanUserAddRows="false" IsReadOnly="True" SelectionChanged="dgMembers_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding member_Id}"/>
+                <DataGridTextColumn Header="Card Number" Binding="{Binding cardnumber}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding phonenumber}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding email}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
     </Grid>
 </Page>
