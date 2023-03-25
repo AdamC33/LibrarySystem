@@ -29,6 +29,7 @@ namespace LibrarySystem
             public string fontWeight { get; set; }
             public string notifyIsEnabled { get; set; }
         }
+
         public ManageBookStock(Book thisBook)
         {
             InitializeComponent();

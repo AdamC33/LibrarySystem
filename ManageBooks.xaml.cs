@@ -94,17 +94,25 @@ namespace LibrarySystem
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult yesOrNo = MessageBox.Show("Are you sure you want to delete this book?", "Delete Book", MessageBoxButton.YesNo);
-            if (yesOrNo == MessageBoxResult.Yes)
+            XmlController controller = new XmlController();
+            DataRowView row = dgLibrary.SelectedItem as DataRowView;
+            Book selectedBook = controller.GetLibrary(row.Row.ItemArray[4].ToString(), "isbn")[0];
+            if (selectedBook.checkoutListLength > 0)
             {
-                XmlController controller = new XmlController();
-                DataRowView row = dgLibrary.SelectedItem as DataRowView;
-                controller.DeleteBook(row.Row.ItemArray[4].ToString());
+                MessageBox.Show("Cannot delete book, people have it checked out!", "Delete Book");
             }
+            else
+            {
+                MessageBoxResult yesOrNo = MessageBox.Show("Are you sure you want to delete this book?", "Delete Book", MessageBoxButton.YesNo);
+                if (yesOrNo == MessageBoxResult.Yes)
+                {
+                    controller.DeleteBook(row.Row.ItemArray[4].ToString());
+                }
 
-            dataSet.Reset();
-            dataSet.ReadXml(@libraryPath);
-            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
+                dataSet.Reset();
+                dataSet.ReadXml(@libraryPath);
+                dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
+            }
         }
     }
 }
