@@ -9,7 +9,7 @@
       Title="ManageBooks">
 
     <Grid>
-        <DataGrid x:Name="dgLibrary" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,85" AutoGenerateColumns="false" CanUserAddRows="false" SelectionChanged="dgLibrary_SelectionChanged">
+        <DataGrid x:Name="dgLibrary" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,85" AutoGenerateColumns="false" CanUserAddRows="false" IsReadOnly="True" SelectionChanged="dgLibrary_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding book_Id}"/>
                 <DataGridTextColumn Header="ISBN" Binding="{Binding isbn}"/>
