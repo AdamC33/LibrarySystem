@@ -29,5 +29,10 @@ namespace LibrarySystem
         {
             NavigationService.Navigate(new ManageBooks());
         }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Login());
+        }
     }
 }

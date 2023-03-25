@@ -68,6 +68,7 @@ namespace LibrarySystem
                     NavigationService.Navigate(new MemberMainpage(attemptMember));
                 }
                 txtCardNo.Text = null;
+                lblWrongDetails.Content = null;
             }
             else
             {
