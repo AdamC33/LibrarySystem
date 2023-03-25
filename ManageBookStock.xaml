@@ -48,5 +48,8 @@
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
         </Button>
+        <Button x:Name="btnChangeStock" HorizontalAlignment="Left" Margin="830,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnChangeStock_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/stockiconchange.png"/>
+        </Button>
     </Grid>
 </Page>

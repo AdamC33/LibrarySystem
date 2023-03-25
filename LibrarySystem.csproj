@@ -76,6 +76,9 @@
     <Compile Include="BookFrameHomepage.xaml.cs">
       <DependentUpon>BookFrameHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeValue.xaml.cs">
+      <DependentUpon>ChangeValue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianMainpage.xaml.cs">
       <DependentUpon>LibrarianMainpage.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookFrameHomepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeValue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -246,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\membericonremove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\stockiconchange.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

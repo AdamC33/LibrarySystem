@@ -76,6 +76,15 @@ namespace LibrarySystem
             xmlDoc.Save(bookPath);
         }
 
+        public void UpdateBookStock(string ISBN, UInt32 newStock)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(bookPath);
+            XmlNode oldBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", ISBN));
+            oldBook.ChildNodes.Item(6).InnerText = Convert.ToString(newStock); //Item 6 is the stock level
+            xmlDoc.Save(bookPath);
+        }
+
         public void UpdateBookCheckout(string ISBN, List<string> cardNumbers, List<DateTimeOffset> dueDates)
         {
             XmlDocument xmlDoc = new XmlDocument();

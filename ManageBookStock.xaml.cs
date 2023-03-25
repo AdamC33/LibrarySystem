@@ -34,6 +34,11 @@ namespace LibrarySystem
         {
             InitializeComponent();
             _thisBook = thisBook;
+            UpdateDisplay();
+        }
+
+        private void UpdateDisplay()
+        {
             txtStock.Text = String.Format("{0} / {1}", _thisBook.currentStock, _thisBook._totalStock);
             XmlController controller = new XmlController();
 
@@ -56,7 +61,7 @@ namespace LibrarySystem
                     dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i)).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
                     fontWeight = thisFontWeight,
                     notifyIsEnabled = thisNotifyIsEnabled
-                }) ;
+                });
             }
             listChecked.ItemsSource = checkBookList;
             List<checkBookDisplay> queueBookList = new List<checkBookDisplay>();
@@ -88,6 +93,15 @@ namespace LibrarySystem
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnChangeStock_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeValue changeValue = new ChangeValue(_thisBook);
+            if (changeValue.ShowDialog() == true)
+            {
+                UpdateDisplay();
+            }
         }
     }
 }

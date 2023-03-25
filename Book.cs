@@ -161,5 +161,20 @@ namespace LibrarySystem
                 return 3;
             }
         }
+
+        public bool modifyStock(UInt32 newStock)
+        {
+            //True = stock can be changed to this, and has been changed
+            //False = stock cannot be changed to this
+            if (checkoutListMinusQueueLength > newStock)
+            {
+                return false;
+            }
+            else
+            {
+                _totalStock = newStock;
+                return true;
+            }
+        }
     }
 }
