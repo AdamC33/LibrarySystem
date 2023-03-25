@@ -238,5 +238,14 @@
   <ItemGroup>
     <Resource Include="img\logouticon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\membericonadd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\membericonmodify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\membericonremove.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

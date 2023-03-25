@@ -156,7 +156,7 @@ namespace LibrarySystem
                 _checkoutList.Add(new Checkout
                 {
                     _cardNumber = cardNumber,
-                    _dueDate = DateTimeOffset.Now.AddDays(21)
+                    _dueDate = DateTimeOffset.Now.AddDays(21) //21 days are added as this is the standard amount of days a book can be borrowed for
                 });
                 return 3;
             }

@@ -41,5 +41,25 @@ namespace LibrarySystem
         {
             NavigationService.GoBack();
         }
+
+        private void btnFines_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMod_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
