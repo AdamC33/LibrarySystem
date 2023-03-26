@@ -74,6 +74,12 @@ namespace LibrarySystem
                 });
             }
             listQueued.ItemsSource = queueBookList;
+
+            btnMoveQueue.IsEnabled = false;
+            if (_thisBook.queueForBook > 0)
+            {
+                btnMoveQueue.IsEnabled = true;
+            }
         }
 
         private void btnNotify_Click(object sender, RoutedEventArgs e)
@@ -93,6 +99,22 @@ namespace LibrarySystem
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnMoveQueue_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult confirm = MessageBox.Show("Are you sure you want to check the book out for the queued members?", "Move Queued Members", MessageBoxButton.YesNo);
+            if (confirm == MessageBoxResult.Yes)
+            {
+                bool movedEverything = _thisBook.moveQueueToCheckout();
+                XmlController controller = new XmlController();
+                controller.UpdateBookCheckout(_thisBook);
+                UpdateDisplay();
+                if (!movedEverything)
+                {
+                    MessageBox.Show("Could not move all the queued members, book stock is too low.", "Move Queued Members");
+                }
+            }
         }
 
         private void btnChangeStock_Click(object sender, RoutedEventArgs e)

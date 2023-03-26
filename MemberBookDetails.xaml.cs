@@ -52,7 +52,7 @@ namespace LibrarySystem
                 cardNumbers.Add(_selectedBook.getCardNumber(i));
                 dueDates.Add(_selectedBook.getDueDate(_selectedBook.getCardNumber(i)));
             }
-            controller.UpdateBookCheckout(_selectedBook._ISBN, cardNumbers, dueDates);
+            controller.UpdateBookCheckout(_selectedBook);
             switch (bookCheckoutValue)
             {
                 case 0:

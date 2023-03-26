@@ -257,5 +257,8 @@
   <ItemGroup>
     <Resource Include="img\stockiconchange.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\movequeueicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

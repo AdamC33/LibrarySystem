@@ -162,6 +162,26 @@ namespace LibrarySystem
             }
         }
 
+        public bool moveQueueToCheckout()
+        {
+            //Automatically checks the queue and moves the earliest to checkout
+            for (int i = 0; i < _checkoutList.Count; i++)
+            {
+                if (currentStock == 0)
+                {
+                    return false;
+                }
+                else if (_checkoutList[i]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
+                {
+                    Checkout c = _checkoutList[i];
+                    c._dueDate = DateTimeOffset.Now.AddDays(21);
+                    _checkoutList[i] = c;
+                }
+            }
+            return true;
+
+        }
+
         public bool modifyStock(UInt32 newStock)
         {
             //True = stock can be changed to this, and has been changed

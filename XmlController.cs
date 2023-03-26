@@ -85,22 +85,22 @@ namespace LibrarySystem
             xmlDoc.Save(bookPath);
         }
 
-        public void UpdateBookCheckout(string ISBN, List<string> cardNumbers, List<DateTimeOffset> dueDates)
+        public void UpdateBookCheckout(Book thisBook)
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(bookPath);
-            XmlNode oldBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", ISBN));
+            XmlNode oldBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", thisBook._ISBN));
             XmlNode oldCheckout = oldBook.SelectSingleNode("checkout");
             oldBook.RemoveChild(oldCheckout);
             XmlNode newCheckout = xmlDoc.CreateElement("checkout");
-            for (int i = 0; i < cardNumbers.Count; i++)
+            for (int i = 0; i < thisBook.checkoutListLength; i++)
             {
                 XmlNode Member = xmlDoc.CreateElement("member");
                 XmlNode CardNumber = xmlDoc.CreateElement("cardnumber");
                 XmlNode DueDate = xmlDoc.CreateElement("duedate");
 
-                CardNumber.InnerText = cardNumbers[i];
-                DueDate.InnerText = Convert.ToString(dueDates[i].ToUnixTimeSeconds());
+                CardNumber.InnerText = thisBook.getCardNumber(i);
+                DueDate.InnerText = Convert.ToString(thisBook.getDueDate(thisBook.getCardNumber(i)).ToUnixTimeSeconds());
 
                 Member.AppendChild(CardNumber);
                 Member.AppendChild(DueDate);

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="ChangeValue" Height="150" Width="350">
+        Title="Change Stock Level" Height="150" Width="350">
     <Grid>
-        <Label Content="New Value:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Total Stock:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtNewValue" HorizontalAlignment="Left" Margin="90,14,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtNewValue_TextChanged"/>
         <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Width="168" Height="33" Click="btnConfirm_Click" IsEnabled="False"/>
     </Grid>
