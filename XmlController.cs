@@ -148,6 +148,64 @@ namespace LibrarySystem
             return library;
         }
 
+        public void AddMember(Member newMember)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode ROOT = xmlDoc.SelectSingleNode("/members");
+            XmlNode Member = xmlDoc.CreateElement("member");
+            XmlNode CardNumber = xmlDoc.CreateElement("cardnumber");
+            XmlNode Password = xmlDoc.CreateElement("password");
+            XmlNode Name = xmlDoc.CreateElement("name");
+            XmlNode PhoneNumber = xmlDoc.CreateElement("phonenumber");
+            XmlNode Email = xmlDoc.CreateElement("email");
+            XmlNode Activated = xmlDoc.CreateElement("activated");
+            XmlNode Fees = xmlDoc.CreateElement("fees");
+            XmlNode Requests = xmlDoc.CreateElement("requests");
+
+            CardNumber.InnerText = newMember._cardNumber;
+            Password.InnerText = newMember.getPassword;
+            Name.InnerText = newMember._name;
+            PhoneNumber.InnerText = newMember._phoneNumber;
+            Email.InnerText = newMember._email;
+            Activated.InnerText = "0";
+            if (newMember._activated) { Activated.InnerText = "1"; }
+
+            Member.AppendChild(CardNumber);
+            Member.AppendChild(Password);
+            Member.AppendChild(Name);
+            Member.AppendChild(PhoneNumber);
+            Member.AppendChild(Email);
+            Member.AppendChild(Activated);
+            Member.AppendChild(Fees);
+            Member.AppendChild(Requests);
+            ROOT.AppendChild(Member);
+
+            xmlDoc.Save(memberPath);
+        }
+
+        public void DeleteMember(string cardNumber)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+            XmlNode nodes = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
+            nodes.ParentNode.RemoveChild(nodes);
+            xmlDoc.Save(memberPath);
+        }
+
+        public void UpdateMember(string cardNumber, Member newMember)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+            XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
+            oldMember.ChildNodes.Item(0).InnerText = newMember._cardNumber;
+            oldMember.ChildNodes.Item(2).InnerText = newMember._name;
+            oldMember.ChildNodes.Item(3).InnerText = newMember._phoneNumber;
+            oldMember.ChildNodes.Item(4).InnerText = newMember._email;
+            xmlDoc.Save(memberPath);
+        }
+
         public Member GetMember(string cardNum, string password)
         {
             XmlDocument xmlDoc = new XmlDocument();

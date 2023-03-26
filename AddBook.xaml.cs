@@ -47,7 +47,7 @@ namespace LibrarySystem
             btnConfirm.IsEnabled = false;
             XmlController controller = new XmlController();
             List<Book> matchingISBN = controller.GetLibrary(txtISBN.Text, "isbn");
-            if (matchingISBN.Count > 0 && (txtISBN.Text != _oldISBN)) //If the ISBN doesn't get changed, it should save it anyway, even though a matching ISBN does exist (itself)
+            if (matchingISBN.Count > 0 && txtISBN.Text != _oldISBN) //If the ISBN doesn't get changed, it should save it anyway, even though a matching ISBN does exist (itself)
             {
                 MessageBox.Show("Cannot save book - conflicting ISBN!", "Save Book");
             }
