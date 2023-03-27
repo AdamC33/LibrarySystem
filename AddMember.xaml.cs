@@ -34,7 +34,7 @@ namespace LibrarySystem
                 _oldCardNumber = cardNumber;
                 txtCardNumber.Text = cardNumber;
                 txtName.Text = name;
-                txtPhoneNo.Text = phoneNumber;
+                txtPhoneNumber.Text = phoneNumber;
                 txtEmail.Text = email;
             }
         }
@@ -50,19 +50,72 @@ namespace LibrarySystem
             else
             {
                 Member newMember = new Member(
-                txtISBN.Text,
-                txtTitle.Text,
-                txtAuthor.Text,
-                txtYear.Text,
-                txtPublisher.Text,
-                txtCategory.Text,
-                1);
+                txtCardNumber.Text,
+                txtName.Text,
+                txtPhoneNumber.Text,
+                txtEmail.Text );
 
-                if (_modifying) { controller.UpdateBook(_oldISBN, newBook); }
-                else { controller.AddBook(newBook); }
+                if (_modifying) { controller.UpdateMember(_oldCardNumber, newMember); }
+                else { controller.AddMember(newMember); }
                 this.Close();
             }
             btnConfirm.IsEnabled = true;
+        }
+
+        private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)
+        {
+            //Enables confirm button to be clicked if there is some text in all boxes
+            if (txtCardNumber.Text.Length == 9
+                && txtName.Text.Length > 0
+                && txtPhoneNumber.Text.Length > 0
+                && txtEmail.Text.Length > 0)
+            {
+                btnConfirm.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirm.IsEnabled = false;
+            }
+        }
+
+        private void txtCardNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //This code only allows numbers to be entered into the card number textbox
+            int initialSelectionStart = txtCardNumber.SelectionStart;
+            string txtCardNumberString = txtCardNumber.Text;
+            foreach (char c in txtCardNumber.Text)
+            {
+                if (!Char.IsDigit(c))
+                {
+                    //If the character isn't a digit, it gets removed from the string
+                    txtCardNumberString = txtCardNumberString.Remove(txtCardNumberString.IndexOf(c), 1);
+                    initialSelectionStart--;
+                }
+            }
+            txtCardNumber.Text = txtCardNumberString;
+            txtCardNumber.SelectionStart = initialSelectionStart;
+
+            checkTextBoxes();
+        }
+
+        private void txtPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //This code only allows numbers, spaces, and plusses to be entered into the phone number textbox
+            int initialSelectionStart = txtPhoneNumber.SelectionStart;
+            string txtPhoneNumberString = txtPhoneNumber.Text;
+            foreach (char c in txtPhoneNumber.Text)
+            {
+                if (!Char.IsDigit(c) && c != ' ' && c != '+')
+                {
+                    //If the character isn't a digit, it gets removed from the string
+                    txtPhoneNumberString = txtPhoneNumberString.Remove(txtPhoneNumberString.IndexOf(c), 1);
+                    initialSelectionStart--;
+                }
+            }
+            txtPhoneNumber.Text = txtPhoneNumberString;
+            txtPhoneNumber.SelectionStart = initialSelectionStart;
+
+            checkTextBoxes();
         }
     }
 }

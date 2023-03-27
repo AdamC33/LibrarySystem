@@ -8,11 +8,11 @@
         Title="AddMember" Height="270" Width="350">
     <Grid>
         <Label Content="Card number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txtCardNumber" HorizontalAlignment="Left" Margin="121,14,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtCardNo_TextChanged"/>
+        <TextBox x:Name="txtCardNumber" HorizontalAlignment="Left" Margin="121,14,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtCardNumber_TextChanged"/>
         <Label Content="Name:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="121,54,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Label Content="Phone number:" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txtPhoneNo" HorizontalAlignment="Left" Margin="121,94,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="121,94,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtPhoneNumber_TextChanged"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="121,134,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Width="168" Height="33" Click="btnConfirm_Click" IsEnabled="False"/>

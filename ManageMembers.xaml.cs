@@ -34,7 +34,18 @@ namespace LibrarySystem
 
         private void dgMembers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (dgMembers.SelectedItem != null)
+            {
+                btnMod.IsEnabled = true;
+                btnRem.IsEnabled = true;
+                btnFines.IsEnabled = true;
+            }
+            else
+            {
+                btnMod.IsEnabled = false;
+                btnRem.IsEnabled = false;
+                btnFines.IsEnabled = false;
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -49,17 +60,45 @@ namespace LibrarySystem
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddMember addMember = new AddMember();
+            addMember.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
+            //Any code after this is will be run after the addBook window has closed (either because the user has clicked "Confirm" or the close button in the top right)
+            dataSet.Reset();
+            dataSet.ReadXml(@membersPath);
+            dataSet.Tables[0].Rows[0].Delete();
+            dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView row = dgMembers.SelectedItem as DataRowView;
+            AddMember addMember = new AddMember(
+            row.Row.ItemArray[0].ToString(),
+            row.Row.ItemArray[2].ToString(),
+            row.Row.ItemArray[3].ToString(),
+            row.Row.ItemArray[4].ToString());
+            addMember.ShowDialog();
 
+            dataSet.Reset();
+            dataSet.ReadXml(@membersPath);
+            dataSet.Tables[0].Rows[0].Delete();
+            dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
         {
+            XmlController controller = new XmlController();
+            DataRowView row = dgMembers.SelectedItem as DataRowView;
+            MessageBoxResult yesOrNo = MessageBox.Show("Are you sure you want to delete this member?", "Delete Member", MessageBoxButton.YesNo);
+            if (yesOrNo == MessageBoxResult.Yes)
+            {
+                controller.DeleteMember(row.Row.ItemArray[0].ToString());
+            }
 
-        }
+            dataSet.Reset();
+            dataSet.ReadXml(@membersPath);
+            dataSet.Tables[0].Rows[0].Delete();
+            dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
+            }
     }
 }

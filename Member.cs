@@ -18,13 +18,13 @@ namespace LibrarySystem
         private List<UInt32> _fees = new List<UInt32>(); //Using integer instead of floating point as it's more accurate
         private List<string> _requests = new List<string>();
 
-        public Member(string cardNumber, string name, string phoneNumber, string email, List<UInt32> fees, List<String> requests)
+        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<UInt32> fees = null, List<string> requests = null)
         {
             _cardNumber = cardNumber;
             _name = name;
             _phoneNumber = phoneNumber;
             _email = email;
-            _activated = false;
+            _activated = activated;
             _fees = fees;
             _requests = requests;
         }
@@ -32,6 +32,17 @@ namespace LibrarySystem
         public string getPassword
         {
             get { return _password; }
+        }
+
+        public bool ActivateAccount(string newPassword)
+        {
+            if (!_activated)
+            {
+                _activated = true;
+                _password = newPassword;
+                return true;
+            }
+            else { return false; }
         }
     }
 }

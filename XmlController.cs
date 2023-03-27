@@ -219,17 +219,26 @@ namespace LibrarySystem
                 if (cardNum == xmlCardNum && password == xmlPassword)
                 {
                     XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
+                    bool activated = false;
+                    if (xmlMember.SelectSingleNode("activated").InnerText == "1") { activated = true; }
                     List<UInt32> fees = new List<UInt32>();
-                    foreach (XmlNode xmlFee in xmlMember.ChildNodes.Item(5))
+                    foreach (XmlNode xmlFee in xmlMember.ChildNodes.Item(6))
                     {
                         fees.Add(Convert.ToUInt32(xmlFee.InnerText)); //Fees are in UInt32 to avoid inaccuracy issues with floating point numbers
+                    }
+                    List<string> requests = new List<string>();
+                    foreach (XmlNode xmlRequest in xmlMember.ChildNodes.Item(7))
+                    {
+                        requests.Add(xmlRequest.InnerText);
                     }
                     Member thisMember = new Member(
                         xmlMember.SelectSingleNode("cardnumber").InnerText, //Card number
                         xmlMember.SelectSingleNode("name").InnerText, //Name
                         xmlMember.SelectSingleNode("phonenumber").InnerText, //Phone number
                         xmlMember.SelectSingleNode("email").InnerText,  //Email
-                        fees
+                        activated, //Whether the account is activated or not
+                        fees, //List of fees
+                        requests //List of requests/notifications
                     );
                     return thisMember;
                 }
