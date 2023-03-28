@@ -34,7 +34,7 @@ namespace LibrarySystem
                 _oldCardNumber = cardNumber;
                 txtCardNumber.Text = cardNumber;
                 txtName.Text = name;
-                txtPhoneNumber.Text = phoneNumber;
+                txtPhoneNumber.Text = phoneNumber.Remove(3, 1).Remove(6, 1); //Takes away the hyphens from the phone number string
                 txtEmail.Text = email;
             }
         }
@@ -52,7 +52,7 @@ namespace LibrarySystem
                 Member newMember = new Member(
                 txtCardNumber.Text,
                 txtName.Text,
-                txtPhoneNumber.Text,
+                txtPhoneNumber.Text.Insert(3, "-").Insert(7, "-"), //Adds the hypens back to the phone number string
                 txtEmail.Text );
 
                 if (_modifying) { controller.UpdateMember(_oldCardNumber, newMember); }
@@ -67,7 +67,7 @@ namespace LibrarySystem
             //Enables confirm button to be clicked if there is some text in all boxes
             if (txtCardNumber.Text.Length == 9
                 && txtName.Text.Length > 0
-                && txtPhoneNumber.Text.Length > 0
+                && txtPhoneNumber.Text.Length == 10
                 && txtEmail.Text.Length > 0)
             {
                 btnConfirm.IsEnabled = true;
@@ -105,7 +105,7 @@ namespace LibrarySystem
             string txtPhoneNumberString = txtPhoneNumber.Text;
             foreach (char c in txtPhoneNumber.Text)
             {
-                if (!Char.IsDigit(c) && c != ' ' && c != '+')
+                if (!Char.IsDigit(c))
                 {
                     //If the character isn't a digit, it gets removed from the string
                     txtPhoneNumberString = txtPhoneNumberString.Remove(txtPhoneNumberString.IndexOf(c), 1);
