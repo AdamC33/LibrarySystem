@@ -1,0 +1,33 @@
+﻿<Page x:Class="LibrarySystem.ManageMemberFines"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="538" d:DesignWidth="908"
+      Title="ManageMemberFines">
+
+    <Grid>
+        <Label x:Name="lblCardNumber" Content="Fines:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="582" FontSize="30"/>
+        <ListBox x:Name="listFines" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock FontSize="12" Text="{Binding amount}" Width="80" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding reason}" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
+                        <Button Content="Notify" IsEnabled="{Binding notifyIsEnabled}" Width="50" HorizontalAlignment="Right" Click="btnNotify_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+    </Grid>
+</Page>

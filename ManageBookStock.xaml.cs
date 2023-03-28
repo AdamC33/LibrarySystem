@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization; //Needed for the date format to be correct (date-month-year as opposed to month-date-year)
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,6 +35,7 @@ namespace LibrarySystem
         {
             InitializeComponent();
             _thisBook = thisBook;
+            lblisbn.Content = String.Format("Current Stock Level ({0}):", _thisBook._ISBN);
             UpdateDisplay();
         }
 

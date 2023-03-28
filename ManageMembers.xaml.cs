@@ -55,7 +55,14 @@ namespace LibrarySystem
 
         private void btnFines_Click(object sender, RoutedEventArgs e)
         {
+            DataRowView row = dgMembers.SelectedItem as DataRowView;
+            XmlController controller = new XmlController();
+            Member thisMember = controller.GetMember(row.Row.ItemArray[0].ToString(), row.Row.ItemArray[1].ToString());
+            NavigationService.Navigate(new ManageMemberFines(thisMember));
 
+            dataSet.Reset();
+            dataSet.ReadXml(@membersPath);
+            dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

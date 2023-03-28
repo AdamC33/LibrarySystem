@@ -9,7 +9,7 @@
       Title="ManageBookStock">
 
     <Grid>
-        <Label Content="Current Stock Level:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="281" FontSize="30"/>
+        <Label x:Name="lblisbn" Content="Current Stock Level:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="582" FontSize="30"/>
         <TextBlock x:Name="txtStock" HorizontalAlignment="Left" Margin="15,65,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="41" Width="878" FontSize="30" FontWeight="Bold"/>
         <Label Content="Checkouts:" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
         <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="134" Margin="10,140,0,0" VerticalAlignment="Top" Width="888">
