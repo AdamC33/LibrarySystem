@@ -100,7 +100,7 @@ namespace LibrarySystem
 
         private void txtPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //This code only allows numbers, spaces, and plusses to be entered into the phone number textbox
+            //This code only allows numbers to be entered into the phone number textbox
             int initialSelectionStart = txtPhoneNumber.SelectionStart;
             string txtPhoneNumberString = txtPhoneNumber.Text;
             foreach (char c in txtPhoneNumber.Text)
