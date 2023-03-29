@@ -23,10 +23,29 @@ namespace LibrarySystem
     {
         private Member _thisMember;
 
+        private class fineDisplay //Used for the items source binding
+        {
+            public string amount { get; set; }
+            public string reason { get; set; }
+        }
+
         public ManageMemberFines(Member thisMember)
         {
             InitializeComponent();
             _thisMember = thisMember;
+        }
+
+        private void UpdateDisplay()
+        {
+            List<fineDisplay> fineList = new List<fineDisplay>();
+
+            for (int i = 0; i < _thisMember.feeListCount; i++)
+            {
+                fineList.Add(new fineDisplay
+                {
+                    amount = 
+                });
+            }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

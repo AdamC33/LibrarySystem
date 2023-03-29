@@ -15,10 +15,10 @@ namespace LibrarySystem
         public string _phoneNumber { get; set; }
         public string _email { get; set; }
         public bool _activated { get; set; }
-        private List<UInt32> _fees = new List<UInt32>(); //Using integer instead of floating point as it's more accurate
+        private List<string> _fees = new List<string>(); //Using integer instead of floating point as it's more accurate
         private List<string> _requests = new List<string>();
 
-        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<UInt32> fees = null, List<string> requests = null)
+        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<string> fees = null, List<string> requests = null)
         {
             _cardNumber = cardNumber;
             _name = name;
@@ -43,6 +43,11 @@ namespace LibrarySystem
                 return true;
             }
             else { return false; }
+        }
+
+        public int feeListCount
+        {
+            get { return _fees.Count; }
         }
     }
 }
