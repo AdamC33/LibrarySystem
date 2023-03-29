@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="lblCardNumber" Content="Fines:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="582" FontSize="30"/>
-        <ListBox x:Name="listFines" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}">
+        <ListBox x:Name="listFines" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="listFines_SelectionChanged">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

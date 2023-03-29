@@ -51,6 +51,20 @@ namespace LibrarySystem
             listFines.ItemsSource = fineList;
         }
 
+        private void listFines_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listFines.SelectedItem != null)
+            {
+                btnMod.IsEnabled = true;
+                btnRem.IsEnabled = true;
+            }
+            else
+            {
+                btnMod.IsEnabled = false;
+                btnRem.IsEnabled = false;
+            }
+        }
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -65,7 +79,9 @@ namespace LibrarySystem
 
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
-
+            fineDisplay thisFine = (fineDisplay)listFines.SelectedItem;
+            FineAdd fineMod = new FineAdd(thisFine.amount, thisFine.reason);
+            fineMod.ShowDialog();
         }
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
