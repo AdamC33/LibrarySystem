@@ -33,6 +33,7 @@ namespace LibrarySystem
         {
             InitializeComponent();
             _thisMember = thisMember;
+            UpdateDisplay();
         }
 
         private void UpdateDisplay()
@@ -43,9 +44,11 @@ namespace LibrarySystem
             {
                 fineList.Add(new fineDisplay
                 {
-                    amount = 
+                    amount = _thisMember.getFeeAmount(i),
+                    reason = _thisMember.getFeeReason(i)
                 });
             }
+            listFines.ItemsSource = fineList;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

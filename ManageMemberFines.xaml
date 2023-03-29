@@ -20,7 +20,7 @@
                 <DataTemplate>
                     <Grid>
                         <TextBlock FontSize="12" Text="{Binding amount}" Width="80" HorizontalAlignment="Left"/>
-                        <TextBlock FontSize="12" Text="{Binding reason}" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding reason}" Width="770" TextTrimming="CharacterEllipsis" Margin="70,0,0,0" HorizontalAlignment="Left"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

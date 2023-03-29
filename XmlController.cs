@@ -221,10 +221,12 @@ namespace LibrarySystem
                     XmlNode xmlMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", xmlCardNum));
                     bool activated = false;
                     if (xmlMember.SelectSingleNode("activated").InnerText == "1") { activated = true; }
-                    List<UInt32> fees = new List<UInt32>();
+                    List<string> feeAmounts = new List<string>();
+                    List<string> feeReasons = new List<string>();
                     foreach (XmlNode xmlFee in xmlMember.ChildNodes.Item(6))
                     {
-                        fees.Add(Convert.ToUInt32(xmlFee.InnerText.Remove(0, 1).Remove(xmlFee.InnerText.Length - 4, 1))); //Fees are in UInt32 to avoid inaccuracy issues with floating point numbers
+                        feeAmounts.Add(xmlFee.SelectSingleNode("amount").InnerText);
+                        feeReasons.Add(xmlFee.SelectSingleNode("reason").InnerText);
                     }
                     List<string> requests = new List<string>();
                     foreach (XmlNode xmlRequest in xmlMember.ChildNodes.Item(7))
@@ -237,7 +239,8 @@ namespace LibrarySystem
                         xmlMember.SelectSingleNode("phonenumber").InnerText, //Phone number
                         xmlMember.SelectSingleNode("email").InnerText,  //Email
                         activated, //Whether the account is activated or not
-                        fees, //List of fees
+                        feeAmounts, //List of fee amounts (in the string format £x.xx)
+                        feeReasons, //List of reasons for the fees
                         requests //List of requests/notifications
                     );
                     return thisMember;

@@ -15,17 +15,36 @@ namespace LibrarySystem
         public string _phoneNumber { get; set; }
         public string _email { get; set; }
         public bool _activated { get; set; }
-        private List<string> _fees = new List<string>(); //Using integer instead of floating point as it's more accurate
+        private List<Fee> _fees = new List<Fee>();
         private List<string> _requests = new List<string>();
 
-        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<string> fees = null, List<string> requests = null)
+        private struct Fee
+        {
+            public string _amount { get; set; }
+            public string _reason { get; set; }
+        }
+
+        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<string> feeAmounts = null, List<string> feeReasons = null, List<string> requests = null)
         {
             _cardNumber = cardNumber;
             _name = name;
             _phoneNumber = phoneNumber;
             _email = email;
             _activated = activated;
-            _fees = fees;
+            _fees = new List<Fee>();
+            int i = -1;
+            if (feeAmounts != null)
+            {
+                foreach (string s in feeAmounts)
+                {
+                    i++;
+                    _fees.Add(new Fee
+                    {
+                        _amount = s,
+                        _reason = feeReasons[i]
+                    });
+                }
+            }
             _requests = requests;
         }
 
@@ -48,6 +67,16 @@ namespace LibrarySystem
         public int feeListCount
         {
             get { return _fees.Count; }
+        }
+
+        public string getFeeAmount(int index)
+        {
+            return _fees[index]._amount;
+        }
+
+        public string getFeeReason(int index)
+        {
+            return _fees[index]._reason;
         }
     }
 }
