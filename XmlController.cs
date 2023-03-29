@@ -224,7 +224,7 @@ namespace LibrarySystem
                     List<UInt32> fees = new List<UInt32>();
                     foreach (XmlNode xmlFee in xmlMember.ChildNodes.Item(6))
                     {
-                        fees.Add(Convert.ToUInt32(xmlFee.InnerText)); //Fees are in UInt32 to avoid inaccuracy issues with floating point numbers
+                        fees.Add(Convert.ToUInt32(xmlFee.InnerText.Remove(0, 1).Remove(xmlFee.InnerText.Length - 4, 1))); //Fees are in UInt32 to avoid inaccuracy issues with floating point numbers
                     }
                     List<string> requests = new List<string>();
                     foreach (XmlNode xmlRequest in xmlMember.ChildNodes.Item(7))

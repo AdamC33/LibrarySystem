@@ -62,6 +62,7 @@ namespace LibrarySystem
 
             dataSet.Reset();
             dataSet.ReadXml(@membersPath);
+            dataSet.Tables[0].Rows[0].Delete();
             dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -69,7 +70,7 @@ namespace LibrarySystem
         {
             AddMember addMember = new AddMember();
             addMember.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
-            //Any code after this is will be run after the addBook window has closed (either because the user has clicked "Confirm" or the close button in the top right)
+            //Any code after this is will be run after the addMember window has closed (either because the user has clicked "Confirm" or the close button in the top right)
             dataSet.Reset();
             dataSet.ReadXml(@membersPath);
             dataSet.Tables[0].Rows[0].Delete();
@@ -79,12 +80,12 @@ namespace LibrarySystem
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
             DataRowView row = dgMembers.SelectedItem as DataRowView;
-            AddMember addMember = new AddMember(
+            AddMember modMember = new AddMember(
             row.Row.ItemArray[0].ToString(),
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[4].ToString());
-            addMember.ShowDialog();
+            modMember.ShowDialog();
 
             dataSet.Reset();
             dataSet.ReadXml(@membersPath);
@@ -106,6 +107,6 @@ namespace LibrarySystem
             dataSet.ReadXml(@membersPath);
             dataSet.Tables[0].Rows[0].Delete();
             dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
-            }
+        }
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid>
         <Label x:Name="lblCardNumber" Content="Fines:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="582" FontSize="30"/>
-        <ListBox x:Name="listFines" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888">
+        <ListBox x:Name="listFines" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -21,13 +21,21 @@
                     <Grid>
                         <TextBlock FontSize="12" Text="{Binding amount}" Width="80" HorizontalAlignment="Left"/>
                         <TextBlock FontSize="12" Text="{Binding reason}" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
-                        <Button Content="Notify" IsEnabled="{Binding notifyIsEnabled}" Width="50" HorizontalAlignment="Right" Click="btnNotify_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnAdd_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/bookiconadd.png"/>
+        </Button>
+        <Button x:Name="btnMod" HorizontalAlignment="Left" Margin="750,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnMod_Click" IsEnabled="False">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/bookiconmodify.png"/>
+        </Button>
+        <Button x:Name="btnRem" HorizontalAlignment="Left" Margin="830,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnRem_Click" IsEnabled="False">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/bookiconremove.png"/>
         </Button>
     </Grid>
 </Page>

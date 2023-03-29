@@ -78,14 +78,14 @@ namespace LibrarySystem
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
             DataRowView row = dgLibrary.SelectedItem as DataRowView;
-            AddBook addBook = new AddBook(
+            AddBook modBook = new AddBook(
             row.Row.ItemArray[4].ToString(),
             row.Row.ItemArray[0].ToString(),
             row.Row.ItemArray[1].ToString(),
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[5].ToString() );
-            addBook.ShowDialog();
+            modBook.ShowDialog();
 
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);

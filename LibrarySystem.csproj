@@ -82,6 +82,12 @@
     <Compile Include="ChangeValue.xaml.cs">
       <DependentUpon>ChangeValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FineAdd.xaml.cs">
+      <DependentUpon>FineAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FineDelete.xaml.cs">
+      <DependentUpon>FineDelete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibrarianMainpage.xaml.cs">
       <DependentUpon>LibrarianMainpage.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangeValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FineAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FineDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
