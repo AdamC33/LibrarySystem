@@ -25,13 +25,22 @@
             <Label Content="£" FontWeight="Bold" FontSize="72" Height="115" Width="55" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Button>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnAdd_Click">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/membericonadd.png"/>
+            <Grid Width="60" Height="60">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/membericon.png"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/addicon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0"/>
+            </Grid>
         </Button>
         <Button x:Name="btnMod" HorizontalAlignment="Left" Margin="750,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnMod_Click" IsEnabled="False">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/membericonmodify.png"/>
+            <Grid Width="60" Height="60">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/membericon.png"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Height="40" Width="40" Source="/img/modifyicon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0"/>
+            </Grid>
         </Button>
         <Button x:Name="btnRem" HorizontalAlignment="Left" Margin="830,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnRem_Click" IsEnabled="False">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/membericonremove.png"/>
+            <Grid Width="60" Height="60">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/membericon.png"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/removeicon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0"/>
+            </Grid>
         </Button>
     </Grid>
 </Page>

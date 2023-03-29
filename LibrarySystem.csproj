@@ -237,7 +237,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\bookiconmodify.png" />
     <Resource Include="img\defaultuser.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -262,31 +261,25 @@
     <Resource Include="img\goback.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\bookiconadd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\bookiconremove.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\stockicon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\logouticon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="img\membericonadd.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\membericonmodify.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img\membericonremove.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\stockiconchange.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\movequeueicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\addicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\modifyicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\removeicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
