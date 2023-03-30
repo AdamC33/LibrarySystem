@@ -27,8 +27,28 @@ namespace LibrarySystem
         {
             public string ISBN { get; set; }
             public string title { get; set; }
-            public string dueDate { get; set; }
+            private DateTimeOffset dueDateDateTime { get; set; }
+            private string dueDateString { get; set; }
             public string fontWeight { get; set; }
+
+            public DateTimeOffset dueDate
+            {
+                set
+                {
+                    dueDateDateTime = value;
+                    dueDateString = value.DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
+                }
+            }
+
+            public DateTimeOffset getDueDate
+            {
+                get { return dueDateDateTime; }
+            }
+
+            public string getDueDateString
+            {
+                get { return dueDateString; }
+            }
         }
 
         public ManageMemberCheckouts(Member thisMember)
@@ -67,7 +87,7 @@ namespace LibrarySystem
                             {
                                 ISBN = b._ISBN,
                                 title = b._title,
-                                dueDate = b.getDueDate(b.getCardNumber(i)).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
+                                dueDate = b.getDueDate(b.getCardNumber(i)),
                                 fontWeight = thisFontWeight
                             });
                         }
@@ -84,7 +104,7 @@ namespace LibrarySystem
                 }
             }
 
-            listChecked.ItemsSource = checkBookList;
+            listChecked.ItemsSource = checkBookList.OrderBy(o=>o.getDueDate);
             listQueued.ItemsSource = queueBookList;
         }
 
