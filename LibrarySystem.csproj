@@ -97,6 +97,9 @@
     <Compile Include="ManageBookStock.xaml.cs">
       <DependentUpon>ManageBookStock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ManageMemberCheckouts.xaml.cs">
+      <DependentUpon>ManageMemberCheckouts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManageMemberFines.xaml.cs">
       <DependentUpon>ManageMemberFines.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ManageBookStock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageMemberCheckouts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,6 +288,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\removeicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bookshelficon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -39,18 +39,33 @@ namespace LibrarySystem
                 btnMod.IsEnabled = true;
                 btnRem.IsEnabled = true;
                 btnFines.IsEnabled = true;
+                btnLibrary.IsEnabled = true;
             }
             else
             {
                 btnMod.IsEnabled = false;
                 btnRem.IsEnabled = false;
                 btnFines.IsEnabled = false;
+                btnLibrary.IsEnabled = false;
             }
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnLibrary_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView row = dgMembers.SelectedItem as DataRowView;
+            XmlController controller = new XmlController();
+            Member thisMember = controller.GetMember(row.Row.ItemArray[0].ToString(), row.Row.ItemArray[1].ToString());
+            NavigationService.Navigate(new ManageMemberCheckouts(thisMember));
+
+            dataSet.Reset();
+            dataSet.ReadXml(@membersPath);
+            dataSet.Tables[0].Rows[0].Delete();
+            dgMembers.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnFines_Click(object sender, RoutedEventArgs e)

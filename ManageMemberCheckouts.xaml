@@ -1,0 +1,36 @@
+﻿<Page x:Class="LibrarySystem.ManageMemberCheckouts"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="538" d:DesignWidth="908"
+      Title="ManageMemberCheckouts">
+
+    <Grid>
+        <Label x:Name="lblCardNumber" Content="Member:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="582" FontSize="30"/>
+        <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+        <Label Content="Checkouts:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
+        <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="134" Margin="10,100,0,0" VerticalAlignment="Top" Width="888">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="480" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding dueDate}" Margin="0,0,140,0" HorizontalAlignment="Right"/>
+                        <Button Content="Return" Margin="0,0,70,0" Width="50" HorizontalAlignment="Right" Click="btnReturn_Click"/>
+                        <Button Content="Renew" Width="50" HorizontalAlignment="Right" Click="btnRenew_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>
