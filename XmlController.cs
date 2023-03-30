@@ -91,10 +91,9 @@ namespace LibrarySystem
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(bookPath);
-            XmlNode oldBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", thisBook._ISBN));
-            XmlNode oldCheckout = oldBook.SelectSingleNode("checkout");
-            oldBook.RemoveChild(oldCheckout);
-            XmlNode newCheckout = xmlDoc.CreateElement("checkout");
+            XmlNode oldCheckout = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']/checkout", thisBook._ISBN));
+            oldCheckout.RemoveAll();
+
             for (int i = 0; i < thisBook.checkoutListLength; i++)
             {
                 XmlNode Member = xmlDoc.CreateElement("member");
@@ -106,9 +105,8 @@ namespace LibrarySystem
 
                 Member.AppendChild(CardNumber);
                 Member.AppendChild(DueDate);
-                newCheckout.AppendChild(Member);
+                oldCheckout.AppendChild(Member);
             }
-            oldBook.AppendChild(newCheckout);
 
             xmlDoc.Save(bookPath);
         }

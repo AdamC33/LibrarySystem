@@ -41,8 +41,9 @@ namespace LibrarySystem
 
         private void UpdateDisplay()
         {
-            txtStock.Text = String.Format("{0} / {1}", _thisBook.currentStock, _thisBook._totalStock);
             XmlController controller = new XmlController();
+            _thisBook = controller.GetLibrary(_thisBook._ISBN, "isbn")[0];
+            txtStock.Text = String.Format("{0} / {1}", _thisBook.currentStock, _thisBook._totalStock);
 
             List<checkBookDisplay> checkBookList = new List<checkBookDisplay>();
             DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
