@@ -33,6 +33,7 @@ namespace LibrarySystem
             {
                 _oldCardNumber = cardNumber;
                 txtCardNumber.Text = cardNumber;
+                txtCardNumber.IsEnabled = false;
                 txtName.Text = name;
                 txtPhoneNumber.Text = phoneNumber.Remove(3, 1).Remove(6, 1); //Takes away the hyphens from the phone number string
                 txtEmail.Text = email;
