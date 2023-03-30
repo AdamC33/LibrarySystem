@@ -32,5 +32,21 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Label Content="Queued for:" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
+        <ListBox x:Name="listQueued" HorizontalAlignment="Left" Height="150" Margin="10,290,0,0" VerticalAlignment="Top" Width="888">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="480" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Page>

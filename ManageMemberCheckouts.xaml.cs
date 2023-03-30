@@ -87,6 +87,7 @@ namespace LibrarySystem
             }
 
             listChecked.ItemsSource = checkBookList;
+            listQueued.ItemsSource = queueBookList;
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
