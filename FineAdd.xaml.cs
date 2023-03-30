@@ -69,17 +69,19 @@ namespace LibrarySystem
             }
         }
 
-        private void txtAmount_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtAmount_TextChanged(object sender, TextChangedEventArgs e, int maxLength)
         {
-            //This code only allows numbers to be entered into the amount textbox
+            //This code only allows numbers to be entered into the amount textboxes
             int initialSelectionStart = ((TextBox)sender).SelectionStart;
             string txtAmountString = ((TextBox)sender).Text;
             foreach (char c in ((TextBox)sender).Text)
             {
-                if (!Char.IsDigit(c))
+                if (!Char.IsDigit(c) || txtAmountString.Length > maxLength)
                 {
                     //If the character isn't a digit, it gets removed from the string
-                    txtAmountString = txtAmountString.Remove(txtAmountString.IndexOf(c), 1);
+                    //If the length of the string is 'maxLength', nothing can be added to it
+                    //The reason for this is explained in the functions which call this function
+                    txtAmountString = txtAmountString.Remove(initialSelectionStart - 1, 1);
                     initialSelectionStart--;
                 }
             }
@@ -89,27 +91,16 @@ namespace LibrarySystem
             checkTextBoxes();
         }
 
+        private void txtAmountPounds_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            txtAmount_TextChanged(sender, e, 9);
+            //9 is chosen as the max length to avoid exceeding the max unsigned integer value
+        }
+
         private void txtAmountPence_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //This code only allows numbers to be entered into the pence amount textbox
-            int initialSelectionStart = ((TextBox)sender).SelectionStart;
-            string txtAmountString = ((TextBox)sender).Text;
-            foreach (char c in ((TextBox)sender).Text)
-            {
-                if (!Char.IsDigit(c) || txtAmountString.Length > 2)
-                {
-                    //If the character isn't a digit, it gets removed from the string
-                    //If the length of the string is 2, nothing can be added to it
-                    //This is because there is 100 pence in a pound. Only 2 digits are needed to store pence.
-                    //The rest can be represented by the pound part of the £x.xx format
-                    txtAmountString = txtAmountString.Remove(initialSelectionStart - 1, 1);
-                    initialSelectionStart--;
-                }
-            }
-            ((TextBox)sender).Text = txtAmountString;
-            ((TextBox)sender).SelectionStart = initialSelectionStart;
-
-            checkTextBoxes();
+            txtAmount_TextChanged(sender, e, 2);
+            //2 is chosen as only 2 digits are needed to represent pence
         }
     }
 }
