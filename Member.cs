@@ -24,9 +24,10 @@ namespace LibrarySystem
             public string _reason { get; set; }
         }
 
-        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<string> feeAmounts = null, List<string> feeReasons = null, List<string> requests = null)
+        public Member(string cardNumber, string name, string phoneNumber, string email, bool activated = false, List<string> feeAmounts = null, List<string> feeReasons = null, List<string> requests = null, string password = null)
         {
             _cardNumber = cardNumber;
+            _password = password;
             _name = name;
             _phoneNumber = phoneNumber;
             _email = email;
@@ -77,6 +78,23 @@ namespace LibrarySystem
         public string getFeeReason(int index)
         {
             return _fees[index]._reason;
+        }
+
+        public void addFee(string amount, string reason)
+        {
+            _fees.Add(new Fee
+            {
+                _amount = amount,
+                _reason = reason
+            });
+        }
+
+        public void updateFee(int index, string amount, string reason)
+        {
+            Fee thisFee = _fees[index];
+            thisFee._amount = amount;
+            thisFee._reason = reason;
+            _fees[index] = thisFee;
         }
     }
 }

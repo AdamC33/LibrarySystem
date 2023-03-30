@@ -38,6 +38,9 @@ namespace LibrarySystem
 
         private void UpdateDisplay()
         {
+            XmlController controller = new XmlController();
+            _thisMember = controller.GetMember(_thisMember._cardNumber, _thisMember.getPassword);
+
             List<fineDisplay> fineList = new List<fineDisplay>();
 
             for (int i = 0; i < _thisMember.feeListCount; i++)
@@ -72,16 +75,18 @@ namespace LibrarySystem
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            FineAdd fineAdd = new FineAdd();
+            FineAdd fineAdd = new FineAdd(_thisMember);
             fineAdd.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
             //Any code after this is will be run after the fineAdd window has closed (either because the user has clicked "Confirm" or the close button in the top right)
+            UpdateDisplay();
         }
 
         private void btnMod_Click(object sender, RoutedEventArgs e)
         {
             fineDisplay thisFine = (fineDisplay)listFines.SelectedItem;
-            FineAdd fineMod = new FineAdd(thisFine.amount, thisFine.reason);
+            FineAdd fineMod = new FineAdd(_thisMember, listFines.SelectedIndex, thisFine.amount, thisFine.reason);
             fineMod.ShowDialog();
+            UpdateDisplay();
         }
 
         private void btnRem_Click(object sender, RoutedEventArgs e)

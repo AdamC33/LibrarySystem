@@ -66,6 +66,7 @@ namespace LibrarySystem
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(bookPath);
+
             XmlNode oldBook = xmlDoc.SelectSingleNode(String.Format("//book[isbn='{0}']", ISBN));
             oldBook.ChildNodes.Item(0).InnerText = newBook._title;
             oldBook.ChildNodes.Item(1).InnerText = newBook._author;
@@ -73,6 +74,7 @@ namespace LibrarySystem
             oldBook.ChildNodes.Item(3).InnerText = newBook._publisher;
             oldBook.ChildNodes.Item(4).InnerText = newBook._ISBN;
             oldBook.ChildNodes.Item(5).InnerText = newBook._category;
+
             xmlDoc.Save(bookPath);
         }
 
@@ -198,11 +200,46 @@ namespace LibrarySystem
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(memberPath);
+
             XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
             oldMember.ChildNodes.Item(0).InnerText = newMember._cardNumber;
             oldMember.ChildNodes.Item(2).InnerText = newMember._name;
             oldMember.ChildNodes.Item(3).InnerText = newMember._phoneNumber;
             oldMember.ChildNodes.Item(4).InnerText = newMember._email;
+
+            xmlDoc.Save(memberPath);
+        }
+
+        public void AddFee(string cardNumber, string amount, string reason)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode Fees = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']/fees", cardNumber));
+            XmlNode Fee = xmlDoc.CreateElement("fee");
+            XmlNode Amount = xmlDoc.CreateElement("amount");
+            XmlNode Reason = xmlDoc.CreateElement("reason");
+
+            Amount.InnerText = amount;
+            Reason.InnerText = reason;
+
+            Fee.AppendChild(Amount);
+            Fee.AppendChild(Reason);
+            Fees.AppendChild(Fee);
+
+            xmlDoc.Save(memberPath);
+        }
+
+        public void UpdateFee(string cardNumber, string amount, string reason, int index)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode Fees = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']/fees", cardNumber));
+            XmlNode Fee = Fees.ChildNodes.Item(index);
+            Fee.ChildNodes.Item(0).InnerText = amount;
+            Fee.ChildNodes.Item(1).InnerText = reason;
+
             xmlDoc.Save(memberPath);
         }
 
@@ -241,7 +278,8 @@ namespace LibrarySystem
                         activated, //Whether the account is activated or not
                         feeAmounts, //List of fee amounts (in the string format £x.xx)
                         feeReasons, //List of reasons for the fees
-                        requests //List of requests/notifications
+                        requests, //List of requests/notifications
+                        xmlMember.SelectSingleNode("password").InnerText
                     );
                     return thisMember;
                 }

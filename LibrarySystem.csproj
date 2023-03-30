@@ -112,6 +112,7 @@
     <Compile Include="MemberHomepage.xaml.cs">
       <DependentUpon>MemberHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MoneyFormat.cs" />
     <Compile Include="XmlController.cs" />
     <Page Include="AddBook.xaml">
       <SubType>Designer</SubType>
