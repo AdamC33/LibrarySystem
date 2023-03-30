@@ -93,8 +93,9 @@ namespace LibrarySystem
 
         private void txtAmountPounds_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtAmount_TextChanged(sender, e, 9);
-            //9 is chosen as the max length to avoid exceeding the max unsigned integer value
+            txtAmount_TextChanged(sender, e, 7);
+            //7 is chosen as the max length to avoid exceeding the max unsigned integer value
+            //(combining 7 from the pounds and 2 from the pence to get 9)
         }
 
         private void txtAmountPence_TextChanged(object sender, TextChangedEventArgs e)
