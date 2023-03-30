@@ -34,7 +34,8 @@ namespace LibrarySystem
             }
             else
             {
-                txtAmount.Text = amount.Remove(0, 1).Remove((amount.Length - 4), 1); //Takes away the pound sign and decimal point
+                txtAmountPounds.Text = MoneyFormat.GetWithoutPence(amount);
+                txtAmountPence.Text = MoneyFormat.GetOnlyPence(amount);
                 txtReason.Text = reason;
             }
         }
@@ -43,7 +44,7 @@ namespace LibrarySystem
         {
             btnConfirm.IsEnabled = false;
             XmlController controller = new XmlController();
-            string amount = txtAmount.Text.Insert(0, "£").Insert(txtAmount.Text.Length - 1, ".");
+            string amount = MoneyFormat.AddSignAndDecimal(txtAmountPounds.Text, txtAmountPence.Text);
             if (_modifying)
             {
                 controller.UpdateFee(_thisMember._cardNumber, amount, txtReason.Text, _index);
@@ -58,7 +59,7 @@ namespace LibrarySystem
         private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)
         {
             //Enables confirm button to be clicked if there is some text in the amount box
-            if (txtAmount.Text.Length > 0)
+            if (txtAmountPounds.Text.Length > 0 && txtAmountPence.Text.Length == 2)
             {
                 btnConfirm.IsEnabled = true;
             }
@@ -71,9 +72,9 @@ namespace LibrarySystem
         private void txtAmount_TextChanged(object sender, TextChangedEventArgs e)
         {
             //This code only allows numbers to be entered into the amount textbox
-            int initialSelectionStart = txtAmount.SelectionStart;
-            string txtAmountString = txtAmount.Text;
-            foreach (char c in txtAmount.Text)
+            int initialSelectionStart = ((TextBox)sender).SelectionStart;
+            string txtAmountString = ((TextBox)sender).Text;
+            foreach (char c in ((TextBox)sender).Text)
             {
                 if (!Char.IsDigit(c))
                 {
@@ -82,8 +83,31 @@ namespace LibrarySystem
                     initialSelectionStart--;
                 }
             }
-            txtAmount.Text = txtAmountString;
-            txtAmount.SelectionStart = initialSelectionStart;
+            ((TextBox)sender).Text = txtAmountString;
+            ((TextBox)sender).SelectionStart = initialSelectionStart;
+
+            checkTextBoxes();
+        }
+
+        private void txtAmountPence_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //This code only allows numbers to be entered into the pence amount textbox
+            int initialSelectionStart = ((TextBox)sender).SelectionStart;
+            string txtAmountString = ((TextBox)sender).Text;
+            foreach (char c in ((TextBox)sender).Text)
+            {
+                if (!Char.IsDigit(c) || txtAmountString.Length > 2)
+                {
+                    //If the character isn't a digit, it gets removed from the string
+                    //If the length of the string is 2, nothing can be added to it
+                    //This is because there is 100 pence in a pound. Only 2 digits are needed to store pence.
+                    //The rest can be represented by the pound part of the £x.xx format
+                    txtAmountString = txtAmountString.Remove(initialSelectionStart - 1, 1);
+                    initialSelectionStart--;
+                }
+            }
+            ((TextBox)sender).Text = txtAmountString;
+            ((TextBox)sender).SelectionStart = initialSelectionStart;
 
             checkTextBoxes();
         }
