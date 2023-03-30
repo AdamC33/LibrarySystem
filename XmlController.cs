@@ -230,6 +230,18 @@ namespace LibrarySystem
             xmlDoc.Save(memberPath);
         }
 
+        public void DeleteFee(string cardNumber, int index)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode Fees = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']/fees", cardNumber));
+            XmlNode Fee = Fees.ChildNodes.Item(index);
+            Fees.RemoveChild(Fee);
+
+            xmlDoc.Save(memberPath);
+        }
+
         public void UpdateFee(string cardNumber, string amount, string reason, int index)
         {
             XmlDocument xmlDoc = new XmlDocument();

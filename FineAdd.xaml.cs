@@ -20,13 +20,13 @@ namespace LibrarySystem
     public partial class FineAdd : Window
     {
         private bool _modifying = true;
-        private Member _thisMember;
+        private string _cardNumber;
         private int _index;
 
-        public FineAdd(Member thisMember, int index = -1, string amount = null, string reason = null)
+        public FineAdd(string cardNumber, int index = -1, string amount = null, string reason = null)
         {
             InitializeComponent();
-            _thisMember = thisMember;
+            _cardNumber = cardNumber;
             _index = index;
             if (amount == null)
             {
@@ -47,11 +47,11 @@ namespace LibrarySystem
             string amount = MoneyFormat.AddSignAndDecimal(txtAmountPounds.Text, txtAmountPence.Text);
             if (_modifying)
             {
-                controller.UpdateFee(_thisMember._cardNumber, amount, txtReason.Text, _index);
+                controller.UpdateFee(_cardNumber, amount, txtReason.Text, _index);
             }
             else
             {
-                controller.AddFee(_thisMember._cardNumber, amount, txtReason.Text);
+                controller.AddFee(_cardNumber, amount, txtReason.Text);
             }
             this.Close();
         }

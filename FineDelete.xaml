@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="FineDelete" Height="350" Width="350">
     <Grid>
-        
+        <Label Content="Why are you removing the fine? Please specify:" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="radPaid" Content="Fine has been paid" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" IsChecked="True" Checked="checkRadioButtons"/>
+        <RadioButton x:Name="radBanned" Content="Member has been banned" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Checked="checkRadioButtons"/>
+        <RadioButton x:Name="radOther" Content="Other:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Checked="checkRadioButtons"/>
+        <TextBox x:Name="txtOther" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="312" Height="100" FontSize="14" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsEnabled="False" TextChanged="txtOther_TextChanged"/>
+        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Center" Margin="0,258,0,0" VerticalAlignment="Top" Width="168" Height="33" Click="btnConfirm_Click"/>
+
+
     </Grid>
 </Window>

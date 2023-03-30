@@ -19,9 +19,54 @@ namespace LibrarySystem
     /// </summary>
     public partial class FineDelete : Window
     {
-        public FineDelete()
+        private string _cardNumber;
+        private int _index;
+        private bool _hasInitialised = false;
+        public FineDelete(string cardNumber, int index)
         {
             InitializeComponent();
+            _cardNumber = cardNumber;
+            _index = index;
+            _hasInitialised = true;
+        }
+
+        private void checkRadioButtons(object sender, RoutedEventArgs e)
+        {
+            if ((radPaid.IsChecked == true || radBanned.IsChecked == true) && _hasInitialised)
+            {
+                txtOther.IsEnabled = false;
+                btnConfirm.IsEnabled = true;
+            }
+            else if (_hasInitialised && (radOther.IsChecked == true && txtOther.Text.Length == 0))
+            {
+                txtOther.IsEnabled = true;
+                btnConfirm.IsEnabled = false;
+            }
+            else if (_hasInitialised && (radOther.IsChecked == true && txtOther.Text.Length > 0))
+            {
+                txtOther.IsEnabled = true;
+                btnConfirm.IsEnabled = true;
+            }
+        }
+
+        private void txtOther_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtOther.Text.Length > 0)
+            {
+                btnConfirm.IsEnabled = true;
+            }
+            else
+            {
+                btnConfirm.IsEnabled = false;
+            }
+        }
+
+        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Add to log file w/ explanation for why fine was removed
+            XmlController controller = new XmlController();
+            controller.DeleteFee(_cardNumber, _index);
+            this.Close();
         }
     }
 }
