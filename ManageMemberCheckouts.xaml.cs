@@ -48,8 +48,6 @@ namespace LibrarySystem
             DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
 
             List<Book> library = controller.GetLibrary();
-            List<Book> checkedOutBooks = new List<Book>();
-            List<Book> queuedBooks = new List<Book>();
 
             foreach (Book b in library)
             {
