@@ -87,42 +87,22 @@ namespace LibrarySystem
             }
         }
 
-        private void txtISBN_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //This code only allows numbers to be entered into the ISBN textbox
-            int initialSelectionStart = txtISBN.SelectionStart;
-            string txtISBNString = txtISBN.Text;
-            foreach (char c in txtISBN.Text)
+            //This code only allows numbers to be entered into the textboxes where only numbers are to be entered
+            int initialSelectionStart = ((TextBox)sender).SelectionStart;
+            string txtNumberString = ((TextBox)sender).Text;
+            foreach (char c in ((TextBox)sender).Text)
             {
                 if (!Char.IsDigit(c))
                 {
                     //If the character isn't a digit, it gets removed from the string
-                    txtISBNString = txtISBNString.Remove(txtISBNString.IndexOf(c), 1);
+                    txtNumberString = txtNumberString.Remove(txtNumberString.IndexOf(c), 1);
                     initialSelectionStart--;
                 }
             }
-            txtISBN.Text = txtISBNString;
-            txtISBN.SelectionStart = initialSelectionStart;
-
-            checkTextBoxes();
-        }
-
-        private void txtYear_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //This code only allows numbers to be entered into the year textbox
-            int initialSelectionStart = txtYear.SelectionStart;
-            string txtYearString = txtYear.Text;
-            foreach (char c in txtYear.Text)
-            {
-                if (!Char.IsDigit(c))
-                {
-                    //If the character isn't a digit, it gets removed from the string
-                    txtYearString = txtYearString.Remove(txtYearString.IndexOf(c), 1);
-                    initialSelectionStart--;
-                }
-            }
-            txtYear.Text = txtYearString;
-            txtYear.SelectionStart = initialSelectionStart;
+            ((TextBox)sender).Text = txtNumberString;
+            ((TextBox)sender).SelectionStart = initialSelectionStart;
 
             checkTextBoxes();
         }

@@ -8,13 +8,13 @@
         Title="Book Details" Height="350" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label Content="ISBN:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="90,14,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtISBN_TextChanged"/>
+        <TextBox x:Name="txtISBN" HorizontalAlignment="Left" Margin="90,14,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
         <Label Content="Title:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtTitle" HorizontalAlignment="Left" Margin="90,54,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Label Content="Author:" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtAuthor" HorizontalAlignment="Left" Margin="90,94,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Label Content="Year:" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="90,134,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtYear_TextChanged"/>
+        <TextBox x:Name="txtYear" HorizontalAlignment="Left" Margin="90,134,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
         <Label Content="Publisher:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtPublisher" HorizontalAlignment="Left" Margin="90,174,0,0" VerticalAlignment="Top" Width="229" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
         <Label Content="Category:" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontSize="14"/>

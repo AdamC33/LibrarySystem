@@ -79,42 +79,22 @@ namespace LibrarySystem
             }
         }
 
-        private void txtCardNumber_TextChanged(object sender, TextChangedEventArgs e)
+        private void txtNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //This code only allows numbers to be entered into the card number textbox
-            int initialSelectionStart = txtCardNumber.SelectionStart;
-            string txtCardNumberString = txtCardNumber.Text;
-            foreach (char c in txtCardNumber.Text)
+            //This code only allows numbers to be entered into the textboxes where only numbers are to be entered
+            int initialSelectionStart = ((TextBox)sender).SelectionStart;
+            string txtNumberString = ((TextBox)sender).Text;
+            foreach (char c in ((TextBox)sender).Text)
             {
                 if (!Char.IsDigit(c))
                 {
                     //If the character isn't a digit, it gets removed from the string
-                    txtCardNumberString = txtCardNumberString.Remove(txtCardNumberString.IndexOf(c), 1);
+                    txtNumberString = txtNumberString.Remove(txtNumberString.IndexOf(c), 1);
                     initialSelectionStart--;
                 }
             }
-            txtCardNumber.Text = txtCardNumberString;
-            txtCardNumber.SelectionStart = initialSelectionStart;
-
-            checkTextBoxes();
-        }
-
-        private void txtPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //This code only allows numbers to be entered into the phone number textbox
-            int initialSelectionStart = txtPhoneNumber.SelectionStart;
-            string txtPhoneNumberString = txtPhoneNumber.Text;
-            foreach (char c in txtPhoneNumber.Text)
-            {
-                if (!Char.IsDigit(c))
-                {
-                    //If the character isn't a digit, it gets removed from the string
-                    txtPhoneNumberString = txtPhoneNumberString.Remove(txtPhoneNumberString.IndexOf(c), 1);
-                    initialSelectionStart--;
-                }
-            }
-            txtPhoneNumber.Text = txtPhoneNumberString;
-            txtPhoneNumber.SelectionStart = initialSelectionStart;
+            ((TextBox)sender).Text = txtNumberString;
+            ((TextBox)sender).SelectionStart = initialSelectionStart;
 
             checkTextBoxes();
         }
