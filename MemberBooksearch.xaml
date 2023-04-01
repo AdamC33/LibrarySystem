@@ -13,14 +13,14 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding _title}" Margin="0,5,0,0" TextTrimming="CharacterEllipsis"/>
-                        <TextBlock FontSize="14" FontStyle="Italic" Text="{Binding _author}" Margin="0,30,0,0" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding _title}" HorizontalAlignment="Left" Margin="0,5,0,0" Width="860" TextTrimming="CharacterEllipsis" />
+                        <TextBlock FontSize="14" FontStyle="Italic" Text="{Binding _author}" HorizontalAlignment="Left" Margin="0,30,0,0" Width="860" TextTrimming="CharacterEllipsis"/>
                         <Label FontSize="14" Content="Year:" Margin="-5,54,0,0"/>
-                        <TextBlock FontSize="14" Text="{Binding _year}" Margin="70,60,0,0" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock FontSize="14" Text="{Binding _year}" HorizontalAlignment="Left" Margin="70,60,0,0" Width="790" TextTrimming="CharacterEllipsis"/>
                         <Label FontSize="14" Content="Publisher:" Margin="-5,74,0,0"/>
-                        <TextBlock FontSize="14" Text="{Binding _publisher}" Margin="70,80,0,0" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock FontSize="14" Text="{Binding _publisher}" HorizontalAlignment="Left" Margin="70,80,0,0" Width="790" TextTrimming="CharacterEllipsis"/>
                         <Label FontSize="14" Content="Category:" Margin="-5,94,0,0"/>
-                        <TextBlock FontSize="14" Text="{Binding _category}" Margin="70,100,0,5" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock FontSize="14" Text="{Binding _category}" HorizontalAlignment="Left" Margin="70,100,0,5" Width="790" TextTrimming="CharacterEllipsis"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

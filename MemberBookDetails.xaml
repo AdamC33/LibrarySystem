@@ -8,17 +8,27 @@
       d:DesignHeight="417" d:DesignWidth="908"
       Title="MemberBookDetails">
 
-    <Grid Loaded="pageLoaded">
-        <TextBlock x:Name="txtBookTitle" HorizontalAlignment="Left" Margin="26,23,0,0" Text="[title]" VerticalAlignment="Top" Width="856" FontSize="36" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
-        <TextBlock x:Name="txtBookAuthor" HorizontalAlignment="Left" Margin="26,80,0,0" Text="[author]" VerticalAlignment="Top" Width="856" FontSize="18" TextTrimming="CharacterEllipsis" FontStyle="Italic"/>
-        <Label Content="Year:" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock x:Name="txtBookYear" HorizontalAlignment="Left" Margin="176,160,0,0" Text="[year]" VerticalAlignment="Top" Width="278" FontSize="18" TextTrimming="CharacterEllipsis"/>
-        <Label Content="Publisher:" HorizontalAlignment="Left" Margin="22,200,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock x:Name="txtBookPublisher" HorizontalAlignment="Left" Margin="176,205,0,0" Text="[publisher]" VerticalAlignment="Top" Width="278" FontSize="18" TextTrimming="CharacterEllipsis"/>
-        <Label Content="Category:" HorizontalAlignment="Left" Margin="22,245,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBlock x:Name="txtBookCategory" HorizontalAlignment="Left" Margin="176,250,0,0" Text="[category]" VerticalAlignment="Top" Width="278" FontSize="18" TextTrimming="CharacterEllipsis"/>
-        <Label Content="ISBN:" HorizontalAlignment="Left" Margin="22,310,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Bahnschrift"/>
-        <TextBlock x:Name="txtBookISBN" HorizontalAlignment="Left" Margin="76,315,0,0" Text="[ISBN]" VerticalAlignment="Top" Width="150" FontSize="14" TextTrimming="CharacterEllipsis" FontFamily="Bahnschrift"/>
-        <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="490,164,0,0" VerticalAlignment="Top" Height="53" Width="139" Click="btnBookCheck_Click"/>
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Loaded="pageLoaded">
+            <TextBlock x:Name="txtBookTitle" HorizontalAlignment="Left" Margin="26,23,0,0" Text="[title]" VerticalAlignment="Top" Width="856" FontSize="36" FontWeight="Bold" TextWrapping="Wrap"/>
+            <TextBlock x:Name="txtBookAuthor" HorizontalAlignment="Left" Margin="26,20,0,0" Text="[author]" VerticalAlignment="Top" Width="856" FontSize="18" TextWrapping="Wrap" FontStyle="Italic"/>
+            <Grid Margin="22,45,0,0">
+                <Label Content="Year:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
+                <TextBlock x:Name="txtBookYear" HorizontalAlignment="Left" Margin="176,5,0,0" Text="[year]" VerticalAlignment="Top" Width="684" FontSize="18" TextWrapping="Wrap"/>
+            </Grid>
+            <Grid Margin="22,10,0,0">
+                <Label Content="Publisher:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
+                <TextBlock x:Name="txtBookPublisher" HorizontalAlignment="Left" Margin="176,0,0,0" Text="[publisher]" VerticalAlignment="Center" Width="684" FontSize="18" TextWrapping="Wrap"/>
+            </Grid>
+            <Grid Margin="22,10,0,0">
+                <Label Content="Category:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="18"/>
+                <TextBlock x:Name="txtBookCategory" HorizontalAlignment="Left" Margin="176,5,0,0" Text="[category]" VerticalAlignment="Top" Width="684" FontSize="18" TextWrapping="Wrap"/>
+            </Grid>
+            <Grid Margin="22,30,0,0">
+                <Label Content="ISBN:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontFamily="Bahnschrift"/>
+                <TextBlock x:Name="txtBookISBN" HorizontalAlignment="Left" Margin="76,5,0,0" Text="[ISBN]" VerticalAlignment="Top" Width="784" FontSize="14" FontFamily="Bahnschrift"/>
+            </Grid>
+            <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="22,30,0,0" VerticalAlignment="Top" Height="53" Width="139" Click="btnBookCheck_Click"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
