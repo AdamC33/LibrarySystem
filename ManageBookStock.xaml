@@ -22,7 +22,7 @@
                 <DataTemplate>
                     <Grid>
                         <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding cardNumber}" Width="80" HorizontalAlignment="Left"/>
-                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding name}" TextTrimming="CharacterEllipsis" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" FontStyle="{Binding fontStyle}"  Text="{Binding name}" TextTrimming="CharacterEllipsis" Width="550" Margin="100,0,0,0" HorizontalAlignment="Left"/>
                         <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding dueDate}" Margin="0,0,70,0" HorizontalAlignment="Right"/>
                         <Button Content="Notify" IsEnabled="{Binding notifyIsEnabled}" Width="50" HorizontalAlignment="Right" Click="btnNotify_Click"/>
                     </Grid>

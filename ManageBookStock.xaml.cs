@@ -28,6 +28,7 @@ namespace LibrarySystem
             public string name { get; set; }
             public string dueDate { get; set; }
             public string fontWeight { get; set; }
+            public string fontStyle { get; set; }
             public string notifyIsEnabled { get; set; }
         }
 
@@ -51,18 +52,27 @@ namespace LibrarySystem
             for (int i = 0; i < _thisBook.checkoutListMinusQueueLength; i++)
             {
                 string thisFontWeight = "Regular";
+                string thisFontStyle = "Normal";
                 string thisNotifyIsEnabled = "False";
                 if (currTime >= _thisBook.getDueDate(_thisBook.getCardNumber(i)))
                 {
                     thisFontWeight = "Bold";
                     thisNotifyIsEnabled = "True";
                 }
+                string thisMemberName = controller.GetMemberName(_thisBook.getCardNumber(i));
+                if (thisMemberName == null)
+                {
+                    thisMemberName = "This person is no longer a member";
+                    thisFontStyle = "Italic";
+                    thisNotifyIsEnabled = "False";
+                }
                 checkBookList.Add(new checkBookDisplay
                 {
                     cardNumber = _thisBook.getCardNumber(i),
-                    name = controller.GetMemberName(_thisBook.getCardNumber(i)),
+                    name = thisMemberName,
                     dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i)).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
                     fontWeight = thisFontWeight,
+                    fontStyle = thisFontStyle,
                     notifyIsEnabled = thisNotifyIsEnabled
                 });
             }
