@@ -9,6 +9,7 @@
       Title="LibrarianMainpage">
 
     <Grid>
+        <Label Content="Library Bookings Co." HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="48" FontWeight="Bold" FontFamily="Century Gothic"/>
         <Button x:Name="btnManageBooks" HorizontalAlignment="Left" Margin="170,157,0,0" VerticalAlignment="Top" Width="175" Height="175" Click="btnManageBooks_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/bookicon.png"/>
         </Button>

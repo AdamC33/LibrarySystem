@@ -24,10 +24,9 @@
                 <DataTemplate>
                     <Grid>
                         <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
-                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="480" Margin="105,0,0,0" HorizontalAlignment="Left"/>
-                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding getDueDateString}" Margin="0,0,140,0" HorizontalAlignment="Right"/>
-                        <Button Content="Return" Margin="0,0,70,0" Width="50" HorizontalAlignment="Right" Click="btnReturn_Click"/>
-                        <Button Content="Renew" Width="50" HorizontalAlignment="Right" Click="btnRenew_Click"/>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="550" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding getDueDateString}" Margin="0,0,70,0" HorizontalAlignment="Right"/>
+                        <Button Content="Notify" Width="50" HorizontalAlignment="Right" IsEnabled="{Binding notifyIsEnabled}"  Click="btnNotify_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>

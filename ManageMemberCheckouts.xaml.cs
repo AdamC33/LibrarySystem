@@ -30,6 +30,7 @@ namespace LibrarySystem
             private DateTimeOffset dueDateDateTime { get; set; }
             private string dueDateString { get; set; }
             public string fontWeight { get; set; }
+            public string notifyIsEnabled { get; set; }
 
             public DateTimeOffset dueDate
             {
@@ -78,9 +79,11 @@ namespace LibrarySystem
                         if (b.getDueDate(_thisMember._cardNumber) != DateTimeOffset.FromUnixTimeSeconds(0))
                         {
                             string thisFontWeight = "Regular";
+                            string thisNotifyIsEnabled = "False";
                             if (currTime > b.getDueDate(_thisMember._cardNumber))
                             {
                                 thisFontWeight = "Bold";
+                                thisNotifyIsEnabled = "True";
                             }
                             //Books that the member has checked out
                             checkBookList.Add(new checkBookDisplay
@@ -88,7 +91,8 @@ namespace LibrarySystem
                                 ISBN = b._ISBN,
                                 title = b._title,
                                 dueDate = b.getDueDate(b.getCardNumber(i)),
-                                fontWeight = thisFontWeight
+                                fontWeight = thisFontWeight,
+                                notifyIsEnabled = thisNotifyIsEnabled,
                             });
                         }
                         else
@@ -108,12 +112,7 @@ namespace LibrarySystem
             listQueued.ItemsSource = queueBookList;
         }
 
-        private void btnReturn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnRenew_Click(object sender, RoutedEventArgs e)
+        private void btnNotify_Click(object sender, RoutedEventArgs e)
         {
 
         }

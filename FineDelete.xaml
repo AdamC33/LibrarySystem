@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="FineDelete" Height="350" Width="350">
+        Title="FineDelete" Height="350" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label Content="Why are you removing the fine? Please specify:" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="radPaid" Content="Fine has been paid" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top" IsChecked="True" Checked="checkRadioButtons"/>

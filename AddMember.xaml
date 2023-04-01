@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="AddMember" Height="270" Width="350">
+        Title="AddMember" Height="270" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label Content="Card number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtCardNumber" HorizontalAlignment="Left" Margin="121,14,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
