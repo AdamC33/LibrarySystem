@@ -1,0 +1,25 @@
+﻿<Page x:Class="LibrarySystem.MemberRequests"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="417" d:DesignWidth="908"
+      Title="MemberRequests">
+
+    <Grid Loaded="pageLoaded">
+        <Label Content="Your Notifications:" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="381" FontSize="30" FontWeight="Bold"/>
+        <Button x:Name="btnAllRead" Content="Mark all as read" HorizontalAlignment="Left" Margin="753,10,0,0" VerticalAlignment="Top" Height="45" Width="145" FontSize="18" Click="btnAllRead_Click"/>
+        <ListBox x:Name="listRequests" Width="910" Margin="-1,70,0,0" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="892">
+                        <TextBlock FontSize="16" Text="{Binding request}" HorizontalAlignment="Left" Margin="0,5,0,0" Width="800" TextWrapping="Wrap"/>
+                        <Button x:Name="btnRead" Uid="{Binding index}" Content="Mark as read" Width="80" HorizontalAlignment="Right" Click="btnRead_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

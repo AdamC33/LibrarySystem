@@ -115,6 +115,9 @@
     <Compile Include="MemberHomepage.xaml.cs">
       <DependentUpon>MemberHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MemberRequests.xaml.cs">
+      <DependentUpon>MemberRequests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MoneyFormat.cs" />
     <Compile Include="XmlController.cs" />
     <Page Include="AddBook.xaml">
@@ -198,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MemberMainpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MemberRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,6 +301,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\notificationicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\unreadicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

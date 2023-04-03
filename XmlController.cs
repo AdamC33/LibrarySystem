@@ -352,5 +352,34 @@ namespace LibrarySystem
             }
             return false;
         }
+
+        public bool ReadNotification(string cardNum, string password, int index) //If index is -1, all notifications are deleted
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            foreach (XmlNode node in xmlDoc.SelectSingleNode("//members"))
+            {
+                string xmlCardNum = node.SelectSingleNode("cardnumber").InnerText;
+                string xmlPassword = node.SelectSingleNode("password").InnerText;
+
+                if (cardNum == xmlCardNum && password == xmlPassword)
+                {
+                    XmlNode Requests = node.SelectSingleNode("requests");
+                    if (index > -1)
+                    {
+                        XmlNode Request = Requests.ChildNodes.Item(index);
+                        Requests.RemoveChild(Request);
+                    }
+                    else
+                    {
+                        Requests.RemoveAll();
+                    }
+                    xmlDoc.Save(memberPath);
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

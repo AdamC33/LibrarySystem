@@ -96,5 +96,10 @@ namespace LibrarySystem
             thisFee._reason = reason;
             _fees[index] = thisFee;
         }
+
+        public List<string> getRequests
+        {
+            get { return _requests; }
+        }
     }
 }

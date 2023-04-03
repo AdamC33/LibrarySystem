@@ -28,9 +28,23 @@ namespace LibrarySystem
         {
             InitializeComponent();
             homepageFirstLoaded = false;
-            _currentUser = currentUser;
-            txtWelcome.Text = String.Format("Welcome, {0}!", currentUser._name);
+            UpdateDisplay(currentUser);
             frameMember.Content = new MemberHomepage(_currentUser);
+        }
+
+        public void UpdateDisplay(Member currentUser)
+        {
+            XmlController controller = new XmlController();
+            _currentUser = controller.GetMember(currentUser._cardNumber, currentUser.getPassword);
+            txtWelcome.Text = String.Format("Welcome, {0}!", _currentUser._name);
+            if (_currentUser.getRequests.Count > 0)
+            {
+                imgUnread.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                imgUnread.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -61,21 +75,24 @@ namespace LibrarySystem
                 searchBy = "title";
             }
             frameMember.Content = new MemberBooksearch(txtSearch.Text, searchBy, _currentUser);
+            UpdateDisplay(_currentUser);
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             frameMember.Content = new MemberHomepage(_currentUser);
+            UpdateDisplay(_currentUser);
+        }
+
+        private void btnNotifications_Click(object sender, RoutedEventArgs e)
+        {
+            frameMember.Content = new MemberRequests(_currentUser, this);
+            UpdateDisplay(_currentUser);
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Login());
-        }
-
-        private void btnNotifications_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
