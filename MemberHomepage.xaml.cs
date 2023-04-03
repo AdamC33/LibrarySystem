@@ -22,6 +22,7 @@ namespace LibrarySystem
         private Book _book2;
         private Book _book3;
         private Book _book4;
+
         public MemberHomepage(Member currentUser)
         {
             InitializeComponent();
