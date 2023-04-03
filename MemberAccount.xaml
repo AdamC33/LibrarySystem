@@ -1,0 +1,23 @@
+﻿<Page x:Class="LibrarySystem.MemberAccount"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="417" d:DesignWidth="908"
+      Title="MemberAccount">
+
+    <Grid Loaded="pageLoaded">
+        <Border Background="White" BorderThickness="3" Height="210" Width="210" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="33,13,0,0" BorderBrush="Black">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/defaultuser.jpg" Height="200" Width="200"/>
+        </Border>
+        <Button HorizontalAlignment="Left" Margin="33,246,0,0" VerticalAlignment="Top" Width="130" Height="130">
+            <Grid>
+                <Image Source="/img/bookshelficon.png" Height="100" Width="100" VerticalAlignment="Top" Margin="0,0,0,40"/>
+                <Label Content="My Library" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20"/>
+            </Grid>
+        </Button>
+
+    </Grid>
+</Page>

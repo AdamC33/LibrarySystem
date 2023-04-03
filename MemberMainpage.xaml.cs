@@ -84,6 +84,12 @@ namespace LibrarySystem
             UpdateDisplay(_currentUser);
         }
 
+        private void btnAccount_Click(object sender, RoutedEventArgs e)
+        {
+            frameMember.Content = new MemberAccount(_currentUser);
+            UpdateDisplay(_currentUser);
+        }
+
         private void btnNotifications_Click(object sender, RoutedEventArgs e)
         {
             frameMember.Content = new MemberRequests(_currentUser, this);

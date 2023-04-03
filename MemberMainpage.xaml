@@ -19,7 +19,7 @@
                 <Button x:Name="btnHome" HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Center" Width="52" Height="52" Grid.Column="1" Click="btnHome_Click">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44" Source="/img/home.png"/>
                 </Button>
-                <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="48" Height="48">
+                <Button x:Name="btnAccount" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="48" Height="48" Click="btnAccount_Click">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Height="44" Width="44" Source="/img/defaultuser.jpg"/>
                 </Button>
                 <TextBlock x:Name="txtWelcome" Text="Welcome, [name]!" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,9,0,0" FontWeight="Bold" FontStyle="Italic" FontSize="14" Width="388" TextTrimming="CharacterEllipsis"/>
@@ -29,7 +29,7 @@
                 <Button x:Name="btnNotifications" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,31,0,0" Width="25" Height="25" Click="btnNotifications_Click">
                     <Grid>
                         <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="-1,-1,0,0" Source="/img/notificationicon.png" Width="23" Height="23"/>
-                        <Image x:Name="imgUnread" RenderOptions.BitmapScalingMode="HighQuality" Margin="9,0,0,9" Source="/img/unreadicon.png" Width="12" Height="12" Visibility="Visible"/>
+                        <Image x:Name="imgUnread" RenderOptions.BitmapScalingMode="HighQuality" Margin="11,-4,-4,11" Source="/img/unreadicon.png" Visibility="Visible"/>
                     </Grid>
                 </Button>
             </Grid>
