@@ -72,5 +72,10 @@ namespace LibrarySystem
         {
             NavigationService.Navigate(new Login());
         }
+
+        private void btnNotifications_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

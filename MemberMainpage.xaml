@@ -26,6 +26,9 @@
                 <Button x:Name="btnLogout" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="66,31,0,0" Width="25" Height="25" Click="btnLogout_Click">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="3,2,0,0" Height="18" Width="18" Source="/img/logouticon.png"/>
                 </Button>
+                <Button x:Name="btnNotifications" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="96,31,0,0" Width="25" Height="25" Click="btnNotifications_Click">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="-1,-1,0,0" Source="/img/notificationicon.png" Width="23" Height="23"/>
+                </Button>
             </Grid>
         </Border>
 
