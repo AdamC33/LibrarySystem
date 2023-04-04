@@ -69,12 +69,20 @@ namespace LibrarySystem
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-
+            XmlController controller = new XmlController();
+            Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
+            thisBook.returnBook(_currentUser._cardNumber);
+            controller.UpdateBookCheckout(thisBook);
+            UpdateDisplay();
         }
 
         private void btnRenew_Click(object sender, RoutedEventArgs e)
         {
-
+            XmlController controller = new XmlController();
+            Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
+            thisBook.renewBook(_currentUser._cardNumber);
+            controller.UpdateBookCheckout(thisBook);
+            UpdateDisplay();
         }
     }
 }

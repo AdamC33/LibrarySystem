@@ -162,6 +162,40 @@ namespace LibrarySystem
             }
         }
 
+        public bool returnBook(string cardNumber)
+        {
+            //true = book has been returned
+            //false = book hasn't been returned
+            foreach (Checkout c in _checkoutList)
+            { 
+                if (c._cardNumber == cardNumber)
+                {
+                    _checkoutList.Remove(c);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool renewBook(string cardNumber)
+        {
+            //true = book has been renewed
+            //false = book hasn't been renewed
+            foreach (Checkout c in _checkoutList)
+            {
+                if (c._cardNumber == cardNumber)
+                {
+                    _checkoutList[_checkoutList.IndexOf(c)] = new Checkout
+                    { _cardNumber = c._cardNumber,
+                      _dueDate = DateTimeOffset.UtcNow.AddDays(21) };
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public bool moveQueueToCheckout()
         {
             //Automatically checks the queue and moves the earliest to checkout
