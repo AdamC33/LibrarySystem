@@ -22,6 +22,12 @@ namespace LibrarySystem
     {
         private Member _currentUser;
 
+        private class fineDisplay //Used for the items source binding
+        {
+            public string amount { get; set; }
+            public string reason { get; set; }
+        }
+
         public MemberAccount(Member currentUser)
         {
             InitializeComponent();
@@ -45,9 +51,20 @@ namespace LibrarySystem
             txtCardNumber.Text = _currentUser._cardNumber;
 
             List<CheckBookDisplay>[] memberLibraryList = CheckBookDisplay.GetMemberLibraryDisplay(_currentUser);
+            List<fineDisplay> fineList = new List<fineDisplay>();
+
+            for (int i = 0; i < _currentUser.feeListCount; i++)
+            {
+                fineList.Add(new fineDisplay
+                {
+                    amount = _currentUser.getFeeAmount(i),
+                    reason = _currentUser.getFeeReason(i)
+                });
+            }
 
             listLibrary.ItemsSource = memberLibraryList[0].OrderBy(o => o.getDueDate);
             listQueued.ItemsSource = memberLibraryList[1];
+            listFines.ItemsSource = fineList;
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
