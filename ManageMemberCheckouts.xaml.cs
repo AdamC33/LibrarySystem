@@ -35,52 +35,10 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
 
-            List<CheckBookDisplay> checkBookList = new List<CheckBookDisplay>();
-            List<CheckBookDisplay> queueBookList = new List<CheckBookDisplay>();
-            DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
+            List<CheckBookDisplay>[] memberLibraryList = CheckBookDisplay.GetMemberLibraryDisplay(_thisMember);
 
-            List<Book> library = controller.GetLibrary();
-
-            foreach (Book b in library)
-            {
-                for (int i = 0; i < b.checkoutListLength; i++)
-                {
-                    if (b.getCardNumber(i) == _thisMember._cardNumber)
-                    {
-                        if (b.getDueDate(_thisMember._cardNumber) != DateTimeOffset.FromUnixTimeSeconds(0))
-                        {
-                            string thisFontWeight = "Regular";
-                            string thisNotifyIsEnabled = "False";
-                            if (currTime > b.getDueDate(_thisMember._cardNumber))
-                            {
-                                thisFontWeight = "Bold";
-                                thisNotifyIsEnabled = "True";
-                            }
-                            //Books that the member has checked out
-                            checkBookList.Add(new CheckBookDisplay
-                            {
-                                ISBN = b._ISBN,
-                                title = b._title,
-                                dueDate = b.getDueDate(b.getCardNumber(i)),
-                                fontWeight = thisFontWeight,
-                                notifyIsEnabled = thisNotifyIsEnabled,
-                            });
-                        }
-                        else
-                        {
-                            //Books that the member is queued for
-                            queueBookList.Add(new CheckBookDisplay
-                            {
-                                ISBN = b._ISBN,
-                                title = b._title
-                            });
-                        }
-                    }
-                }
-            }
-
-            listChecked.ItemsSource = checkBookList.OrderBy(o=>o.getDueDate);
-            listQueued.ItemsSource = queueBookList;
+            listChecked.ItemsSource = memberLibraryList[0].OrderBy(o => o.getDueDate);
+            listQueued.ItemsSource = memberLibraryList[1];
         }
 
         private void btnNotify_Click(object sender, RoutedEventArgs e)

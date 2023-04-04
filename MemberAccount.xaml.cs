@@ -22,15 +22,6 @@ namespace LibrarySystem
     {
         private Member _currentUser;
 
-        private class libraryDisplay
-        {
-            public string ISBN { get; set; }
-            public string title { get; set; }
-            private DateTimeOffset dueDateDateTime { get; set; }
-            private string dueDateString { get; set; }
-            public string fontWeight { get; set; }
-        }
-
         public MemberAccount(Member currentUser)
         {
             InitializeComponent();
@@ -47,10 +38,16 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
             _currentUser = controller.GetMember(_currentUser._cardNumber, _currentUser.getPassword);
+
             txtName.Text = _currentUser._name;
             txtPhoneNumber.Text = _currentUser._phoneNumber;
             txtEmail.Text = _currentUser._email;
             txtCardNumber.Text = _currentUser._cardNumber;
+
+            List<CheckBookDisplay>[] memberLibraryList = CheckBookDisplay.GetMemberLibraryDisplay(_currentUser);
+
+            listLibrary.ItemsSource = memberLibraryList[0].OrderBy(o => o.getDueDate);
+            listQueued.ItemsSource = memberLibraryList[1];
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
