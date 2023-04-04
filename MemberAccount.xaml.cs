@@ -26,11 +26,22 @@ namespace LibrarySystem
         {
             InitializeComponent();
             _currentUser = currentUser;
+            UpdateDisplay();
         }
 
         private void pageLoaded(object sender, RoutedEventArgs e)
         {
             NavigationService.RemoveBackEntry();
+        }
+
+        private void UpdateDisplay()
+        {
+            XmlController controller = new XmlController();
+            _currentUser = controller.GetMember(_currentUser._cardNumber, _currentUser.getPassword);
+            txtName.Text = _currentUser._name;
+            txtPhoneNumber.Text = _currentUser._phoneNumber;
+            txtEmail.Text = _currentUser._email;
+            txtCardNumber.Text = _currentUser._cardNumber;
         }
     }
 }

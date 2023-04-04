@@ -8,16 +8,27 @@
       d:DesignHeight="417" d:DesignWidth="908"
       Title="MemberAccount">
 
-    <Grid Loaded="pageLoaded">
-        <Border Background="White" BorderThickness="3" Height="210" Width="210" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="33,13,0,0" BorderBrush="Black">
-            <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/defaultuser.jpg" Height="200" Width="200"/>
-        </Border>
-        <Button HorizontalAlignment="Left" Margin="33,246,0,0" VerticalAlignment="Top" Width="130" Height="130">
-            <Grid>
-                <Image Source="/img/bookshelficon.png" Height="100" Width="100" VerticalAlignment="Top" Margin="0,0,0,40"/>
-                <Label Content="My Library" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="20"/>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Loaded="pageLoaded">
+            <Grid VerticalAlignment="Top" Height="306">
+                <Border Background="White" BorderThickness="3" Height="210" Width="210" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="33,13,0,0" BorderBrush="Black">
+                    <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/defaultuser.jpg" Height="200" Width="200"/>
+                </Border>
+                <StackPanel>
+                    <TextBlock x:Name="txtName" TextWrapping="Wrap" Text="[Name]" Width="620" Margin="260,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24"/>
+                    <Grid Width="625" Margin="255,10,0,0" HorizontalAlignment="Left">
+                        <Label Content="Phone number:" FontSize="18"/>
+                        <TextBlock x:Name="txtPhoneNumber" TextWrapping="Wrap" Text="[Phone number]" HorizontalAlignment="Left" VerticalAlignment="Top" Width="465" Margin="160,5,0,0" FontSize="18"/>
+                    </Grid>
+                    <Grid Width="625" Margin="255,0,0,0" HorizontalAlignment="Left">
+                        <Label Content="Email address:" FontSize="18"/>
+                        <TextBlock x:Name="txtEmail" TextWrapping="Wrap" Text="[Email]" HorizontalAlignment="Left" VerticalAlignment="Top" Width="465" Margin="160,5,0,0" FontSize="18"/>
+                    </Grid>
+                </StackPanel>
+                <Label Content="Card Number:" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,228,0,0" />
+                <TextBlock x:Name="txtCardNumber" TextWrapping="Wrap" Text="[Card Number]" HorizontalAlignment="Left" VerticalAlignment="Top" Width="206" Margin="37,262,0,0" FontSize="18" FontWeight="Bold"/>
             </Grid>
-        </Button>
-
-    </Grid>
+            <Label Content="Hello"/>
+        </StackPanel>
+    </ScrollViewer>
 </Page>
