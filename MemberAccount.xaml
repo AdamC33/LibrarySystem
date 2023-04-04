@@ -28,7 +28,41 @@
                 <Label Content="Card Number:" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,228,0,0" />
                 <TextBlock x:Name="txtCardNumber" TextWrapping="Wrap" Text="[Card Number]" HorizontalAlignment="Left" VerticalAlignment="Top" Width="206" Margin="37,262,0,0" FontSize="18" FontWeight="Bold"/>
             </Grid>
-            <Label Content="Hello"/>
+            <Label Content="My Library:" Margin="10,0,0,10" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"/>
+            <ListBox x:Name="listLibrary" Width="910" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
+                            <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="510" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                            <TextBlock FontSize="12" FontWeight="{Binding fontWeight}" Text="{Binding getDueDateString}" Margin="0,0,145,0" HorizontalAlignment="Right"/>
+                            <Button Content="Return" Width="50" Margin="0,0,80,0" HorizontalAlignment="Right"  Click="btnReturn_Click"/>
+                            <Button Content="Renew" Width="50" Margin="0,0,20,0" HorizontalAlignment="Right"  Click="btnRenew_Click"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Content="Queued For:" Margin="10,10,0,10" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"/>
+            <ListBox x:Name="listQueued" Width="910" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
+                            <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="480" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </StackPanel>
     </ScrollViewer>
 </Page>

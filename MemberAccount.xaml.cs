@@ -22,6 +22,15 @@ namespace LibrarySystem
     {
         private Member _currentUser;
 
+        private class libraryDisplay
+        {
+            public string ISBN { get; set; }
+            public string title { get; set; }
+            private DateTimeOffset dueDateDateTime { get; set; }
+            private string dueDateString { get; set; }
+            public string fontWeight { get; set; }
+        }
+
         public MemberAccount(Member currentUser)
         {
             InitializeComponent();
@@ -42,6 +51,16 @@ namespace LibrarySystem
             txtPhoneNumber.Text = _currentUser._phoneNumber;
             txtEmail.Text = _currentUser._email;
             txtCardNumber.Text = _currentUser._cardNumber;
+        }
+
+        private void btnReturn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRenew_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

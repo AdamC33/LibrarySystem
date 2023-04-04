@@ -23,35 +23,6 @@ namespace LibrarySystem
     {
         private Member _thisMember;
 
-        private class checkBookDisplay
-        {
-            public string ISBN { get; set; }
-            public string title { get; set; }
-            private DateTimeOffset dueDateDateTime { get; set; }
-            private string dueDateString { get; set; }
-            public string fontWeight { get; set; }
-            public string notifyIsEnabled { get; set; }
-
-            public DateTimeOffset dueDate
-            {
-                set
-                {
-                    dueDateDateTime = value;
-                    dueDateString = value.DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB"));
-                }
-            }
-
-            public DateTimeOffset getDueDate
-            {
-                get { return dueDateDateTime; }
-            }
-
-            public string getDueDateString
-            {
-                get { return dueDateString; }
-            }
-        }
-
         public ManageMemberCheckouts(Member thisMember)
         {
             InitializeComponent();
@@ -64,8 +35,8 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
 
-            List<checkBookDisplay> checkBookList = new List<checkBookDisplay>();
-            List<checkBookDisplay> queueBookList = new List<checkBookDisplay>();
+            List<CheckBookDisplay> checkBookList = new List<CheckBookDisplay>();
+            List<CheckBookDisplay> queueBookList = new List<CheckBookDisplay>();
             DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
 
             List<Book> library = controller.GetLibrary();
@@ -86,7 +57,7 @@ namespace LibrarySystem
                                 thisNotifyIsEnabled = "True";
                             }
                             //Books that the member has checked out
-                            checkBookList.Add(new checkBookDisplay
+                            checkBookList.Add(new CheckBookDisplay
                             {
                                 ISBN = b._ISBN,
                                 title = b._title,
@@ -98,7 +69,7 @@ namespace LibrarySystem
                         else
                         {
                             //Books that the member is queued for
-                            queueBookList.Add(new checkBookDisplay
+                            queueBookList.Add(new CheckBookDisplay
                             {
                                 ISBN = b._ISBN,
                                 title = b._title
@@ -114,7 +85,7 @@ namespace LibrarySystem
 
         private void btnNotify_Click(object sender, RoutedEventArgs e)
         {
-            checkBookDisplay thisBook = (checkBookDisplay)((Button)sender).DataContext;
+            CheckBookDisplay thisBook = (CheckBookDisplay)((Button)sender).DataContext;
             XmlController controller = new XmlController();
             if (controller.NotifyMember(_thisMember._cardNumber, String.Format("{0} ({1}) is past its due date and you have still not returned it - please return it!", thisBook.title, thisBook.ISBN)))
             {

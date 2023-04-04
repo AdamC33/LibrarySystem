@@ -14,7 +14,7 @@
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
         </Button>
         <Label Content="Checkouts:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
-        <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="150" Margin="10,100,0,0" VerticalAlignment="Top" Width="888">
+        <ListBox x:Name="listChecked" HorizontalAlignment="Left" Height="150" Margin="10,100,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -32,7 +32,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Label Content="Queued for:" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" Width="194" FontSize="16"/>
-        <ListBox x:Name="listQueued" HorizontalAlignment="Left" Height="150" Margin="10,290,0,0" VerticalAlignment="Top" Width="888">
+        <ListBox x:Name="listQueued" HorizontalAlignment="Left" Height="150" Margin="10,290,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>

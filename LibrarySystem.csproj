@@ -82,6 +82,7 @@
     <Compile Include="ChangeValue.xaml.cs">
       <DependentUpon>ChangeValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckBookDisplay.cs" />
     <Compile Include="FineAdd.xaml.cs">
       <DependentUpon>FineAdd.xaml</DependentUpon>
     </Compile>
