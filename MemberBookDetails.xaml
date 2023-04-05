@@ -28,7 +28,7 @@
                 <Label Content="ISBN:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontFamily="Bahnschrift"/>
                 <TextBlock x:Name="txtBookISBN" HorizontalAlignment="Left" Margin="76,5,0,0" Text="[ISBN]" VerticalAlignment="Top" Width="784" FontSize="14" FontFamily="Bahnschrift"/>
             </Grid>
-            <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="22,30,0,0" VerticalAlignment="Top" Height="53" Width="139" Click="btnBookCheck_Click"/>
+            <Button x:Name="btnBookCheck" Content="Check Book Out" HorizontalAlignment="Left" Margin="22,30,0,30" VerticalAlignment="Top" Height="53" Width="139" Click="btnBookCheck_Click"/>
         </StackPanel>
     </ScrollViewer>
 </Page>
