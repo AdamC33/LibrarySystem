@@ -71,7 +71,15 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
             Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
-            thisBook.returnBook(_currentUser._cardNumber);
+            int daysLate = thisBook.returnBook(_currentUser._cardNumber);
+            if (daysLate > 0)
+            {
+                //If a book is late, the amount they are charged is (days late * 25) in pence.
+                controller.AddFee(
+                    _currentUser._cardNumber,
+                    MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
+                    String.Format("Late return of book (ISBN {0})", thisBook._ISBN));
+            }
             controller.UpdateBookCheckout(thisBook);
             UpdateDisplay();
         }
@@ -80,7 +88,15 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
             Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
-            thisBook.renewBook(_currentUser._cardNumber);
+            int daysLate = thisBook.renewBook(_currentUser._cardNumber);
+            if (daysLate > 0)
+            {
+                //If a book is late, the amount they are charged is (days late * 25) in pence.
+                controller.AddFee(
+                    _currentUser._cardNumber,
+                    MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
+                    String.Format("Late renewal of book (ISBN {0})", thisBook._ISBN));
+            }
             controller.UpdateBookCheckout(thisBook);
             UpdateDisplay();
         }

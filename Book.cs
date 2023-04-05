@@ -162,26 +162,35 @@ namespace LibrarySystem
             }
         }
 
-        public bool returnBook(string cardNumber)
+        public int returnBook(string cardNumber)
         {
-            //true = book has been returned
-            //false = book hasn't been returned
+            //0 = book has been returned
+            //>0 = book has been returned, days late
+            //-1 = book hasn't been returned
+            DateTimeOffset currTime = DateTimeOffset.Now;
             foreach (Checkout c in _checkoutList)
             { 
                 if (c._cardNumber == cardNumber)
                 {
                     _checkoutList.Remove(c);
-                    return true;
+                    if (c._dueDate > currTime) { return 0; }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine(c._dueDate);
+                        return Convert.ToInt32(Math.Ceiling((currTime - c._dueDate).TotalDays));
+                    }
                 }
             }
 
-            return false;
+            return -1;
         }
 
-        public bool renewBook(string cardNumber)
+        public int renewBook(string cardNumber)
         {
-            //true = book has been renewed
-            //false = book hasn't been renewed
+            //0 = book has been renewed
+            //>0 = book has been renewed, days late
+            //-1 = book hasn't been renewed
+            DateTimeOffset currTime = DateTimeOffset.Now;
             foreach (Checkout c in _checkoutList)
             {
                 if (c._cardNumber == cardNumber)
@@ -189,11 +198,16 @@ namespace LibrarySystem
                     _checkoutList[_checkoutList.IndexOf(c)] = new Checkout
                     { _cardNumber = c._cardNumber,
                       _dueDate = DateTimeOffset.UtcNow.AddDays(21) };
-                    return true;
+                    if (c._dueDate > currTime) { return 0; }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine(c._dueDate);
+                        return Convert.ToInt32(Math.Ceiling((currTime - c._dueDate).TotalDays));
+                    }
                 }
             }
 
-            return false;
+            return -1;
         }
 
         public bool moveQueueToCheckout()

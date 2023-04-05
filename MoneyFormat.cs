@@ -14,6 +14,13 @@ namespace LibrarySystem
             return money;
         }
 
+        public static string AddSignAndDecimalPenceOnly(int money)
+        {
+            string pounds = Convert.ToString(money / 100);
+            string pence = Convert.ToString(money % 100);
+            return AddSignAndDecimal(pounds, pence);
+        }
+
         public static string GetWithoutPence(string money) //Function for returning only the pounds without the pence
         {
             int indexOfDecimal = money.IndexOf('.');
