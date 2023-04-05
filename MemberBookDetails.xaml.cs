@@ -34,6 +34,14 @@ namespace LibrarySystem
             txtBookPublisher.Text = selectedBook._publisher;
             txtBookCategory.Text = selectedBook._category;
             txtBookISBN.Text = selectedBook._ISBN;
+            UpdateDisplay();
+        }
+
+        private void UpdateDisplay()
+        {
+            XmlController controller = new XmlController();
+            _selectedBook = controller.GetLibrary(_selectedBook._ISBN, "isbn")[0];
+            txtBookStock.Text = Convert.ToString(_selectedBook.currentStock);
         }
 
         private void pageLoaded(object sender, RoutedEventArgs e)
@@ -70,8 +78,8 @@ namespace LibrarySystem
                 default:
                     MessageBox.Show("You should not be seeing this message box! If you do, please contact your system administrator!", "Check Book");
                     break;
-            
             }
+            UpdateDisplay();
         }
     }
 }
