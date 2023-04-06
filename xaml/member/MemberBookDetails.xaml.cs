@@ -53,13 +53,6 @@ namespace LibrarySystem
         {
             int bookCheckoutValue = _selectedBook.checkoutBook(_currentUser._cardNumber);
             XmlController controller = new XmlController();
-            List<string> cardNumbers = new List<string>();
-            List<DateTimeOffset> dueDates = new List<DateTimeOffset>();
-            for (int i = 0; i < _selectedBook.checkoutListLength; i++)
-            {
-                cardNumbers.Add(_selectedBook.getCardNumber(i));
-                dueDates.Add(_selectedBook.getDueDate(_selectedBook.getCardNumber(i)));
-            }
             controller.UpdateBookCheckout(_selectedBook);
             switch (bookCheckoutValue)
             {

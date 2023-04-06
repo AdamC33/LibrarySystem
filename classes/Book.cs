@@ -23,9 +23,10 @@ namespace LibrarySystem
             public string _cardNumber { get; set; }
             public DateTimeOffset _dueDate { get; set; } //The DateTime struct cannot easily convert between datetime and Unix datetime (which is what gets stored in the XML files).
             //However, the DateTimeOffset struct can do this. It is implemented as one of its methods.
+            public bool _renewed { get; set; }
         }
 
-        public Book(string ISBN, string title, string author, string year, string publisher, string category, UInt32 stock, List<string> checkoutCardNumbers = null, List<UInt32> checkoutDueDates = null)
+        public Book(string ISBN, string title, string author, string year, string publisher, string category, UInt32 stock, List<string> checkoutCardNumbers = null, List<UInt32> checkoutDueDates = null, List<bool> checkoutRenews = null)
         {
             _ISBN = ISBN;
             _title = title;
@@ -44,7 +45,8 @@ namespace LibrarySystem
                     _checkoutList.Add(new Checkout
                     {
                         _cardNumber = s,
-                        _dueDate = DateTimeOffset.FromUnixTimeSeconds(checkoutDueDates[i])
+                        _dueDate = DateTimeOffset.FromUnixTimeSeconds(checkoutDueDates[i]),
+                        _renewed = checkoutRenews[i]
                     });
                 }
             }
@@ -110,16 +112,26 @@ namespace LibrarySystem
 
         public DateTimeOffset getDueDate(string cardNumber)
         {
-            int i = -1;
             foreach (Checkout c in _checkoutList)
             {
-                i++;
                 if (c._cardNumber == cardNumber)
                 {
                     return c._dueDate;
                 }
             }
             return DateTimeOffset.MinValue;
+        }
+
+        public bool? getRenewedStatus(string cardNumber)
+        {
+            foreach (Checkout c in _checkoutList)
+            {
+                if (c._cardNumber == cardNumber)
+                {
+                    return c._renewed;
+                }
+            }
+            return null;
         }
 
         public int checkoutBook(string cardNumber)
@@ -147,7 +159,8 @@ namespace LibrarySystem
                 _checkoutList.Add(new Checkout
                 {
                     _cardNumber = cardNumber,
-                    _dueDate = DateTimeOffset.FromUnixTimeSeconds(0)
+                    _dueDate = DateTimeOffset.FromUnixTimeSeconds(0),
+                    _renewed = false
                 });
                 return 2;
             }
@@ -156,7 +169,8 @@ namespace LibrarySystem
                 _checkoutList.Add(new Checkout
                 {
                     _cardNumber = cardNumber,
-                    _dueDate = DateTimeOffset.Now.AddDays(21) //21 days are added as this is the standard amount of days a book can be borrowed for
+                    _dueDate = DateTimeOffset.Now.AddDays(21), //21 days are added as this is the standard amount of days a book can be borrowed for
+                    _renewed = false
                 });
                 return 3;
             }
@@ -195,9 +209,11 @@ namespace LibrarySystem
             {
                 if (c._cardNumber == cardNumber)
                 {
+                    if (c._renewed) { return -1; } //Cannot return books that have already been renewed
                     _checkoutList[_checkoutList.IndexOf(c)] = new Checkout
                     { _cardNumber = c._cardNumber,
-                      _dueDate = DateTimeOffset.UtcNow.AddDays(21) };
+                      _dueDate = DateTimeOffset.UtcNow.AddDays(21),
+                      _renewed = true };
                     if (c._dueDate > currTime) { return 0; }
                     else
                     {

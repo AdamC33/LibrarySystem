@@ -99,12 +99,16 @@ namespace LibrarySystem
                 XmlNode Member = xmlDoc.CreateElement("member");
                 XmlNode CardNumber = xmlDoc.CreateElement("cardnumber");
                 XmlNode DueDate = xmlDoc.CreateElement("duedate");
+                XmlNode Renewed = xmlDoc.CreateElement("renewed");
 
                 CardNumber.InnerText = thisBook.getCardNumber(i);
                 DueDate.InnerText = Convert.ToString(thisBook.getDueDate(thisBook.getCardNumber(i)).ToUnixTimeSeconds());
+                if (thisBook.getRenewedStatus(thisBook.getCardNumber(i)) == true) { Renewed.InnerText = "1"; }
+                else { Renewed.InnerText = "0"; }
 
                 Member.AppendChild(CardNumber);
                 Member.AppendChild(DueDate);
+                Member.AppendChild(Renewed);
                 oldCheckout.AppendChild(Member);
             }
 
@@ -125,10 +129,13 @@ namespace LibrarySystem
                 {
                     List<String> checkoutCardNumbers = new List<String>();
                     List<UInt32> checkoutDueDates = new List<UInt32>();
+                    List<bool> checkoutRenewals = new List<bool>();
                     foreach (XmlNode cardNumber in node.SelectSingleNode("checkout"))
                     {
                         checkoutCardNumbers.Add(cardNumber.SelectSingleNode("cardnumber").InnerText);
                         checkoutDueDates.Add(Convert.ToUInt32(cardNumber.SelectSingleNode("duedate").InnerText));
+                        if (cardNumber.SelectSingleNode("renewed").InnerText == "1") { checkoutRenewals.Add(true); }
+                        else { checkoutRenewals.Add(false); }
                     }
                     Book book = new Book(
                         node.SelectSingleNode("isbn").InnerText,
@@ -139,7 +146,8 @@ namespace LibrarySystem
                         node.SelectSingleNode("category").InnerText,
                         Convert.ToUInt32(node.SelectSingleNode("instock").InnerText),
                         checkoutCardNumbers,
-                        checkoutDueDates
+                        checkoutDueDates,
+                        checkoutRenewals
                     );
                     library.Add(book);
                 }
