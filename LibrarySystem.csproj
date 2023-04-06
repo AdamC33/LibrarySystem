@@ -70,43 +70,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddBook.xaml.cs">
-      <DependentUpon>AddBook.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddMember.xaml.cs">
-      <DependentUpon>AddMember.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ChangeValue.xaml.cs">
-      <DependentUpon>ChangeValue.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CheckBookDisplay.cs" />
     <Compile Include="classes\Book.cs" />
     <Compile Include="classes\Member.cs" />
     <Compile Include="classes\MoneyFormat.cs" />
     <Compile Include="classes\XmlController.cs" />
-    <Compile Include="FineAdd.xaml.cs">
+    <Compile Include="xaml\CheckBookDisplay.cs" />
+    <Compile Include="xaml\librarian\AddBook.xaml.cs">
+      <DependentUpon>AddBook.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\librarian\AddMember.xaml.cs">
+      <DependentUpon>AddMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\librarian\ChangeValue.xaml.cs">
+      <DependentUpon>ChangeValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\librarian\FineAdd.xaml.cs">
       <DependentUpon>FineAdd.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FineDelete.xaml.cs">
+    <Compile Include="xaml\librarian\FineDelete.xaml.cs">
       <DependentUpon>FineDelete.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LibrarianMainpage.xaml.cs">
+    <Compile Include="xaml\librarian\LibrarianMainpage.xaml.cs">
       <DependentUpon>LibrarianMainpage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageBooks.xaml.cs">
+    <Compile Include="xaml\librarian\ManageBooks.xaml.cs">
       <DependentUpon>ManageBooks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageBookStock.xaml.cs">
+    <Compile Include="xaml\librarian\ManageBookStock.xaml.cs">
       <DependentUpon>ManageBookStock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageMemberCheckouts.xaml.cs">
+    <Compile Include="xaml\librarian\ManageMemberCheckouts.xaml.cs">
       <DependentUpon>ManageMemberCheckouts.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageMemberFines.xaml.cs">
+    <Compile Include="xaml\librarian\ManageMemberFines.xaml.cs">
       <DependentUpon>ManageMemberFines.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageMembers.xaml.cs">
+    <Compile Include="xaml\librarian\ManageMembers.xaml.cs">
       <DependentUpon>ManageMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="xaml\login\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="xaml\member\BookFrameHomepage.xaml.cs">
       <DependentUpon>BookFrameHomepage.xaml</DependentUpon>
@@ -129,34 +132,6 @@
     <Compile Include="xaml\member\MemberRequests.xaml.cs">
       <DependentUpon>MemberRequests.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddBook.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="AddMember.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ChangeValue.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="FineAdd.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="FineDelete.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="LibrarianMainpage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -165,30 +140,55 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ManageBooks.xaml">
+    <Page Include="xaml\librarian\AddBook.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ManageBookStock.xaml">
+    <Page Include="xaml\librarian\AddMember.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ManageMemberCheckouts.xaml">
+    <Page Include="xaml\librarian\ChangeValue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ManageMemberFines.xaml">
+    <Page Include="xaml\librarian\FineAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ManageMembers.xaml">
+    <Page Include="xaml\librarian\FineDelete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\LibrarianMainpage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageBooks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageBookStock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageMemberCheckouts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageMemberFines.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageMembers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\login\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -313,9 +313,6 @@
   <ItemGroup>
     <Resource Include="img\unreadicon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="xaml\librarian\" />
-    <Folder Include="xaml\login\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
