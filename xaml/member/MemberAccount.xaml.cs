@@ -69,18 +69,24 @@ namespace LibrarySystem
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
         {
-            XmlController controller = new XmlController();
-            Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
-            int daysLate = thisBook.returnBook(_currentUser._cardNumber);
-            if (daysLate > 0)
+            if (MessageBox.Show("Are you sure you want to return this book?", "Return Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                //If a book is late, the amount they are charged is (days late * 25) in pence.
-                controller.AddFee(
-                    _currentUser._cardNumber,
-                    MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
-                    String.Format("Late return of book (ISBN {0})", thisBook._ISBN));
+                XmlController controller = new XmlController();
+                Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
+                int daysLate = thisBook.returnBook(_currentUser._cardNumber);
+                string messageBoxText = "Successfully returned book!";
+                if (daysLate > 0)
+                {
+                    //If a book is late, the amount they are charged is (days late * 25) in pence.
+                    controller.AddFee(
+                        _currentUser._cardNumber,
+                        MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
+                        String.Format("Late return of book (ISBN {0})", thisBook._ISBN));
+                    messageBoxText = String.Format("Returned late book successfully, a fine of {0} has been added to your account.", MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25));
+                }
+                controller.UpdateBookCheckout(thisBook);
+                MessageBox.Show(messageBoxText, "Return Book");
             }
-            controller.UpdateBookCheckout(thisBook);
             UpdateDisplay();
         }
 
@@ -88,16 +94,23 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
             Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
-            int daysLate = thisBook.renewBook(_currentUser._cardNumber);
-            if (daysLate > 0)
+            if (thisBook.getRenewedStatus(_currentUser._cardNumber) == true ) { MessageBox.Show("Cannot renew books that have already previously been renewed!", "Renew Book"); }
+            else if (MessageBox.Show("Are you sure you want to renew this book?", "Renew Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                //If a book is late, the amount they are charged is (days late * 25) in pence.
-                controller.AddFee(
-                    _currentUser._cardNumber,
-                    MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
-                    String.Format("Late renewal of book (ISBN {0})", thisBook._ISBN));
+                int daysLate = thisBook.renewBook(_currentUser._cardNumber);
+                string messageBoxText = "Successfully renewed book!";
+                if (daysLate > 0)
+                {
+                    //If a book is late, the amount they are charged is (days late * 25) in pence.
+                    controller.AddFee(
+                        _currentUser._cardNumber,
+                        MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25),
+                        String.Format("Late renewal of book (ISBN {0})", thisBook._ISBN));
+                    messageBoxText = String.Format("Renewed late book successfully, a fine of {0} has been added to your account.", MoneyFormat.AddSignAndDecimalPenceOnly(daysLate * 25));
+                }
+                controller.UpdateBookCheckout(thisBook);
+                MessageBox.Show(messageBoxText, "Renew Book");
             }
-            controller.UpdateBookCheckout(thisBook);
             UpdateDisplay();
         }
     }
