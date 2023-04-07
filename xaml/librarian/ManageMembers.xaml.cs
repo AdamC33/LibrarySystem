@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.xaml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -99,7 +100,8 @@ namespace LibrarySystem
             row.Row.ItemArray[0].ToString(),
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
-            row.Row.ItemArray[4].ToString());
+            row.Row.ItemArray[4].ToString(),
+            row.Row.ItemArray[5].ToString());
             modMember.ShowDialog();
 
             dataSet.Reset();

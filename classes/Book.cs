@@ -261,7 +261,6 @@ namespace LibrarySystem
                 }
             }
             return true;
-
         }
 
         public bool modifyStock(UInt32 newStock)

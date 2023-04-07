@@ -1,6 +1,8 @@
-﻿using System;
+﻿using LibrarySystem.xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,8 +23,10 @@ namespace LibrarySystem
     {
         private bool _modifying = true;
         private string _oldCardNumber;
+        private string _oldPassword = null;
+        public string _password;
 
-        public AddMember(string cardNumber = null, string name = null, string phoneNumber = null, string email = null)
+        public AddMember(string cardNumber = null, string name = null, string phoneNumber = null, string email = null, string password = null)
         {
             InitializeComponent();
             if (cardNumber == null)
@@ -32,6 +36,7 @@ namespace LibrarySystem
             else
             {
                 _oldCardNumber = cardNumber;
+                _oldPassword = password;
                 txtCardNumber.Text = cardNumber;
                 txtCardNumber.IsEnabled = false;
                 txtName.Text = name;
@@ -50,15 +55,28 @@ namespace LibrarySystem
             }
             else
             {
-                Member newMember = new Member(
-                txtCardNumber.Text,
-                txtName.Text,
-                txtPhoneNumber.Text.Insert(3, "-").Insert(7, "-"), //Adds the hypens back to the phone number string
-                txtEmail.Text );
+                EnterPassword enterPassword = new EnterPassword(txtCardNumber.Text, _oldPassword);
+                enterPassword.Owner = this; //The enter password window can access the password string
+                if (enterPassword.ShowDialog() == true)
+                {
 
-                if (_modifying) { controller.UpdateMember(_oldCardNumber, newMember); }
-                else { controller.AddMember(newMember); }
-                this.Close();
+                    Member newMember = new Member(
+                    txtCardNumber.Text,
+                    txtName.Text,
+                    txtPhoneNumber.Text.Insert(3, "-").Insert(7, "-"), //Adds the hypens back to the phone number string
+                    txtEmail.Text,
+                    false,
+                    null,
+                    null,
+                    null,
+                    _password);
+
+                    System.Diagnostics.Debug.WriteLine(newMember.getPassword);
+
+                    if (_modifying) { controller.UpdateMember(_oldCardNumber, newMember); }
+                    else { controller.AddMember(newMember); }
+                    this.Close();
+                }
             }
             btnConfirm.IsEnabled = true;
         }

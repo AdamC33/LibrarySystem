@@ -209,9 +209,21 @@ namespace LibrarySystem
 
             XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
             oldMember.ChildNodes.Item(0).InnerText = newMember._cardNumber;
+            oldMember.ChildNodes.Item(1).InnerText = newMember.getPassword;
             oldMember.ChildNodes.Item(2).InnerText = newMember._name;
             oldMember.ChildNodes.Item(3).InnerText = newMember._phoneNumber;
             oldMember.ChildNodes.Item(4).InnerText = newMember._email;
+
+            xmlDoc.Save(memberPath);
+        }
+
+        public void UpdateMemberPassword(string cardNumber, string password)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber]'{0}'", cardNumber));
+            oldMember.ChildNodes.Item(1).InnerText = password;
 
             xmlDoc.Save(memberPath);
         }
