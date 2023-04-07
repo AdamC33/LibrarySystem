@@ -68,6 +68,24 @@ namespace LibrarySystem
             }
         }
 
+        public int currentStockAlsoSubtractingQueue
+        {
+            //Similar to the currentStock integer, but also calculates the total queue. If the end result goes into the negatives, it will return 0.
+            get
+            {
+                int stock = Convert.ToInt32(_totalStock);
+                foreach (Checkout checkout in _checkoutList)
+                {
+                    stock--;
+                    if (stock <= 0)
+                    {
+                        return 0;
+                    }
+                }
+                return stock;
+            }
+        }
+
         public int queueForBook
         {
             get
@@ -154,7 +172,7 @@ namespace LibrarySystem
                     }
                 }
             }
-            if (currentStock == 0)
+            if (currentStockAlsoSubtractingQueue == 0)
             {
                 _checkoutList.Add(new Checkout
                 {

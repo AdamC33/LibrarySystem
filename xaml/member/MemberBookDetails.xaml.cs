@@ -41,7 +41,7 @@ namespace LibrarySystem
         {
             XmlController controller = new XmlController();
             _selectedBook = controller.GetLibrary(_selectedBook._ISBN, "isbn")[0];
-            txtBookStock.Text = Convert.ToString(_selectedBook.currentStock);
+            txtBookStock.Text = Convert.ToString(_selectedBook.currentStockAlsoSubtractingQueue);
         }
 
         private void pageLoaded(object sender, RoutedEventArgs e)
@@ -63,7 +63,7 @@ namespace LibrarySystem
                     MessageBox.Show("You are already queued for this book!", "Check Book");
                     break;
                 case 2:
-                    MessageBox.Show("Successfully added to queue! You will automatically check the book out once enough stock is available.", "Check Book");
+                    MessageBox.Show("Successfully added to queue! You will be notified to check the book out once enough stock is available.", "Check Book");
                     break;
                 case 3:
                     MessageBox.Show("Successfully checked out book!", "Check Book");
