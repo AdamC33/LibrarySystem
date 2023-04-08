@@ -231,6 +231,20 @@ namespace LibrarySystem
             xmlDoc.Save(memberPath);
         }
 
+        public void ActivateMember(string cardNumber, string password)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(memberPath);
+
+            XmlNode member = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
+
+            if (member.ChildNodes.Item(5).InnerText == "0" && member.ChildNodes.Item(1).InnerText == password)
+            {
+                member.ChildNodes.Item(5).InnerText = "1";
+            }
+            xmlDoc.Save(memberPath);
+        }
+
         public void AddFee(string cardNumber, string amount, string reason)
         {
             XmlDocument xmlDoc = new XmlDocument();

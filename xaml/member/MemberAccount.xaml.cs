@@ -93,7 +93,6 @@ namespace LibrarySystem
                 XmlController controller = new XmlController();
 
                 _password = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;
-                ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString = null;
 
                 controller.UpdateMemberPassword(_currentUser._cardNumber, _currentUser.getPassword, _password);
             }

@@ -22,7 +22,7 @@ namespace LibrarySystem
     {
         public static bool homepageFirstLoaded; //Used so when the homepage is loaded in for the first time, it doesn't try to remove the back entry (the login screen).
 
-        private Member _currentUser;
+        public Member _currentUser;
 
         public MemberMainpage(Member currentUser)
         {
@@ -35,7 +35,15 @@ namespace LibrarySystem
         public void UpdateDisplay(Member currentUser)
         {
             XmlController controller = new XmlController();
-            _currentUser = controller.GetMember(currentUser._cardNumber, currentUser.getPassword);
+            if (((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString != null)
+            {
+                _currentUser = controller.GetMember(currentUser._cardNumber, ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString);
+                ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString = null;
+            }
+            else
+            {
+                _currentUser = controller.GetMember(currentUser._cardNumber, currentUser.getPassword);
+            }
             txtWelcome.Text = String.Format("Welcome, {0}!", _currentUser._name);
             if (_currentUser.getRequests.Count > 0)
             {
