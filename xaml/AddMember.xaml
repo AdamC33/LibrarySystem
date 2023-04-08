@@ -1,0 +1,29 @@
+﻿<Window x:Class="LibrarySystem.AddMember"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibrarySystem"
+        mc:Ignorable="d"
+        Title="AddMember" Height="300" Width="350" ResizeMode="NoResize">
+    <StackPanel>
+        <Grid Margin="10,10,0,0">
+            <Label Content="Card number:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="txtCardNumber" HorizontalAlignment="Left" Margin="111,4,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
+        </Grid>
+        <Grid Margin="10,10,0,0">
+            <Label Content="Name:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="111,4,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
+        </Grid>
+        <Grid Margin="10,10,0,0">
+            <Label Content="Phone number:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="111,4,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
+        </Grid>
+        <Grid Margin="10,10,0,0">
+            <Label Content="Email:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>
+            <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="111,4,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
+        </Grid>
+        <Button x:Name="btnConfirmAndChangePassword" Content="Change password &amp; confirm" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Width="211" Height="33" Click="btnConfirmAndChangePassword_Click" IsEnabled="False"/>
+        <Button x:Name="btnConfirmWithoutChangingPassword" Content="Confirm without changing password" HorizontalAlignment="Center" Margin="0,8,0,0" VerticalAlignment="Top" Width="211" Height="33" Click="btnConfirmWithoutChangingPassword_Click" IsEnabled="False"/>
+    </StackPanel>
+</Window>

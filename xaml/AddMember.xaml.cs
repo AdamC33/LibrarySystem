@@ -24,14 +24,17 @@ namespace LibrarySystem
         private bool _modifying = true;
         private string _oldCardNumber;
         private string _oldPassword = null;
-        public string _password;
+        private string _password;
 
-        public AddMember(string cardNumber = null, string name = null, string phoneNumber = null, string email = null, string password = null)
+        public AddMember(string cardNumber = null, string name = null, string phoneNumber = null, string email = null, string password = null, bool editingFromMemberAccount = false)
         {
             InitializeComponent();
             if (cardNumber == null)
             {
                 _modifying = false;
+                btnConfirmAndChangePassword.Content = "Confirm";
+                btnConfirmWithoutChangingPassword.Visibility = Visibility.Collapsed;
+                Height = 260;
             }
             else
             {
@@ -42,14 +45,18 @@ namespace LibrarySystem
                 txtName.Text = name;
                 txtPhoneNumber.Text = phoneNumber.Remove(3, 1).Remove(6, 1); //Takes away the hyphens from the phone number string
                 txtEmail.Text = email;
-                btnConfirm.Content = "Change password & confirm";
-                btnConfirmWithoutChangingPassword.Visibility = Visibility.Visible;
+                if (editingFromMemberAccount)
+                {
+                    btnConfirmWithoutChangingPassword.Content = "Confirm";
+                    btnConfirmAndChangePassword.Visibility = Visibility.Collapsed;
+                    Height = 260;
+                }
             }
         }
 
-        private void btnConfirm_Click(object sender, RoutedEventArgs e)
+        private void btnConfirmAndChangePassword_Click(object sender, RoutedEventArgs e)
         {
-            btnConfirm.IsEnabled = false;
+            btnConfirmAndChangePassword.IsEnabled = false;
             XmlController controller = new XmlController();
             if (controller.GetMemberName(txtCardNumber.Text) != null && txtCardNumber.Text != _oldCardNumber)
             {
@@ -58,10 +65,11 @@ namespace LibrarySystem
             else
             {
                 EnterPassword enterPassword = new EnterPassword(_oldPassword);
-                enterPassword.Owner = this; //The enter password window can access the password string
+                enterPassword.Owner = Application.Current.MainWindow; //The password string can be passed from the main window to this page
                 if (enterPassword.ShowDialog() == true)
                 {
-
+                    _password = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;
+                    ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString = null;
                     Member newMember = new Member(
                     txtCardNumber.Text,
                     txtName.Text,
@@ -78,7 +86,7 @@ namespace LibrarySystem
                     this.Close();
                 }
             }
-            btnConfirm.IsEnabled = true;
+            btnConfirmAndChangePassword.IsEnabled = true;
         }
 
         private void btnConfirmWithoutChangingPassword_Click(object sender, RoutedEventArgs e)
@@ -114,12 +122,12 @@ namespace LibrarySystem
                 && txtPhoneNumber.Text.Length == 10
                 && txtEmail.Text.Length > 0)
             {
-                btnConfirm.IsEnabled = true;
+                btnConfirmAndChangePassword.IsEnabled = true;
                 btnConfirmWithoutChangingPassword.IsEnabled = true;
             }
             else
             {
-                btnConfirm.IsEnabled = false;
+                btnConfirmAndChangePassword.IsEnabled = false;
                 btnConfirmWithoutChangingPassword.IsEnabled = false;
             }
         }

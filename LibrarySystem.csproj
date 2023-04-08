@@ -74,15 +74,15 @@
     <Compile Include="classes\Member.cs" />
     <Compile Include="classes\MoneyFormat.cs" />
     <Compile Include="classes\XmlController.cs" />
+    <Compile Include="xaml\AddMember.xaml.cs">
+      <DependentUpon>AddMember.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xaml\CheckBookDisplay.cs" />
     <Compile Include="xaml\EnterPassword.xaml.cs">
       <DependentUpon>EnterPassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="xaml\librarian\AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="xaml\librarian\AddMember.xaml.cs">
-      <DependentUpon>AddMember.xaml</DependentUpon>
     </Compile>
     <Compile Include="xaml\librarian\ChangeValue.xaml.cs">
       <DependentUpon>ChangeValue.xaml</DependentUpon>
@@ -147,15 +147,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="xaml\AddMember.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="xaml\EnterPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="xaml\librarian\AddBook.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="xaml\librarian\AddMember.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -320,6 +320,14 @@
   <ItemGroup>
     <Resource Include="img\unreadicon.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="img\memberdetailsicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\modifyiconalt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\passwordicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

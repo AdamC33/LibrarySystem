@@ -217,13 +217,16 @@ namespace LibrarySystem
             xmlDoc.Save(memberPath);
         }
 
-        public void UpdateMemberPassword(string cardNumber, string password)
+        public void UpdateMemberPassword(string cardNumber, string oldPassword, string newPassword)
         {
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(memberPath);
 
-            XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber]'{0}'", cardNumber));
-            oldMember.ChildNodes.Item(1).InnerText = password;
+            XmlNode oldMember = xmlDoc.SelectSingleNode(String.Format("//member[cardnumber='{0}']", cardNumber));
+            if (oldMember.ChildNodes.Item(1).InnerText == oldPassword)
+            {
+                oldMember.ChildNodes.Item(1).InnerText = newPassword;
+            }
 
             xmlDoc.Save(memberPath);
         }

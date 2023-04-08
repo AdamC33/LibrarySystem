@@ -10,7 +10,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Loaded="pageLoaded">
-            <Grid VerticalAlignment="Top" MinHeight="306">
+            <Grid VerticalAlignment="Top" MinHeight="381">
                 <Border Background="White" BorderThickness="3" Height="210" Width="210" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="33,13,0,0" BorderBrush="Black">
                     <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/defaultuser.jpg" Height="200" Width="200"/>
                 </Border>
@@ -27,6 +27,18 @@
                 </StackPanel>
                 <Label Content="Card Number:" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,228,0,0" />
                 <TextBlock x:Name="txtCardNumber" TextWrapping="Wrap" Text="[Card Number]" HorizontalAlignment="Left" VerticalAlignment="Top" Width="206" Margin="37,262,0,0" FontSize="18" FontWeight="Bold"/>
+                <Button x:Name="btnEditDetails" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" Click="btnEditDetails_Click" Margin="37,300,0,0">
+                    <Grid Width="65" Height="65">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/memberdetailsicon.png"/>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/modifyiconalt.png" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </Button>
+                <Button x:Name="btnChangePassword" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="70" Click="btnChangePassword_Click" Margin="117,300,0,0">
+                    <Grid Width="65" Height="65">
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/passwordicon.png"/>
+                        <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/modifyiconalt.png" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    </Grid>
+                </Button>
             </Grid>
             <Label Content="My Library:" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20" FontWeight="Bold"/>
             <Label Content="Checked out:" Margin="10,5,0,10" HorizontalAlignment="Left" FontSize="14"/>

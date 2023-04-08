@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.xaml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace LibrarySystem
     public partial class MemberAccount : Page
     {
         private Member _currentUser;
+        private string _password;
 
         private class fineDisplay //Used for the items source binding
         {
@@ -65,6 +67,36 @@ namespace LibrarySystem
             listLibrary.ItemsSource = memberLibraryList[0].OrderBy(o => o.getDueDate);
             listQueued.ItemsSource = memberLibraryList[1];
             listFines.ItemsSource = fineList;
+        }
+
+        private void btnEditDetails_Click(object sender, RoutedEventArgs e)
+        {
+            AddMember modMember = new AddMember(
+            _currentUser._cardNumber,
+            _currentUser._name,
+            _currentUser._phoneNumber,
+            _currentUser._email,
+            _currentUser.getPassword,
+            true
+            );
+            modMember.ShowDialog();
+
+            UpdateDisplay();
+        }
+
+        private void btnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            EnterPassword enterPassword = new EnterPassword(_currentUser.getPassword);
+            enterPassword.Owner = Application.Current.MainWindow;
+            if (enterPassword.ShowDialog() == true)
+            {
+                XmlController controller = new XmlController();
+
+                _password = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;
+                ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString = null;
+
+                controller.UpdateMemberPassword(_currentUser._cardNumber, _currentUser.getPassword, _password);
+            }
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)

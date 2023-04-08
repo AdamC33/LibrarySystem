@@ -55,6 +55,9 @@ namespace LibrarySystem
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Media.Animation.DoubleAnimation animation = new System.Windows.Media.Animation.DoubleAnimation(1, 0, TimeSpan.FromSeconds(2));
+            //This animation goes from a value of 1 to 0 within 2 seconds. It is used to fade out the wrong details label
+            //It is also used in the EnterPassword.xaml.cs file
+
             XmlController controller = new XmlController();
             Member attemptMember = controller.GetMember(txtCardNo.Text, password.Password);
             if (attemptMember != null)
@@ -75,6 +78,8 @@ namespace LibrarySystem
             else
             {
                 lblWrongDetails.BeginAnimation(Label.OpacityProperty, animation);
+                //Label.OpacityProperty is the opacity of the label. animation goes from 1 to 0.
+                //So what happens here is that the label goes from an opacity of 1.0 (fully opaque) to 0.0 (fully transparent) in 2 seconds
             }
         }
 

@@ -49,7 +49,7 @@ namespace LibrarySystem.xaml
             XmlController controller = new XmlController();
             if (_oldPassword == null || _oldPassword == passwordOld.Password)
             {
-                ((AddMember)Owner)._password = passwordNew.Password;
+                ((MainWindow)Owner)._temporaryPassthroughString = passwordNew.Password;
                 this.DialogResult = true;
                 this.Close();
             }
