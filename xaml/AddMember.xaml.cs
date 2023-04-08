@@ -65,7 +65,6 @@ namespace LibrarySystem
             else
             {
                 EnterPassword enterPassword = new EnterPassword(_oldPassword);
-                enterPassword.Owner = Application.Current.MainWindow; //The password string can be passed from the main window to this page
                 if (enterPassword.ShowDialog() == true)
                 {
                     _password = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;

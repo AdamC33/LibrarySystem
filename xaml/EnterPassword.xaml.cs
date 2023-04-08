@@ -21,6 +21,8 @@ namespace LibrarySystem.xaml
     {
         string _oldPassword;
 
+        //The new password is passed into the main window's temporary string - be sure to make it null again after this window has closed!
+
         public EnterPassword(string oldPassword = null)
         {
             InitializeComponent();
@@ -46,10 +48,9 @@ namespace LibrarySystem.xaml
 
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
-            XmlController controller = new XmlController();
             if (_oldPassword == null || _oldPassword == passwordOld.Password)
             {
-                ((MainWindow)Owner)._temporaryPassthroughString = passwordNew.Password;
+                ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString = passwordNew.Password;
                 this.DialogResult = true;
                 this.Close();
             }

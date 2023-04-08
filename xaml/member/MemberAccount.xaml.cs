@@ -34,6 +34,7 @@ namespace LibrarySystem
         {
             InitializeComponent();
             _currentUser = currentUser;
+            _password = _currentUser.getPassword;
             UpdateDisplay();
         }
 
@@ -45,7 +46,7 @@ namespace LibrarySystem
         private void UpdateDisplay()
         {
             XmlController controller = new XmlController();
-            _currentUser = controller.GetMember(_currentUser._cardNumber, _currentUser.getPassword);
+            _currentUser = controller.GetMember(_currentUser._cardNumber, _password);
 
             txtName.Text = _currentUser._name;
             txtPhoneNumber.Text = _currentUser._phoneNumber;
@@ -87,7 +88,6 @@ namespace LibrarySystem
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             EnterPassword enterPassword = new EnterPassword(_currentUser.getPassword);
-            enterPassword.Owner = Application.Current.MainWindow;
             if (enterPassword.ShowDialog() == true)
             {
                 XmlController controller = new XmlController();
@@ -97,6 +97,7 @@ namespace LibrarySystem
 
                 controller.UpdateMemberPassword(_currentUser._cardNumber, _currentUser.getPassword, _password);
             }
+            UpdateDisplay();
         }
 
         private void btnReturn_Click(object sender, RoutedEventArgs e)
