@@ -31,6 +31,7 @@ namespace LibrarySystem.xaml
             {
                 passwordOld.Visibility = Visibility.Collapsed;
                 lblOldPassword.Visibility = Visibility.Collapsed;
+                Height = 200;
             }
         }
 
@@ -48,13 +49,15 @@ namespace LibrarySystem.xaml
         private void btnConfirm_Click(object sender, RoutedEventArgs e)
         {
             XmlController controller = new XmlController();
-            //System.Diagnostics.Debug.WriteLine(_oldPassword);
-            //System.Diagnostics.Debug.WriteLine(passwordOld.Password);
             if (_oldPassword == null || _oldPassword == passwordOld.Password)
             {
                 ((AddMember)Owner)._password = passwordNew.Password;
                 this.DialogResult = true;
                 this.Close();
+            }
+            else if (_oldPassword != passwordOld.Password)
+            {
+                lblWrongPassword.Content = "Incorrect old password!";
             }
         }
     }

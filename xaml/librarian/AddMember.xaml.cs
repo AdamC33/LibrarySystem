@@ -42,6 +42,8 @@ namespace LibrarySystem
                 txtName.Text = name;
                 txtPhoneNumber.Text = phoneNumber.Remove(3, 1).Remove(6, 1); //Takes away the hyphens from the phone number string
                 txtEmail.Text = email;
+                btnConfirm.Content = "Change password & confirm";
+                btnConfirmWithoutChangingPassword.Visibility = Visibility.Visible;
             }
         }
 
@@ -71,14 +73,37 @@ namespace LibrarySystem
                     null,
                     _password);
 
-                    System.Diagnostics.Debug.WriteLine(newMember.getPassword);
-
                     if (_modifying) { controller.UpdateMember(_oldCardNumber, newMember); }
                     else { controller.AddMember(newMember); }
                     this.Close();
                 }
             }
             btnConfirm.IsEnabled = true;
+        }
+
+        private void btnConfirmWithoutChangingPassword_Click(object sender, RoutedEventArgs e)
+        {
+            XmlController controller = new XmlController();
+            if (controller.GetMemberName(txtCardNumber.Text) != null && txtCardNumber.Text != _oldCardNumber)
+            {
+                MessageBox.Show("Cannot save member - conflicting card number!", "Save Member");
+            }
+            else
+            {
+                Member newMember = new Member(
+                txtCardNumber.Text,
+                txtName.Text,
+                txtPhoneNumber.Text.Insert(3, "-").Insert(7, "-"), //Adds the hypens back to the phone number string
+                txtEmail.Text,
+                false,
+                null,
+                null,
+                null,
+                _oldPassword);
+
+                controller.UpdateMember(_oldCardNumber, newMember);
+                this.Close();
+            }
         }
 
         private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)
@@ -90,10 +115,12 @@ namespace LibrarySystem
                 && txtEmail.Text.Length > 0)
             {
                 btnConfirm.IsEnabled = true;
+                btnConfirmWithoutChangingPassword.IsEnabled = true;
             }
             else
             {
                 btnConfirm.IsEnabled = false;
+                btnConfirmWithoutChangingPassword.IsEnabled = false;
             }
         }
 

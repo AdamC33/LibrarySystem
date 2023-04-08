@@ -101,7 +101,7 @@ namespace LibrarySystem
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[4].ToString(),
-            row.Row.ItemArray[5].ToString());
+            row.Row.ItemArray[1].ToString());
             modMember.ShowDialog();
 
             dataSet.Reset();

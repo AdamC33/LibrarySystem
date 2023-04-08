@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="AddMember" Height="270" Width="350" ResizeMode="NoResize">
+        Title="AddMember" Height="300" Width="350" ResizeMode="NoResize">
     <Grid>
         <Label Content="Card number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtCardNumber" HorizontalAlignment="Left" Margin="121,14,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
@@ -15,6 +15,7 @@
         <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Margin="121,94,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="txtNumber_TextChanged"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="121,134,0,0" VerticalAlignment="Top" Width="198" Height="21" FontSize="14" TextChanged="checkTextBoxes"/>
-        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Width="168" Height="33" Click="btnConfirm_Click" IsEnabled="False"/>
+        <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Width="211" Height="33" Click="btnConfirm_Click" IsEnabled="False"/>
+        <Button x:Name="btnConfirmWithoutChangingPassword" Content="Confirm without changing password" HorizontalAlignment="Center" Margin="0,218,0,0" VerticalAlignment="Top" Width="211" Height="33" Click="btnConfirmWithoutChangingPassword_Click" IsEnabled="False" Visibility="Collapsed"/>
     </Grid>
 </Window>
