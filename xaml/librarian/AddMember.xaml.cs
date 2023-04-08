@@ -57,7 +57,7 @@ namespace LibrarySystem
             }
             else
             {
-                EnterPassword enterPassword = new EnterPassword(txtCardNumber.Text, _oldPassword);
+                EnterPassword enterPassword = new EnterPassword(_oldPassword);
                 enterPassword.Owner = this; //The enter password window can access the password string
                 if (enterPassword.ShowDialog() == true)
                 {

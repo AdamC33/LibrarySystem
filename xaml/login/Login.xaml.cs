@@ -52,8 +52,9 @@ namespace LibrarySystem
             }
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            System.Windows.Media.Animation.DoubleAnimation animation = new System.Windows.Media.Animation.DoubleAnimation(1, 0, TimeSpan.FromSeconds(2));
             XmlController controller = new XmlController();
             Member attemptMember = controller.GetMember(txtCardNo.Text, password.Password);
             if (attemptMember != null)
@@ -68,11 +69,12 @@ namespace LibrarySystem
                     NavigationService.Navigate(new MemberMainpage(attemptMember));
                 }
                 txtCardNo.Text = null;
-                lblWrongDetails.Content = null;
+                animation = null;
+                lblWrongDetails.BeginAnimation(Label.OpacityProperty, animation);
             }
             else
             {
-                lblWrongDetails.Content = "Incorrect card number or password!";
+                lblWrongDetails.BeginAnimation(Label.OpacityProperty, animation);
             }
         }
 

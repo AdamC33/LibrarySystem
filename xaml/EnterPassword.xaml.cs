@@ -19,13 +19,11 @@ namespace LibrarySystem.xaml
     /// </summary>
     public partial class EnterPassword : Window
     {
-        string _cardNumber;
         string _oldPassword;
 
-        public EnterPassword(string cardNumber, string oldPassword = null)
+        public EnterPassword(string oldPassword = null)
         {
             InitializeComponent();
-            _cardNumber = cardNumber;
             _oldPassword = oldPassword;
             if (oldPassword == null)
             {
@@ -57,7 +55,8 @@ namespace LibrarySystem.xaml
             }
             else if (_oldPassword != passwordOld.Password)
             {
-                lblWrongPassword.Content = "Incorrect old password!";
+                System.Windows.Media.Animation.DoubleAnimation animation = new System.Windows.Media.Animation.DoubleAnimation(1, 0, TimeSpan.FromSeconds(2));
+                lblWrongPassword.BeginAnimation(Label.OpacityProperty, animation);
             }
         }
     }

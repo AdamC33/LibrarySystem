@@ -16,7 +16,7 @@
         <Label Content="Password" HorizontalAlignment="Left" Margin="54,235,0,0" VerticalAlignment="Top" FontSize="16"/>
         <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="59,271,0,0" VerticalAlignment="Top" Width="249" Height="28" FontSize="16" PasswordChanged="TextChanged"/>
         <Button x:Name="btnLogin" Content="Log In" HorizontalAlignment="Left" Margin="59,363,0,0" VerticalAlignment="Top" Width="64" Height="34" FontSize="16" IsEnabled="False" Click="btnLogin_Click"/>
-        <Label x:Name="lblWrongDetails" HorizontalAlignment="Left" Margin="54,423,0,0" VerticalAlignment="Top" Width="345" Background="{x:Null}" Foreground="Red" FontWeight="Bold" FontSize="16" Height="49"/>
+        <Label x:Name="lblWrongDetails" Content="Incorrect card number or password!" HorizontalAlignment="Left" Margin="54,423,0,0" VerticalAlignment="Top" Width="345" Background="{x:Null}" Foreground="Red" FontWeight="Bold" FontSize="16" Height="49" Opacity="0"/>
 
     </Grid>
 </Page>
