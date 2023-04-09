@@ -71,7 +71,8 @@
                     <DataTemplate>
                         <Grid>
                             <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding ISBN}" Width="100" HorizontalAlignment="Left"/>
-                            <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="480" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                            <TextBlock FontSize="12" FontWeight="Regular" Text="{Binding title}" TextTrimming="CharacterEllipsis" Width="645" Margin="105,0,0,0" HorizontalAlignment="Left"/>
+                            <Button Content="Leave queue" Width="85" Margin="0,0,20,0" HorizontalAlignment="Right" Click="btnLeaveQueue_Click"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

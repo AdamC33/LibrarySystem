@@ -219,7 +219,7 @@ namespace LibrarySystem
             DateTimeOffset currTime = DateTimeOffset.Now;
             foreach (Checkout c in _checkoutList)
             { 
-                if (c._cardNumber == cardNumber)
+                if (c._cardNumber == cardNumber && c._dueDate > DateTimeOffset.FromUnixTimeSeconds(0))
                 {
                     _checkoutList.Remove(c);
                     if (c._dueDate > currTime) { return 0; }
@@ -242,7 +242,7 @@ namespace LibrarySystem
             DateTimeOffset currTime = DateTimeOffset.Now;
             foreach (Checkout c in _checkoutList)
             {
-                if (c._cardNumber == cardNumber)
+                if (c._cardNumber == cardNumber && c._dueDate > DateTimeOffset.FromUnixTimeSeconds(0))
                 {
                     if (c._renewed) { return -1; } //Cannot return books that have already been renewed
                     _checkoutList[_checkoutList.IndexOf(c)] = new Checkout
@@ -259,6 +259,19 @@ namespace LibrarySystem
             }
 
             return -1;
+        }
+
+        public bool leaveQueueForBook(string cardNumber)
+        {
+            foreach (Checkout c in _checkoutList)
+            {
+                if (c._cardNumber == cardNumber && c._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
+                {
+                    _checkoutList.Remove(c);
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool moveQueueToCheckout()

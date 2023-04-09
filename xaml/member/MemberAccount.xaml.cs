@@ -145,5 +145,18 @@ namespace LibrarySystem
             }
             UpdateDisplay();
         }
+
+        private void btnLeaveQueue_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to leave the queue for this book?", "Leave Queue For Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                XmlController controller = new XmlController();
+                Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
+                thisBook.leaveQueueForBook(_currentUser._cardNumber);
+                controller.UpdateBookCheckout(thisBook);
+                MessageBox.Show("Successfully left queue for the book!", "Leave Queue For Book");
+            }
+            UpdateDisplay();
+        }
     }
 }
