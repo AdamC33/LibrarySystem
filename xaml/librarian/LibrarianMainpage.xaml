@@ -19,7 +19,7 @@
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/membericon.png"/>
         </Button>
         <Label Content="Manage Members" HorizontalAlignment="Center" Margin="0,337,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="btnGenerateReports" HorizontalAlignment="Right" Margin="0,157,170,0" VerticalAlignment="Top" Width="175" Height="175">
+        <Button x:Name="btnGenerateReports" HorizontalAlignment="Right" Margin="0,157,170,0" VerticalAlignment="Top" Width="175" Height="175" Click="btnGenerateReports_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="150" Width="150" Source="/img/reporticon.png"/>
         </Button>
         <Label Content="Generate Reports" HorizontalAlignment="Right" Margin="0,337,170,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>

@@ -111,6 +111,7 @@ namespace LibrarySystem
             }
             //This is done to remove the forward entry in the navigation service, which would give access to the account
             //The forward entry here is now simply another logout screen
+            GC.Collect(); //Forces the garbage collector to deallocate some unused variables - frees up memory
         }
     }
 }

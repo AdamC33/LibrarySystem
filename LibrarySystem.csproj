@@ -93,6 +93,9 @@
     <Compile Include="xaml\librarian\FineDelete.xaml.cs">
       <DependentUpon>FineDelete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="xaml\librarian\GenerateReports.xaml.cs">
+      <DependentUpon>GenerateReports.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xaml\librarian\LibrarianMainpage.xaml.cs">
       <DependentUpon>LibrarianMainpage.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
     <Page Include="xaml\librarian\FineDelete.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\GenerateReports.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="xaml\librarian\LibrarianMainpage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -328,6 +335,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\passwordicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\saveicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.xaml.librarian;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,11 @@ namespace LibrarySystem
         private void btnManageMembers_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ManageMembers());
+        }
+
+        private void btnGenerateReports_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GenerateReports());
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)

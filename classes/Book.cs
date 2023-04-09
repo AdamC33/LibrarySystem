@@ -123,6 +123,23 @@ namespace LibrarySystem
             get { return _checkoutList.Count; }
         }
 
+        public List<string> membersWithOverdueBook
+        {
+            get
+            {
+                DateTimeOffset currentTime = DateTimeOffset.Now;
+                List<string> members = new List<string>();
+                foreach (Checkout c in _checkoutList)
+                {
+                    if (c._dueDate < currentTime && c._dueDate != DateTimeOffset.FromUnixTimeSeconds(0))
+                    {
+                        members.Add(c._cardNumber);
+                    }
+                }
+                return members;
+            }
+        }
+
         public string getCardNumber(int index)
         {
             return _checkoutList[index]._cardNumber;
