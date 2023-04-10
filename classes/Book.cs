@@ -284,7 +284,7 @@ namespace LibrarySystem
             {
                 if (currentStock == 0)
                 {
-                    return null;
+                    break;
                 }
                 else if (_checkoutList[i]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
                 {
