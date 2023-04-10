@@ -146,6 +146,31 @@ namespace LibrarySystem
             return _checkoutList[index]._cardNumber;
         }
 
+        public string getCardNumberInQueue(int index)
+        {
+            List<string> cardNumbers = new List<String>();
+            foreach (Checkout c in _checkoutList)
+            {
+                if (c._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
+                {
+                    cardNumbers.Add(c._cardNumber);
+                }
+            }
+            return cardNumbers[index];
+        }
+
+        public int getIndexFromCardNumber(string cardNumber)
+        {
+            for (int i = 0; i < _checkoutList.Count; i++)
+            {
+                if (getCardNumber(i) == cardNumber)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         public DateTimeOffset getDueDate(string cardNumber)
         {
             foreach (Checkout c in _checkoutList)
@@ -275,9 +300,11 @@ namespace LibrarySystem
             return false;
         }
 
-        public List<string> moveQueueToCheckout()
+        public List<string> moveQueueToCheckout(string cardNumber = null)
         {
             //Automatically checks the queue and moves the earliest to checkout
+            //If the librarian calls it, there won't be a card number. Everyone in the queue will be moved.
+            //However, if the card number string is not null, then it only moves the specified member in the queue to checkout.
             DateTimeOffset currDateTime = DateTimeUK.DateTimeOffsetNow;
             List<string> memberCardNumbers = new List<string>();
             for (int i = 0; i < _checkoutList.Count; i++)
@@ -286,7 +313,8 @@ namespace LibrarySystem
                 {
                     break;
                 }
-                else if (_checkoutList[i]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
+                else if (_checkoutList[i]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0)
+                && (cardNumber == null || cardNumber == _checkoutList[i]._cardNumber))
                 {
                     Checkout c = _checkoutList[i];
                     c._dueDate = currDateTime.AddDays(21);

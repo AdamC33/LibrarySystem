@@ -146,6 +146,22 @@ namespace LibrarySystem
             UpdateDisplay();
         }
 
+        private void btnCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            XmlController controller = new XmlController();
+            Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
+            if (thisBook.moveQueueToCheckout(_currentUser._cardNumber).Contains(_currentUser._cardNumber))
+            {
+                MessageBox.Show("Successfully checked the book out! Please pick it up as soon as you are able to!", "Check Book");
+                controller.UpdateBookCheckout(thisBook);
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong checking you out for the book. Please try again!", "Check Book");
+            }
+            UpdateDisplay();
+        }
+
         private void btnLeaveQueue_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to leave the queue for this book?", "Leave Queue For Book", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

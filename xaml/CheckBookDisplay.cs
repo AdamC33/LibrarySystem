@@ -17,7 +17,7 @@ namespace LibrarySystem
         private DateTimeOffset dueDateDateTime { get; set; }
         private string dueDateString { get; set; }
         public string fontWeight { get; set; }
-        public string notifyIsEnabled { get; set; }
+        public string specifiedButtonIsEnabled { get; set; }
 
         public DateTimeOffset dueDate
         {
@@ -71,16 +71,26 @@ namespace LibrarySystem
                                 title = b._title,
                                 dueDate = b.getDueDate(b.getCardNumber(i)),
                                 fontWeight = thisFontWeight,
-                                notifyIsEnabled = thisNotifyIsEnabled,
+                                specifiedButtonIsEnabled = thisNotifyIsEnabled,
                             });
                         }
                         else
                         {
                             //Books that the member is queued for
+                            string thisFontWeight = "Regular";
+                            string thisCheckoutIsEnabled = "False";
+                            Book tempBook = b;
+                            if (tempBook.moveQueueToCheckout().Contains(thisMember._cardNumber))
+                            {
+                                thisFontWeight = "Bold";
+                                thisCheckoutIsEnabled = "True";
+                            }
                             memberLibraryList[1].Add(new CheckBookDisplay
                             {
                                 ISBN = b._ISBN,
-                                title = b._title
+                                title = b._title,
+                                fontWeight = thisFontWeight,
+                                specifiedButtonIsEnabled = thisCheckoutIsEnabled
                             });
                         }
                     }
