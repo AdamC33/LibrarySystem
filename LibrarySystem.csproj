@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="classes\Book.cs" />
+    <Compile Include="classes\DateTimeNowUK.cs" />
     <Compile Include="classes\Member.cs" />
     <Compile Include="classes\MoneyFormat.cs" />
     <Compile Include="classes\XmlController.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -127,7 +128,7 @@ namespace LibrarySystem
         {
             get
             {
-                DateTimeOffset currentTime = DateTimeOffset.Now;
+                DateTimeOffset currentTime = DateTimeUK.DateTimeOffsetNow;
                 List<string> members = new List<string>();
                 foreach (Checkout c in _checkoutList)
                 {
@@ -204,7 +205,7 @@ namespace LibrarySystem
                 _checkoutList.Add(new Checkout
                 {
                     _cardNumber = cardNumber,
-                    _dueDate = DateTimeOffset.Now.AddDays(21), //21 days are added as this is the standard amount of days a book can be borrowed for
+                    _dueDate = DateTimeUK.DateTimeOffsetNow.AddDays(21), //21 days are added as this is the standard amount of days a book can be borrowed for
                     _renewed = false
                 });
                 return 3;
@@ -216,7 +217,7 @@ namespace LibrarySystem
             //0 = book has been returned
             //>0 = book has been returned, days late
             //-1 = book hasn't been returned
-            DateTimeOffset currTime = DateTimeOffset.Now;
+            DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow;
             foreach (Checkout c in _checkoutList)
             { 
                 if (c._cardNumber == cardNumber && c._dueDate > DateTimeOffset.FromUnixTimeSeconds(0))
@@ -239,7 +240,7 @@ namespace LibrarySystem
             //0 = book has been renewed
             //>0 = book has been renewed, days late
             //-1 = book hasn't been renewed
-            DateTimeOffset currTime = DateTimeOffset.Now;
+            DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow;
             foreach (Checkout c in _checkoutList)
             {
                 if (c._cardNumber == cardNumber && c._dueDate > DateTimeOffset.FromUnixTimeSeconds(0))
@@ -247,7 +248,7 @@ namespace LibrarySystem
                     if (c._renewed) { return -1; } //Cannot return books that have already been renewed
                     _checkoutList[_checkoutList.IndexOf(c)] = new Checkout
                     { _cardNumber = c._cardNumber,
-                      _dueDate = DateTimeOffset.UtcNow.AddDays(21),
+                      _dueDate = DateTimeUK.DateTimeOffsetNow.AddDays(21),
                       _renewed = true };
                     if (c._dueDate > currTime) { return 0; }
                     else
@@ -274,23 +275,26 @@ namespace LibrarySystem
             return false;
         }
 
-        public bool moveQueueToCheckout()
+        public List<string> moveQueueToCheckout()
         {
             //Automatically checks the queue and moves the earliest to checkout
+            DateTimeOffset currDateTime = DateTimeUK.DateTimeOffsetNow;
+            List<string> memberCardNumbers = new List<string>();
             for (int i = 0; i < _checkoutList.Count; i++)
             {
                 if (currentStock == 0)
                 {
-                    return false;
+                    return null;
                 }
                 else if (_checkoutList[i]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
                 {
                     Checkout c = _checkoutList[i];
-                    c._dueDate = DateTimeOffset.Now.AddDays(21);
+                    c._dueDate = currDateTime.AddDays(21);
                     _checkoutList[i] = c;
+                    memberCardNumbers.Add(c._cardNumber);
                 }
             }
-            return true;
+            return memberCardNumbers;
         }
 
         public bool modifyStock(UInt32 newStock)

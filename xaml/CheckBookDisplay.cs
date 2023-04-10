@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.classes;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace LibrarySystem
             List<CheckBookDisplay>[] memberLibraryList = new List<CheckBookDisplay>[2];
             memberLibraryList[0] = new List<CheckBookDisplay>();
             memberLibraryList[1] = new List<CheckBookDisplay>();
-            DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
+            DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow; //Keeps the current time as a constant value in the for loop
 
             List<Book> library = controller.GetLibrary();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.classes;
+using System;
 using System.Collections.Generic;
 using System.Globalization; //Needed for the date format to be correct (date-month-year as opposed to month-date-year)
 using System.Linq;
@@ -47,7 +48,7 @@ namespace LibrarySystem
             txtStock.Text = String.Format("{0} / {1}", _thisBook.currentStock, _thisBook._totalStock);
 
             List<checkBookDisplay> checkBookList = new List<checkBookDisplay>();
-            DateTimeOffset currTime = DateTimeOffset.Now; //Keeps the current time as a constant value in the for loop
+            DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow; //Keeps the current time as a constant value in the for loop
 
             for (int i = 0; i < _thisBook.checkoutListMinusQueueLength; i++)
             {
@@ -119,11 +120,15 @@ namespace LibrarySystem
             MessageBoxResult confirm = MessageBox.Show("Are you sure you want to check the book out for the queued members?", "Move Queued Members", MessageBoxButton.YesNo);
             if (confirm == MessageBoxResult.Yes)
             {
-                bool movedEverything = _thisBook.moveQueueToCheckout();
+                List<string> notifyMemberCardNumbers = _thisBook.moveQueueToCheckout();
                 XmlController controller = new XmlController();
                 controller.UpdateBookCheckout(_thisBook);
+                foreach (string cardNumber in notifyMemberCardNumbers)
+                {
+                    controller.NotifyMember(cardNumber, String.Format("A librarian has checked you out for the book {0} (ISBN: {1}). It is due in on {2}. Please pick it up from the library as soon as you are able to!", _thisBook._title, _thisBook._ISBN, _thisBook.getDueDate(cardNumber).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB"))));
+                }
                 UpdateDisplay();
-                if (!movedEverything)
+                if (notifyMemberCardNumbers == null)
                 {
                     MessageBox.Show("Could not move all the queued members, book stock is too low.", "Move Queued Members");
                 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.classes;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -52,7 +53,7 @@ namespace LibrarySystem.xaml.librarian
         public GenerateReports()
         {
             InitializeComponent();
-            DateTime currentTime = DateTime.Now;
+            DateTime currentTime = DateTimeUK.DateTimeOffsetNow.DateTime;
             int numberOfBooksCheckedOut = 0;
             int lengthOfQueuesForAllBooks = 0;
             UInt32 totalStockOfAllBooks = 0;
