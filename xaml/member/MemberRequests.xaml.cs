@@ -61,7 +61,7 @@ namespace LibrarySystem
                     index = i
                 });
             }
-            requestsDisplay.Reverse();
+            requestsDisplay.Reverse(); //Reverses it so it goes from soonest to latest
             listRequests.ItemsSource = requestsDisplay;
             _parentPage.UpdateDisplay(_thisMember);
         }
