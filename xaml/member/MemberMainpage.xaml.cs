@@ -82,26 +82,26 @@ namespace LibrarySystem
             {
                 searchBy = "title";
             }
-            frameMember.Content = new MemberBooksearch(txtSearch.Text, searchBy, _currentUser);
             UpdateDisplay(_currentUser);
+            frameMember.Content = new MemberBooksearch(txtSearch.Text, searchBy, _currentUser);
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            frameMember.Content = new MemberHomepage(_currentUser);
             UpdateDisplay(_currentUser);
+            frameMember.Content = new MemberHomepage(_currentUser);
         }
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            frameMember.Content = new MemberAccount(_currentUser);
             UpdateDisplay(_currentUser);
+            frameMember.Content = new MemberAccount(_currentUser);
         }
 
         private void btnNotifications_Click(object sender, RoutedEventArgs e)
         {
-            frameMember.Content = new MemberRequests(_currentUser, this);
             UpdateDisplay(_currentUser);
+            frameMember.Content = new MemberRequests(_currentUser, this);
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
