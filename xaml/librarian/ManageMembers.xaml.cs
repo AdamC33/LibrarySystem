@@ -117,6 +117,16 @@ namespace LibrarySystem
             MessageBoxResult yesOrNo = MessageBox.Show("Are you sure you want to delete this member?", "Delete Member", MessageBoxButton.YesNo);
             if (yesOrNo == MessageBoxResult.Yes)
             {
+                List<Book> library = controller.GetLibrary();
+                foreach (Book b in library)
+                {
+                    if (b.getIndexFromCardNumber(row.Row.ItemArray[0].ToString()) > -1)
+                    {
+                        Book changeCheckout = b;
+                        changeCheckout.memberDeleted(row.Row.ItemArray[0].ToString());
+                        controller.UpdateBookCheckout(changeCheckout);
+                    }
+                }
                 controller.DeleteMember(row.Row.ItemArray[0].ToString());
             }
 

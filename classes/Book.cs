@@ -195,6 +195,27 @@ namespace LibrarySystem
             return null;
         }
 
+        public bool memberDeleted(string cardNumber)
+        {
+            int index = getIndexFromCardNumber(cardNumber);
+            if (index > -1 && _checkoutList[index]._dueDate != DateTimeOffset.FromUnixTimeSeconds(0))
+            {
+                _checkoutList[index] = new Checkout
+                {
+                    _cardNumber = "0",
+                    _dueDate = _checkoutList[index]._dueDate,
+                    _renewed = _checkoutList[index]._renewed
+                };
+                return true;
+            }
+            else if (index > -1 && _checkoutList[index]._dueDate == DateTimeOffset.FromUnixTimeSeconds(0))
+            {
+                _checkoutList.RemoveAt(index);
+                return true;
+            }
+            else { return false; }
+        }
+
         public int checkoutBook(string cardNumber)
         {
             //0 = already checked out
@@ -251,7 +272,6 @@ namespace LibrarySystem
                     if (c._dueDate > currTime) { return 0; }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine(c._dueDate);
                         return Convert.ToInt32(Math.Ceiling((currTime - c._dueDate).TotalDays));
                     }
                 }
