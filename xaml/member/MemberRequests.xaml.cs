@@ -61,6 +61,7 @@ namespace LibrarySystem
                     index = i
                 });
             }
+            requestsDisplay.Reverse();
             listRequests.ItemsSource = requestsDisplay;
             _parentPage.UpdateDisplay(_thisMember);
         }
