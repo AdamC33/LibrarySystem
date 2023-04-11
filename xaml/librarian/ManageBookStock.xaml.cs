@@ -1,4 +1,5 @@
 ﻿using LibrarySystem.classes;
+using LibrarySystem.xaml.librarian;
 using System;
 using System.Collections.Generic;
 using System.Globalization; //Needed for the date format to be correct (date-month-year as opposed to month-date-year)
@@ -94,6 +95,11 @@ namespace LibrarySystem
             {
                 btnMoveQueue.IsEnabled = true;
             }
+            if (_thisBook.getIndexFromCardNumber("0") != -1)
+            {
+                //The button is only enabled if there are missing books in the checkout. If not, there is no point having it enabled.
+                btnDeleteMissingBooks.IsEnabled = true;
+            }
         }
 
         private void btnNotify_Click(object sender, RoutedEventArgs e)
@@ -113,6 +119,13 @@ namespace LibrarySystem
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnDeleteMissingBooks_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteMissingBooks deleteMissingBooks = new DeleteMissingBooks(_thisBook);
+            deleteMissingBooks.ShowDialog();
+            UpdateDisplay();
         }
 
         private void btnMoveQueue_Click(object sender, RoutedEventArgs e)

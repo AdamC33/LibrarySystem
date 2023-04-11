@@ -124,6 +124,22 @@ namespace LibrarySystem
             get { return _checkoutList.Count; }
         }
 
+        public int deletedMembersCount
+        {
+            get
+            {
+                int i = 0;
+                foreach (Checkout c in _checkoutList)
+                {
+                    if (c._cardNumber == "0")
+                    {
+                        i++;
+                    }
+                }
+                return i;
+            }
+        }
+
         public List<string> membersWithOverdueBook
         {
             get

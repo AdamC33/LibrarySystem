@@ -48,6 +48,13 @@
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
         </Button>
+        <Button x:Name="btnDeleteMissingBooks" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnDeleteMissingBooks_Click" IsEnabled="False">
+            <Grid Height="60" Width="60">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/bookicon.png"/>
+                <Label Content="?" HorizontalContentAlignment="Center" Margin="9,-5,0,0" FontSize="48"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/removeicon.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,-5,0"/>
+            </Grid>
+        </Button>
         <Button x:Name="btnMoveQueue" HorizontalAlignment="Left" Margin="750,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnMoveQueue_Click" IsEnabled="False">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="0,3,0,0" Height="60" Width="60" Source="/img/movequeueicon.png"/>
         </Button>

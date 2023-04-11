@@ -88,6 +88,9 @@
     <Compile Include="xaml\librarian\ChangeValue.xaml.cs">
       <DependentUpon>ChangeValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="xaml\librarian\DeleteMissingBooks.xaml.cs">
+      <DependentUpon>DeleteMissingBooks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xaml\librarian\FineAdd.xaml.cs">
       <DependentUpon>FineAdd.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
     <Page Include="xaml\librarian\ChangeValue.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\DeleteMissingBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="xaml\librarian\FineAdd.xaml">
       <Generator>MSBuild:Compile</Generator>
