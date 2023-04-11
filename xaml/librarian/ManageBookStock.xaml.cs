@@ -51,12 +51,13 @@ namespace LibrarySystem
             List<checkBookDisplay> checkBookList = new List<checkBookDisplay>();
             DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow; //Keeps the current time as a constant value in the for loop
 
+            int deletedMemberIndex = 0;
             for (int i = 0; i < _thisBook.checkoutListMinusQueueLength; i++)
             {
                 string thisFontWeight = "Regular";
                 string thisFontStyle = "Normal";
                 string thisNotifyIsEnabled = "False";
-                if (currTime >= _thisBook.getDueDate(_thisBook.getCardNumber(i)))
+                if (currTime >= _thisBook.getDueDate(_thisBook.getCardNumber(i), deletedMemberIndex))
                 {
                     thisFontWeight = "Bold";
                     thisNotifyIsEnabled = "True";
@@ -64,6 +65,7 @@ namespace LibrarySystem
                 string thisMemberName = controller.GetMemberName(_thisBook.getCardNumber(i));
                 if (thisMemberName == null)
                 {
+                    deletedMemberIndex++;
                     thisMemberName = "This person is no longer a member";
                     thisFontStyle = "Italic";
                     thisNotifyIsEnabled = "False";
@@ -72,7 +74,7 @@ namespace LibrarySystem
                 {
                     cardNumber = _thisBook.getCardNumber(i),
                     name = thisMemberName,
-                    dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i)).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
+                    dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i), deletedMemberIndex - 1).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
                     fontWeight = thisFontWeight,
                     fontStyle = thisFontStyle,
                     notifyIsEnabled = thisNotifyIsEnabled
@@ -138,7 +140,6 @@ namespace LibrarySystem
                 controller.UpdateBookCheckout(_thisBook);
                 foreach (string cardNumber in notifyMemberCardNumbers)
                 {
-                    System.Diagnostics.Debug.WriteLine(cardNumber);
                     controller.NotifyMember(cardNumber, String.Format("A librarian has checked you out for the book {0} (ISBN: {1}). It is due in on {2}. Please pick it up from the library as soon as you are able to!", _thisBook._title, _thisBook._ISBN, _thisBook.getDueDate(cardNumber).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB"))));
                 }
                 UpdateDisplay();

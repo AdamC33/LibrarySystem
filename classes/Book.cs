@@ -187,13 +187,30 @@ namespace LibrarySystem
             return -1;
         }
 
-        public DateTimeOffset getDueDate(string cardNumber)
+        public DateTimeOffset getDueDate(string cardNumber, int deletedMemberIndex = 0)
         {
-            foreach (Checkout c in _checkoutList)
+            if (cardNumber == "0")
             {
-                if (c._cardNumber == cardNumber)
+                //This code is needed since all "lost books" have a card number of 0, so would all return the same (first) datetime
+                //It is intended for the calling code to increment the deleted member index by 1 each time the due date of a lost book is returned
+                List<DateTimeOffset> dueDates = new List<DateTimeOffset>();
+                foreach (Checkout c in _checkoutList)
                 {
-                    return c._dueDate;
+                    if (c._cardNumber == "0")
+                    {
+                        dueDates.Add(c._dueDate);
+                    }
+                }
+                return dueDates[deletedMemberIndex];
+            }
+            else
+            {
+                foreach (Checkout c in _checkoutList)
+                {
+                    if (c._cardNumber == cardNumber)
+                    {
+                        return c._dueDate;
+                    }
                 }
             }
             return DateTimeOffset.MinValue;
@@ -314,7 +331,6 @@ namespace LibrarySystem
                     if (c._dueDate > currTime) { return 0; }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine(c._dueDate);
                         return Convert.ToInt32(Math.Ceiling((currTime - c._dueDate).TotalDays));
                     }
                 }
