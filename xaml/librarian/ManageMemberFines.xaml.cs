@@ -91,7 +91,8 @@ namespace LibrarySystem
 
         private void btnRem_Click(object sender, RoutedEventArgs e)
         {
-            FineDelete fineDel = new FineDelete(_thisMember._cardNumber, listFines.SelectedIndex);
+            fineDisplay thisFine = (fineDisplay)listFines.SelectedItem;
+            FineDelete fineDel = new FineDelete(_thisMember._cardNumber, listFines.SelectedIndex, thisFine.amount);
             fineDel.ShowDialog();
             UpdateDisplay();
         }

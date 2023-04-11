@@ -22,13 +22,14 @@ namespace LibrarySystem
         private string _cardNumber;
         private int _index;
         private bool _hasInitialised = false;
-        private int _fineAmount;
+        private string _fineAmount;
 
-        public FineDelete(string cardNumber, int index)
+        public FineDelete(string cardNumber, int index, string amount)
         {
             InitializeComponent();
             _cardNumber = cardNumber;
             _index = index;
+            _fineAmount = amount;
             _hasInitialised = true;
         }
 
