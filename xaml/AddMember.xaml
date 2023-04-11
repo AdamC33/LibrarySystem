@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibrarySystem"
         mc:Ignorable="d"
-        Title="AddMember" Height="300" Width="350" ResizeMode="NoResize">
+        Title="Member Details" Height="300" Width="350" ResizeMode="NoResize">
     <StackPanel>
         <Grid Margin="10,10,0,0">
             <Label Content="Card number:" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14"/>

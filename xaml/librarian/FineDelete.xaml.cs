@@ -22,6 +22,8 @@ namespace LibrarySystem
         private string _cardNumber;
         private int _index;
         private bool _hasInitialised = false;
+        private int _fineAmount;
+
         public FineDelete(string cardNumber, int index)
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace LibrarySystem
 
         private void checkRadioButtons(object sender, RoutedEventArgs e)
         {
-            if ((radPaid.IsChecked == true || radBanned.IsChecked == true) && _hasInitialised)
+            if (radPaid.IsChecked == true && _hasInitialised)
             {
                 txtOther.IsEnabled = false;
                 btnConfirm.IsEnabled = true;
@@ -65,7 +67,13 @@ namespace LibrarySystem
         {
             //TODO: Add to log file w/ explanation for why fine was removed
             XmlController controller = new XmlController();
+            string reason = txtOther.Text;
+            if (radPaid.IsChecked == true)
+            {
+                reason = "Fine has been paid.";
+            }
             controller.DeleteFee(_cardNumber, _index);
+            controller.NotifyMember(_cardNumber, String.Format("A fine of {0} has been removed from your account with the reason: {1}", _fineAmount, reason));
             this.Close();
         }
     }
