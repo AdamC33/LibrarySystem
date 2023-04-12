@@ -1,0 +1,36 @@
+﻿<Page x:Class="LibrarySystem.ManageBooksOverdue"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LibrarySystem"
+      mc:Ignorable="d" 
+      d:DesignHeight="538" d:DesignWidth="908"
+      Title="ManageBooksOverdue">
+
+    <Grid>
+        <Label Content="Overdue Books:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="30"/>
+        <ListBox x:Name="listOverdueBooks" HorizontalAlignment="Center" Height="333" Margin="0,86,0,0" VerticalAlignment="Top" Width="888" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock FontSize="12" Text="{Binding bookISBN}" Width="90" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding bookTitle}" Width="220" TextTrimming="CharacterEllipsis" Margin="100,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding memberCardNumber}" Width="80" Margin="330,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding memberName}" FontStyle="{Binding getFontStyle}" Width="210" TextTrimming="CharacterEllipsis" Margin="410,0,0,0" HorizontalAlignment="Left"/>
+                        <TextBlock FontSize="12" Text="{Binding getDueDate}" Width="150" TextTrimming="CharacterEllipsis" Margin="0,0,60,0" HorizontalAlignment="Right"/>
+                        <Button Content="Notify" Width="50" HorizontalAlignment="Right" Click="btnNotify_Click" IsEnabled="{Binding getBtnNotifyIsEnabled}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
+            <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
+        </Button>
+    </Grid>
+</Page>

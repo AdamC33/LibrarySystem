@@ -31,25 +31,6 @@ namespace LibrarySystem.xaml.librarian
             public int numberOfCheckoutsAndQueue { get; set; }
         }
 
-        private class OverdueBookDisplay
-        {
-            public string memberCardNumber { get; set; }
-            public string memberName { get; set; }
-            public string bookISBN { get; set; }
-            public string bookTitle { get; set; }
-            private string dueDateString { get; set; }
-
-            public DateTimeOffset dueDate
-            {
-                set { dueDateString = value.DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")); }
-            }
-
-            public string getDueDate
-            {
-                get { return dueDateString; }
-            }
-        }
-
         public GenerateReports()
         {
             InitializeComponent();
@@ -57,7 +38,7 @@ namespace LibrarySystem.xaml.librarian
             int numberOfBooksCheckedOut = 0;
             int lengthOfQueuesForAllBooks = 0;
             UInt32 totalStockOfAllBooks = 0;
-            List<OverdueBookDisplay> overdueBooks = new List<OverdueBookDisplay>();
+            List<OverdueBooks> overdueBooks = new List<OverdueBooks>();
             XmlController controller = new XmlController();
             List<Book> library = controller.GetLibrary();
             foreach (Book b in library)
@@ -67,7 +48,7 @@ namespace LibrarySystem.xaml.librarian
                 totalStockOfAllBooks += b._totalStock;
                 foreach (string cardNumber in b.membersWithOverdueBook)
                 {
-                    overdueBooks.Add(new OverdueBookDisplay
+                    overdueBooks.Add(new OverdueBooks
                     {
                         memberCardNumber = cardNumber,
                         memberName = controller.GetMemberName(cardNumber),
@@ -89,7 +70,7 @@ namespace LibrarySystem.xaml.librarian
             if (popularBooksString.Length == 0) { popularBooksString = "No books in library!"; }
 
             string overdueBooksString = "";
-            foreach (OverdueBookDisplay b in overdueBooks)
+            foreach (OverdueBooks b in overdueBooks)
             {
                 overdueBooksString += String.Format("{0} ({1}) - Due Date {2} - {3} ({4})\n", b.bookTitle, b.bookISBN, b.getDueDate, b.memberName, b.memberCardNumber);
             }

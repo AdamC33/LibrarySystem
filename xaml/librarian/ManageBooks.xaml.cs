@@ -64,6 +64,11 @@ namespace LibrarySystem
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
+        private void btnOverdueBooks_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ManageBooksOverdue());
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddBook addBook = new AddBook();

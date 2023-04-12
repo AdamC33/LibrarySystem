@@ -107,15 +107,7 @@ namespace LibrarySystem
         private void btnNotify_Click(object sender, RoutedEventArgs e)
         {
             checkBookDisplay thisBook = (checkBookDisplay)((Button)sender).DataContext;
-            XmlController controller = new XmlController();
-            if (controller.NotifyMember(thisBook.cardNumber, String.Format("{0} ({1}) is past its due date and you have still not returned it - please return it!", _thisBook._title, _thisBook._ISBN)))
-            {
-                MessageBox.Show("Successfully notified the member!", "Notify Member");
-            }
-            else
-            {
-                MessageBox.Show("Could not notify the member!", "Notify Member");
-            }
+            OverdueBooks.notifyMember(thisBook.cardNumber, _thisBook._title, _thisBook._ISBN);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

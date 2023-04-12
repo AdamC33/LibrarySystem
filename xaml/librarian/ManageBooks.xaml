@@ -23,8 +23,14 @@
         <Button x:Name="btnBack" HorizontalAlignment="Left" Margin="10,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnBack_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="60" Width="60" Source="/img/goback.png"/>
         </Button>
-        <Button x:Name="btnStock" HorizontalAlignment="Left" Margin="560,458,0,0" VerticalAlignment="Top" Width="70" Height="70" IsEnabled="False" Click="btnStock_Click">
+        <Button x:Name="btnStock" HorizontalAlignment="Left" Margin="480,458,0,0" VerticalAlignment="Top" Width="70" Height="70" IsEnabled="False" Click="btnStock_Click">
             <Image RenderOptions.BitmapScalingMode="HighQuality" Height="65" Width="65" Source="/img/stockicon.png"/>
+        </Button>
+        <Button x:Name="btnOverdueBooks" HorizontalAlignment="Left" Margin="560,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnOverdueBooks_Click">
+            <Grid Width="60" Height="60">
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="/img/bookicon.png"/>
+                <Image RenderOptions.BitmapScalingMode="HighQuality" Height="35" Width="35" Source="/img/clock.png" Margin="8,11,0,0"/>
+            </Grid>
         </Button>
         <Button x:Name="btnAdd" HorizontalAlignment="Left" Margin="670,458,0,0" VerticalAlignment="Top" Width="70" Height="70" Click="btnAdd_Click">
             <Grid Width="60" Height="60">

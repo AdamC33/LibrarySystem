@@ -106,6 +106,9 @@
     <Compile Include="xaml\librarian\ManageBooks.xaml.cs">
       <DependentUpon>ManageBooks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="xaml\librarian\ManageBooksOverdue.xaml.cs">
+      <DependentUpon>ManageBooksOverdue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="xaml\librarian\ManageBookStock.xaml.cs">
       <DependentUpon>ManageBookStock.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,7 @@
     <Compile Include="xaml\librarian\ManageMembers.xaml.cs">
       <DependentUpon>ManageMembers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="xaml\librarian\OverdueBook.cs" />
     <Compile Include="xaml\login\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -193,6 +197,10 @@
     <Page Include="xaml\librarian\ManageBooks.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="xaml\librarian\ManageBooksOverdue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="xaml\librarian\ManageBookStock.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -346,6 +354,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\saveicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
