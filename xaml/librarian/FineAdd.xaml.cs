@@ -76,6 +76,7 @@ namespace LibrarySystem
             string txtAmountString = ((TextBox)sender).Text;
             if (((TextBox)sender).Text.Length > 1 && ((TextBox)sender).Text[0] == '0')
             {
+                //This is to remove 0s from the start of the string, given that 0 isn't the only digit there
                 txtAmountString = txtAmountString.Remove(0, 1);
                 initialSelectionStart--;
             }
