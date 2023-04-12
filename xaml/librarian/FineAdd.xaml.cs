@@ -74,6 +74,11 @@ namespace LibrarySystem
             //This code only allows numbers to be entered into the amount textboxes
             int initialSelectionStart = ((TextBox)sender).SelectionStart;
             string txtAmountString = ((TextBox)sender).Text;
+            if (((TextBox)sender).Text.Length > 1 && ((TextBox)sender).Text[0] == '0')
+            {
+                txtAmountString = txtAmountString.Remove(0, 1);
+                initialSelectionStart--;
+            }
             foreach (char c in ((TextBox)sender).Text)
             {
                 if (!Char.IsDigit(c) || txtAmountString.Length > maxLength)
