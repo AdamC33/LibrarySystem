@@ -108,6 +108,17 @@ namespace LibrarySystem
                 XmlController controller = new XmlController();
                 Book thisBook = controller.GetLibrary(((CheckBookDisplay)((Button)sender).DataContext).ISBN, "isbn")[0];
                 int daysLate = thisBook.returnBook(_currentUser._cardNumber);
+                int queueIndex = 0;
+                for (int i = 0; i < thisBook.checkoutListLength; i++)
+                {
+                    if (thisBook.getDueDate(thisBook.getCardNumber(i)) == DateTimeOffset.FromUnixTimeSeconds(0) && queueIndex < thisBook.currentStock)
+                    {
+                        //The aim is to only notify the members who can check the book out
+                        //If their "index" is greater than the current stock of the book, they won't be able to check the book out as there are too many members further along the queue who have higher priority
+                        queueIndex++;
+                        controller.NotifyMember(thisBook.getCardNumber(i), String.Format("A member has returned the book {0} (ISBN {1}), you can check the book out!", thisBook._title, thisBook._ISBN));
+                    }
+                }
                 string messageBoxText = "Successfully returned book!";
                 if (daysLate > 0)
                 {
