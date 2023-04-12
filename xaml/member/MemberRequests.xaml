@@ -14,9 +14,9 @@
         <ListBox x:Name="listRequests" Width="910" Margin="-1,70,0,0" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="892">
-                        <TextBlock FontSize="16" Text="{Binding request}" HorizontalAlignment="Left" Margin="0,5,0,0" Width="800" TextWrapping="Wrap"/>
-                        <Button x:Name="btnRead" Uid="{Binding index}" Content="Mark as read" Width="80" HorizontalAlignment="Right" Click="btnRead_Click"/>
+                    <Grid Width="870">
+                        <TextBlock FontSize="16" Text="{Binding request}" HorizontalAlignment="Left" Margin="0,5,0,0" Width="770" TextWrapping="Wrap"/>
+                        <Button x:Name="btnRead" Uid="{Binding index}" Content="Mark as read" Margin="0,0,5,0" Width="80" HorizontalAlignment="Right" Click="btnRead_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
