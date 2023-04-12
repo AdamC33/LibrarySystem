@@ -72,6 +72,7 @@ namespace LibrarySystem
                     if (MessageBox.Show("Hello and welcome to the Library Bookings Co. library application! As you are a new member, please look through the user guide for the application and after activating your account, familiarise yourself with the application's interface. Once you are ready to activate your account, please click on the OK button below.", "Activate Account", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
                     {
                         EnterPassword enterPassword = new EnterPassword(attemptMember.getPassword);
+                        enterPassword.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                         if (enterPassword.ShowDialog() == true)
                         {
                             string newPassword = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;

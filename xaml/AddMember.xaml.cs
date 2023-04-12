@@ -65,6 +65,7 @@ namespace LibrarySystem
             else
             {
                 EnterPassword enterPassword = new EnterPassword(_oldPassword);
+                enterPassword.WindowStartupLocation = WindowStartupLocation.CenterScreen;
                 if (enterPassword.ShowDialog() == true)
                 {
                     _password = ((MainWindow)Application.Current.MainWindow)._temporaryPassthroughString;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.xaml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -76,6 +77,7 @@ namespace LibrarySystem
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             FineAdd fineAdd = new FineAdd(_thisMember._cardNumber);
+            fineAdd.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             fineAdd.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
             //Any code after this is will be run after the fineAdd window has closed (either because the user has clicked "Confirm" or the close button in the top right)
             UpdateDisplay();
@@ -85,6 +87,7 @@ namespace LibrarySystem
         {
             fineDisplay thisFine = (fineDisplay)listFines.SelectedItem;
             FineAdd fineMod = new FineAdd(_thisMember._cardNumber, listFines.SelectedIndex, thisFine.amount, thisFine.reason);
+            fineMod.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             fineMod.ShowDialog();
             UpdateDisplay();
         }
@@ -93,6 +96,7 @@ namespace LibrarySystem
         {
             fineDisplay thisFine = (fineDisplay)listFines.SelectedItem;
             FineDelete fineDel = new FineDelete(_thisMember._cardNumber, listFines.SelectedIndex, thisFine.amount);
+            fineDel.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             fineDel.ShowDialog();
             UpdateDisplay();
         }

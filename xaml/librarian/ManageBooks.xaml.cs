@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LibrarySystem.xaml;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -72,6 +73,7 @@ namespace LibrarySystem
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddBook addBook = new AddBook();
+            addBook.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addBook.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
             //Any code after this is will be run after the addBook window has closed (either because the user has clicked "Confirm" or the close button in the top right)
             dataSet.Reset();
@@ -89,6 +91,7 @@ namespace LibrarySystem
             row.Row.ItemArray[2].ToString(),
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[5].ToString() );
+            modBook.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             modBook.ShowDialog();
 
             dataSet.Reset();

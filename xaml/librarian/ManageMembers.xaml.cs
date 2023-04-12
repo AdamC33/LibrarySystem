@@ -85,6 +85,7 @@ namespace LibrarySystem
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddMember addMember = new AddMember();
+            addMember.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             addMember.ShowDialog(); //ShowDialog is used instead of Show as it pauses the main window.
             //Any code after this is will be run after the addMember window has closed (either because the user has clicked "Confirm" or the close button in the top right)
             dataSet.Reset();
@@ -102,6 +103,7 @@ namespace LibrarySystem
             row.Row.ItemArray[3].ToString(),
             row.Row.ItemArray[4].ToString(),
             row.Row.ItemArray[1].ToString());
+            modMember.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             modMember.ShowDialog();
 
             dataSet.Reset();

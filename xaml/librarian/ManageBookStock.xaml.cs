@@ -1,4 +1,5 @@
 ﻿using LibrarySystem.classes;
+using LibrarySystem.xaml;
 using LibrarySystem.xaml.librarian;
 using System;
 using System.Collections.Generic;
@@ -118,6 +119,7 @@ namespace LibrarySystem
         private void btnDeleteMissingBooks_Click(object sender, RoutedEventArgs e)
         {
             DeleteMissingBooks deleteMissingBooks = new DeleteMissingBooks(_thisBook);
+            deleteMissingBooks.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             deleteMissingBooks.ShowDialog();
             UpdateDisplay();
         }
@@ -145,6 +147,7 @@ namespace LibrarySystem
         private void btnChangeStock_Click(object sender, RoutedEventArgs e)
         {
             ChangeValue changeValue = new ChangeValue(_thisBook);
+            changeValue.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             if (changeValue.ShowDialog() == true)
             {
                 UpdateDisplay();

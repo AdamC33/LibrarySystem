@@ -80,6 +80,7 @@ namespace LibrarySystem
             _currentUser.getPassword,
             true
             );
+            modMember.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             modMember.ShowDialog();
 
             UpdateDisplay();
@@ -88,6 +89,7 @@ namespace LibrarySystem
         private void btnChangePassword_Click(object sender, RoutedEventArgs e)
         {
             EnterPassword enterPassword = new EnterPassword(_currentUser.getPassword);
+            enterPassword.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             if (enterPassword.ShowDialog() == true)
             {
                 XmlController controller = new XmlController();
