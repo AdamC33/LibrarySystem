@@ -18,6 +18,10 @@ namespace LibrarySystem
         {
             string pounds = Convert.ToString(money / 100);
             string pence = Convert.ToString(money % 100);
+            if (pence.Length == 1)
+            {
+                pence = "0" + pence;
+            }
             return AddSignAndDecimal(pounds, pence);
         }
 
