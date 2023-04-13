@@ -29,6 +29,10 @@ namespace LibrarySystem
         {
             InitializeComponent();
             dataSet.ReadXml(@libraryPath);
+            dataSet.Tables[0].Rows[0].Delete(); //Excludes the null book from the display. This book needs to exist so that the IDs show up due to a bug in XML:
+            //Here, all book nodes have a child checkout node, and those child checkout nodes have member children nodes, and then those contain one cardnumber node, one duedate node, and one renewed node.
+            //If none of the books have any child nodes in their checkout node, for whatever reason the ID will not show up in the datagrid.
+            //By having a "null" book at the start that has every child node filled out with "null", this is prevented from happening.
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -68,6 +72,10 @@ namespace LibrarySystem
         private void btnOverdueBooks_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ManageBooksOverdue());
+
+            dataSet.Reset();
+            dataSet.ReadXml(@libraryPath);
+            dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

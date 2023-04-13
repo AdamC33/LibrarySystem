@@ -124,7 +124,7 @@ namespace LibrarySystem
             foreach (XmlNode node in xmlDoc.SelectSingleNode("//library"))
             {
                 //This if statement is for a search query. "ToUpper" makes the Contains method non case sensitive.
-                if (node.SelectSingleNode(searchBy).InnerText.ToUpper().Contains(searchQuery.ToUpper()))
+                if (node.SelectSingleNode(searchBy).InnerText.ToUpper().Contains(searchQuery.ToUpper()) && node.SelectSingleNode("isbn").InnerText != "null")
                 {
                     List<String> checkoutCardNumbers = new List<String>();
                     List<UInt32> checkoutDueDates = new List<UInt32>();
