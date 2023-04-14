@@ -66,6 +66,7 @@ namespace LibrarySystem
 
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);
+            dataSet.Tables[0].Rows[0].Delete();
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -75,6 +76,7 @@ namespace LibrarySystem
 
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);
+            dataSet.Tables[0].Rows[0].Delete();
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -86,6 +88,7 @@ namespace LibrarySystem
             //Any code after this is will be run after the addBook window has closed (either because the user has clicked "Confirm" or the close button in the top right)
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);
+            dataSet.Tables[0].Rows[0].Delete();
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -104,6 +107,7 @@ namespace LibrarySystem
 
             dataSet.Reset();
             dataSet.ReadXml(@libraryPath);
+            dataSet.Tables[0].Rows[0].Delete();
             dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
         }
 
@@ -126,6 +130,7 @@ namespace LibrarySystem
 
                 dataSet.Reset();
                 dataSet.ReadXml(@libraryPath);
+                dataSet.Tables[0].Rows[0].Delete();
                 dgLibrary.ItemsSource = dataSet.Tables[0].DefaultView;
             }
         }
