@@ -74,7 +74,7 @@ namespace LibrarySystem
             //This code only allows numbers to be entered into the amount textboxes
             int initialSelectionStart = ((TextBox)sender).SelectionStart;
             string txtAmountString = ((TextBox)sender).Text;
-            if (((TextBox)sender).Text.Length > 1 && ((TextBox)sender).Text[0] == '0')
+            if (maxLength == 7 && ((TextBox)sender).Text.Length > 1 && ((TextBox)sender).Text[0] == '0')
             {
                 //This is to remove 0s from the start of the string, given that 0 isn't the only digit there
                 txtAmountString = txtAmountString.Remove(0, 1);
@@ -92,6 +92,7 @@ namespace LibrarySystem
                 }
             }
             ((TextBox)sender).Text = txtAmountString;
+            if (initialSelectionStart < 0) { initialSelectionStart = 0; }
             ((TextBox)sender).SelectionStart = initialSelectionStart;
 
             checkTextBoxes();
