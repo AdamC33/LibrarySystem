@@ -58,8 +58,8 @@ namespace LibrarySystem
 
         private void checkTextBoxes(object sender = null, TextChangedEventArgs e = null)
         {
-            //Enables confirm button to be clicked if there is some text in the amount box
-            if (txtAmountPounds.Text.Length > 0 && txtAmountPence.Text.Length == 2)
+            //Enables confirm button to be clicked if there is some text in the amount box, and if the amount entered is more than £0.00
+            if (txtAmountPounds.Text.Length > 0 && txtAmountPence.Text.Length == 2 && !(txtAmountPounds.Text == "0" && txtAmountPence.Text == "00"))
             {
                 btnConfirm.IsEnabled = true;
             }
