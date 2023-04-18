@@ -50,10 +50,11 @@ namespace LibrarySystem
             txtStock.Text = String.Format("{0} / {1}", _thisBook.currentStock, _thisBook._totalStock);
 
             List<checkBookDisplay> checkBookList = new List<checkBookDisplay>();
+            List<checkBookDisplay> queueBookList = new List<checkBookDisplay>();
             DateTimeOffset currTime = DateTimeUK.DateTimeOffsetNow; //Keeps the current time as a constant value in the for loop
 
             int deletedMemberIndex = 0;
-            for (int i = 0; i < _thisBook.checkoutListMinusQueueLength; i++)
+            for (int i = 0; i < _thisBook.checkoutListLength; i++)
             {
                 string thisFontWeight = "Regular";
                 string thisFontStyle = "Normal";
@@ -71,26 +72,28 @@ namespace LibrarySystem
                     thisFontStyle = "Italic";
                     thisNotifyIsEnabled = "False";
                 }
-                checkBookList.Add(new checkBookDisplay
+                if (_thisBook.getDueDate(_thisBook.getCardNumber(i)) != DateTimeOffset.FromUnixTimeSeconds(0))
                 {
-                    cardNumber = _thisBook.getCardNumber(i),
-                    name = thisMemberName,
-                    dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i), deletedMemberIndex - 1).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
-                    fontWeight = thisFontWeight,
-                    fontStyle = thisFontStyle,
-                    notifyIsEnabled = thisNotifyIsEnabled
-                });
+                    checkBookList.Add(new checkBookDisplay
+                    {
+                        cardNumber = _thisBook.getCardNumber(i),
+                        name = thisMemberName,
+                        dueDate = _thisBook.getDueDate(_thisBook.getCardNumber(i), deletedMemberIndex - 1).DateTime.ToString(CultureInfo.CreateSpecificCulture("en-GB")),
+                        fontWeight = thisFontWeight,
+                        fontStyle = thisFontStyle,
+                        notifyIsEnabled = thisNotifyIsEnabled
+                    });
+                }
+                else
+                {
+                    queueBookList.Add(new checkBookDisplay
+                    {
+                        cardNumber = _thisBook.getCardNumber(i),
+                        name = controller.GetMemberName(_thisBook.getCardNumber(i))
+                    });
+                }
             }
             listChecked.ItemsSource = checkBookList;
-            List<checkBookDisplay> queueBookList = new List<checkBookDisplay>();
-            for (int i = _thisBook.checkoutListMinusQueueLength; i < _thisBook.checkoutListLength; i++)
-            {
-                queueBookList.Add(new checkBookDisplay
-                {
-                    cardNumber = _thisBook.getCardNumber(i),
-                    name = controller.GetMemberName(_thisBook.getCardNumber(i))
-                });
-            }
             listQueued.ItemsSource = queueBookList;
 
             btnMoveQueue.IsEnabled = false;
