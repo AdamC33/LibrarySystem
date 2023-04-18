@@ -1,0 +1,55 @@
+<members>
+  <member>
+    <cardnumber>000000000</cardnumber>
+    <password>LibBookCo23</password>
+    <name>Librarian</name>
+    <phonenumber>null</phonenumber>
+    <email>null</email>
+    <activated>1</activated>
+    <fees>
+      <fee>
+        <amount>null</amount>
+        <reason>null</reason>
+      </fee>
+    </fees>
+    <requests>
+      <request>null</request>
+    </requests>
+  </member>
+  <member>
+    <cardnumber>123456789</cardnumber>
+    <password>password</password>
+    <name>John Smith</name>
+    <phonenumber>123-456-7890</phonenumber>
+    <email>johnsmith@company.co.uk</email>
+    <activated>0</activated>
+    <fees>
+    </fees>
+    <requests>
+    </requests>
+  </member>
+  <member>
+    <cardnumber>248163264</cardnumber>
+    <password>password</password>
+    <name>Jane Doe</name>
+    <phonenumber>123-456-7890</phonenumber>
+    <email>janedoe@company.co.uk</email>
+    <activated>1</activated>
+    <fees>
+    </fees>
+    <requests>
+    </requests>
+  </member>
+  <member>
+    <cardnumber>111111111</cardnumber>
+    <password>PASSWORD</password>
+    <name>John Q. Public</name>
+    <phonenumber>123-456-7890</phonenumber>
+    <email>jqpublic@company.co.uk</email>
+    <activated>1</activated>
+    <fees>
+    </fees>
+    <requests>
+    </requests>
+  </member>
+</members>

@@ -1,0 +1,315 @@
+<library>
+  <book>
+    <title>null</title>
+    <author>null</author>
+    <year>null</year>
+    <publisher>null</publisher>
+    <isbn>null</isbn>
+    <category>null</category>
+    <instock>null</instock>
+    <checkout>
+      <member>
+        <cardnumber>null</cardnumber>
+        <duedate>null</duedate>
+        <renewed>null</renewed>
+      </member>
+    </checkout>
+  </book>
+  <book>
+    <title>To Kill a Mockingbird</title>
+    <author>Harper Lee</author>
+    <year>1960</year>
+    <publisher>J. B. Lippincott Co.</publisher>
+    <isbn>9780061120084</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Great Gatsby</title>
+    <author>F. Scott Fitzgerald</author>
+    <year>1925</year>
+    <publisher>Charles Scribner's Sons</publisher>
+    <isbn>9780743273565</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Catcher in the Rye</title>
+    <author>J.D. Salinger</author>
+    <year>1951</year>
+    <publisher>Little, Brown and Company</publisher>
+    <isbn>9780316769488</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Nineteen Eighty-Four</title>
+    <author>George Orwell</author>
+    <year>1949</year>
+    <publisher>Secker Warburg</publisher>
+    <isbn>9780451524935</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Hobbit</title>
+    <author>J.R.R. Tolkien</author>
+    <year>1937</year>
+    <publisher>George Allen Unwin</publisher>
+    <isbn>9780618260300</isbn>
+    <category>Fantasy</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Lord of the Rings</title>
+    <author>J.R.R. Tolkien</author>
+    <year>1954</year>
+    <publisher>George Allen Unwin</publisher>
+    <isbn>9780395489321</isbn>
+    <category>Fantasy</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Pride and Prejudice</title>
+    <author>Jane Austen</author>
+    <year>1813</year>
+    <publisher>T. Egerton, Whitehall</publisher>
+    <isbn>9780141439518</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>To the Lighthouse</title>
+    <author>Virginia Woolf</author>
+    <year>1927</year>
+    <publisher>Harvest Books</publisher>
+    <isbn>9780156907392</isbn>
+    <category>Modernist</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Wuthering Heights</title>
+    <author>Emily Bronte</author>
+    <year>1847</year>
+    <publisher>Thomas Cautley Newby</publisher>
+    <isbn>9780141439556</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Picture of Dorian Gray</title>
+    <author>Oscar Wilde</author>
+    <year>1890</year>
+    <publisher>Ward, Lock, and Company</publisher>
+    <isbn>9780141439570</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Frankenstein</title>
+    <author>Mary Shelley</author>
+    <year>1818</year>
+    <publisher>Lackington, Hughes, Harding, Mavor, Jones</publisher>
+    <isbn>9780141439471</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Dracula</title>
+    <author>Bram Stoker</author>
+    <year>1897</year>
+    <publisher>Archibald Constable and Company</publisher>
+    <isbn>9780141439846</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Emma</title>
+    <author>Jane Austen</author>
+    <year>1815</year>
+    <publisher>John Murray</publisher>
+    <isbn>9780141439587</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Scarlet Letter</title>
+    <author>Nathaniel Hawthorne</author>
+    <year>1850</year>
+    <publisher>Ticknor, Reed, and Fields</publisher>
+    <isbn>9780486280486</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Adventures of Tom Sawyer</title>
+    <author>Mark Twain</author>
+    <year>1876</year>
+    <publisher>Chatto Windus</publisher>
+    <isbn>9780486411093</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Little Women</title>
+    <author>Louisa May Alcott</author>
+    <year>1868</year>
+    <publisher>Roberts Brothers</publisher>
+    <isbn>9780143106654</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Diary of a Young Girl</title>
+    <author>Anne Frank</author>
+    <year>1947</year>
+    <publisher>Contact Publishing</publisher>
+    <isbn>9780141315192</isbn>
+    <category>Non-fiction</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The War of the Worlds</title>
+    <author>H.G. Wells</author>
+    <year>1898</year>
+    <publisher>Heinemann</publisher>
+    <isbn>9780553213386</isbn>
+    <category>Science Fiction</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Invisible Man</title>
+    <author>H.G. Wells</author>
+    <year>1897</year>
+    <publisher>Pearson's Weekly</publisher>
+    <isbn>9780451531674</isbn>
+    <category>Science Fiction</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>Heart of Darkness</title>
+    <author>Joseph Conrad</author>
+    <year>1899</year>
+    <publisher>Blackwood's Magazine</publisher>
+    <isbn>9780141441672</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Outsiders</title>
+    <author>S.E. Hinton</author>
+    <year>1967</year>
+    <publisher>Viking Press</publisher>
+    <isbn>9780140385724</isbn>
+    <category>Young Adult</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Fault in Our Stars</title>
+    <author>John Green</author>
+    <year>2012</year>
+    <publisher>Dutton Books</publisher>
+    <isbn>9780525478812</isbn>
+    <category>Young Adult</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Adventures of Sherlock Holmes</title>
+    <author>Arthur Conan Doyle</author>
+    <year>1892</year>
+    <publisher>George Newnes Ltd.</publisher>
+    <isbn>9780140439070</isbn>
+    <category>Mystery</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Hound of the Baskervilles</title>
+    <author>Arthur Conan Doyle</author>
+    <year>1902</year>
+    <publisher>George Newnes Ltd.</publisher>
+    <isbn>9780199536967</isbn>
+    <category>Mystery</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Time Machine</title>
+    <author>H.G. Wells</author>
+    <year>1895</year>
+    <publisher>William Heinemann</publisher>
+    <isbn>9780812505047</isbn>
+    <category>Science Fiction</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Strange Case of Dr. Jekyll and Mr. Hyde</title>
+    <author>Robert Louis Stevenson</author>
+    <year>1886</year>
+    <publisher>Longmans, Green and Co.</publisher>
+    <isbn>9780486266886</isbn>
+    <category>Classic</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+  <book>
+    <title>The Adventures of Pinocchio</title>
+    <author>Carlo Collodi</author>
+    <year>1883</year>
+    <publisher>G. B. Cioffi, Pescia</publisher>
+    <isbn>9780679417996</isbn>
+    <category>Children's literature</category>
+    <instock>1</instock>
+    <checkout>
+    </checkout>
+  </book>
+</library>

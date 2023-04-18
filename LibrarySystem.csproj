@@ -358,5 +358,11 @@
   <ItemGroup>
     <Resource Include="img\clock.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleXML\Library.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SampleXML\Members.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
